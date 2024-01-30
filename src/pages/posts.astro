@@ -11,8 +11,10 @@ const allTags = Array.from(
 
 <Layout>
   <div class="flex flex-col gap-14">
-    <section class="flex flex-col gap-4">
+    <section class="flex flex-col gap-3">
       <h1 class="text-5xl">전체 게시물</h1>
+      <p>총 {allPosts.length}개의 게시물이 있습니다.</p>
+      <hr />
       <ul>
         {
           allPosts.map((post) => {
@@ -27,8 +29,10 @@ const allTags = Array.from(
         }
       </ul>
     </section>
-    <section class="flex flex-col gap-4">
+    <section class="flex flex-col gap-3">
       <h1 class="text-5xl">태그</h1>
+      <p>총 {allTags.length}개의 태그가 있습니다.</p>
+      <hr />
       <ul class="flex gap-2">
         {
           allTags.map((tag) => {
