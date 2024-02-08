@@ -11,11 +11,13 @@ import Layout from "~/layouts/Layout.astro";
           href="https://remix.run"
           target="_blank"
           class="underline lg:hover:text-yellow-300 transition-color duration-300"
+          title="Remix 프레임워크의 홈페이지로 이동합니다. (새 창에서 열림)"
           >Remix</a
         >, <a
           href="https://astro.build"
           target="_blank"
           class="underline lg:hover:text-yellow-300 transition-color duration-300"
+          title="Astro 프레임워크의 홈페이지로 이동합니다. (새 창에서 열림)"
           >Astro</a
         > 프레임워크를 사용합니다.
       </p>
@@ -24,6 +26,7 @@ import Layout from "~/layouts/Layout.astro";
           href="https://tailwindcss.com"
           target="_blank"
           class="underline lg:hover:text-yellow-300 transition-color duration-300"
+          title="Tailwind CSS의 홈페이지로 이동합니다. (새 창에서 열림)"
           >Tailwind CSS</a
         >를 사용합니다.
       </p>
@@ -35,26 +38,31 @@ import Layout from "~/layouts/Layout.astro";
           <a
             href="https://github.com/jsparkdev"
             target="_blank"
-            class="hover:underline">Github</a
+            class="hover:underline"
+            title="Github 프로필로 이동합니다. (새 창에서 열림)">Github</a
           >
         </li>
         <li>
           <a
             href="https://x.com/jsparkdev"
             target="_blank"
-            class="hover:underline">Twitter</a
+            class="hover:underline"
+            title="Twitter 프로필로 이동합니다. (새 창에서 열림)">Twitter</a
           >
         </li>
         <li>
           <a
             href="https://www.linkedin.com/in/jsparkdev"
             target="_blank"
-            class="hover:underline">Linkedin</a
+            class="hover:underline"
+            title="Linkedin 프로필로 이동합니다. (새 창에서 열림)">Linkedin</a
           >
         </li>
       </ul>
-      <a href="/posts" class="hover:underline text-right"
-        >게시물 보러가기 &rarr;</a
+      <a
+        href="/posts"
+        class="hover:underline text-right"
+        title="게시물 목록으로 이동합니다.">게시물 보러가기 &rarr;</a
       >
     </div>
   </main>

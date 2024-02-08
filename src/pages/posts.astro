@@ -20,7 +20,11 @@ const allTags = Array.from(
           allPosts.map((post) => {
             return (
               <li>
-                <a href={`/posts/${post.slug}`} class="hover:underline">
+                <a
+                  href={`/posts/${post.slug}`}
+                  class="hover:underline"
+                  title={`${post.data.title} 게시물을 읽습니다.`}
+                >
                   {post.data.title}
                 </a>
               </li>
@@ -41,6 +45,7 @@ const allTags = Array.from(
                 <a
                   href={`/tags/${tag}`}
                   class="bg-white bg-opacity-20 px-3 rounded-xl py-1.5 text-base hover:bg-opacity-30 transition-color duration-300"
+                  title={`${tag} 태그를 가진 게시물의 목록을 확인합니다.`}
                 >
                   {tag}
                 </a>

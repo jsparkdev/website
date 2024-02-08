@@ -29,7 +29,11 @@ const filteredPosts = allPosts.filter((post) => post.data.tags.includes(id));
           filteredPosts.map((post) => {
             return (
               <li>
-                <a href={`/posts/${post.slug}`} class="hover:underline">
+                <a
+                  href={`/posts/${post.slug}`}
+                  class="hover:underline"
+                  title={`${post.data.title} 게시물을 읽습니다.`}
+                >
                   {post.data.title}
                 </a>
               </li>
