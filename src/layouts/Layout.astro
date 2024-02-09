@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import SpeedInsights from "@vercel/speed-insights/astro";
 import "@fontsource/gamja-flower";
 
 const { postsTitle } = Astro.props;
@@ -14,7 +13,7 @@ const title = postsTitle ? postsTitle : "Junseong Park | 박준성";
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="웹 풀스택 개발자 박준성 (Junseong Park)입니다. 주로 Remix, Astro 프레임워크를 사용하며 스타일링을 위해 Tailwind CSS를 사용합니다. 또한 웹 성능 최적화에 관심이 많습니다. "
+      content="웹 풀스택 개발자 박준성입니다. 주로 Remix, Astro 프레임워크를 사용하며 스타일링을 위해 Tailwind CSS를 사용합니다. 또한 웹 성능 최적화에 관심이 많습니다."
     />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -23,7 +22,6 @@ const title = postsTitle ? postsTitle : "Junseong Park | 박준성";
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <SpeedInsights />
     <ViewTransitions />
   </head>
   <body class="bg-[#011627] text-white p-10 flex justify-center text-xl">
