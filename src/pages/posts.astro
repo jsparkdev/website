@@ -1,6 +1,8 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { parseDate } from "~/utils/date";
+import TagBox from "~/components/TagBox.astro";
 
 const allPosts = await getCollection("posts");
 
@@ -9,49 +11,43 @@ const allTags = Array.from(
 ).sort((a, b) => a.localeCompare(b));
 ---
 
-<Layout>
-  <div class="flex flex-col gap-14">
-    <section class="flex flex-col gap-3">
-      <h1 class="text-5xl">전체 게시물</h1>
-      <p>총 {allPosts.length}개의 게시물이 있습니다.</p>
+<Layout description="게시물 및 태그 목록을 나타내는 페이지입니다.">
+  <div class="flex flex-col gap-14 text-3xl">
+    <section class="flex flex-col gap-6">
+      <h1 class="text-5xl font-bold">전체 게시물</h1>
+      <p>{allPosts.length}개의 게시물이 있습니다.</p>
       <hr />
-      <ul>
+      <ul class="flex flex-col gap-6" transition:name="posts-list">
         {
-          allPosts.map((post) => {
-            return (
-              <li>
-                <a
-                  href={`/posts/${post.slug}`}
-                  class="hover:underline"
-                  title={`${post.data.title} 게시물을 읽습니다.`}
-                >
-                  {post.data.title}
-                </a>
-              </li>
-            );
-          })
+          allPosts.map((post) => (
+            <li class="flex flex-col">
+              <time class="text-xs" transition:name={post.slug + "time"}>
+                {parseDate(post.data.date)}
+              </time>
+              <a
+                href={`/posts/${post.slug}`}
+                class="hover:underline"
+                title={`${parseDate(post.data.date)}에 작성된 ${post.data.title} 게시물을 읽습니다.`}
+                transition:name={post.slug}
+              >
+                {post.data.title}
+              </a>
+            </li>
+          ))
         }
       </ul>
     </section>
-    <section class="flex flex-col gap-3">
-      <h1 class="text-5xl">태그</h1>
-      <p>총 {allTags.length}개의 태그가 있습니다.</p>
+    <section class="flex flex-col gap-6" transition:name="content">
+      <h1 class="text-5xl font-bold">태그</h1>
+      <p>{allTags.length}개의 태그가 있습니다.</p>
       <hr />
-      <ul class="flex gap-2">
+      <ul class="flex gap-2" transition:name="tag-list">
         {
-          allTags.map((tag) => {
-            return (
-              <li>
-                <a
-                  href={`/tags/${tag}`}
-                  class="bg-white bg-opacity-20 px-3 rounded-xl py-1.5 text-base hover:bg-opacity-30 transition-color duration-300"
-                  title={`${tag} 태그를 가진 게시물의 목록을 확인합니다.`}
-                >
-                  {tag}
-                </a>
-              </li>
-            );
-          })
+          allTags.map((tag) => (
+            <li transition:name={tag}>
+              <TagBox name={tag} />
+            </li>
+          ))
         }
       </ul>
     </section>

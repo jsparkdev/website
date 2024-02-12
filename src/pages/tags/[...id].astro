@@ -1,6 +1,8 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { capital } from "~/utils/string";
+import { parseDate } from "~/utils/date";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
@@ -18,27 +20,28 @@ const { id, allPosts } = Astro.props;
 const filteredPosts = allPosts.filter((post) => post.data.tags.includes(id));
 ---
 
-<Layout>
-  <div class="flex flex-col gap-20">
-    <section class="flex flex-col gap-4">
-      <h1 class="text-5xl">{id} 태그</h1>
-      <p class="text-2xl">총 {filteredPosts.length}개의 게시물이 있습니다.</p>
+<Layout
+  description={`${id} 태그에 포함된 모든 게시물 목록을 나타내는 페이지입니다.`}
+>
+  <div class="flex flex-col gap-20 text-3xl">
+    <section class="flex flex-col gap-6">
+      <h1 class="text-5xl font-bold" transition:name={id}>{capital(id)}</h1>
+      <p>{filteredPosts.length}개의 게시물이 있습니다.</p>
       <hr />
-      <ul>
+      <ul class="flex flex-col gap-6" transition:name="posts-list">
         {
-          filteredPosts.map((post) => {
-            return (
-              <li>
-                <a
-                  href={`/posts/${post.slug}`}
-                  class="hover:underline"
-                  title={`${post.data.title} 게시물을 읽습니다.`}
-                >
-                  {post.data.title}
-                </a>
-              </li>
-            );
-          })
+          filteredPosts.map((post) => (
+            <li class="flex flex-col">
+              <time class="text-xs">{parseDate(post.data.date)}</time>
+              <a
+                href={`/posts/${post.slug}`}
+                class="hover:underline"
+                title={`${post.data.title} 게시물을 읽습니다.`}
+              >
+                {post.data.title}
+              </a>
+            </li>
+          ))
         }
       </ul>
     </section>

@@ -1,5 +1,7 @@
 ---
 import { getCollection } from "astro:content";
+import Prose from "~/components/Prose.astro";
+import TagBox from "~/components/TagBox.astro";
 import Layout from "~/layouts/Layout.astro";
 import { parseDate } from "~/utils/date";
 
@@ -14,32 +16,37 @@ export async function getStaticPaths() {
 const { postEntry } = Astro.props;
 const {
   data: { title, date, tags },
+  slug,
 } = postEntry;
 const { Content } = await postEntry.render();
 ---
 
-<Layout postsTitle={title}>
-  <article class="flex flex-col gap-6">
-    <div class="flex flex-col gap-1">
-      <ul class="flex gap-2">
-        {
-          tags.map((tag) => (
-            <li class="bg-white bg-opacity-20 px-3 rounded-xl py-0.5 text-base hover:bg-opacity-30 transition-color duration-300">
-              <a href={`/tags/${tag}`}>{tag}</a>
-            </li>
-          ))
-        }
-      </ul>
-      <h1 class="text-5xl">{title}</h1>
-      <section class="flex flex-col gap-2">
-        <time datetime={date.toISOString()} class="text-sm"
-          >{parseDate(date)}</time
+<Layout postsTitle={title} description={`${title} 게시물 페이지입니다.`}>
+  <div class="flex flex-col gap-6">
+    <section class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6">
+        <ul class="flex gap-2" transition:name="tag-list">
+          {
+            tags.map((tag) => (
+              <li>
+                <TagBox name={tag} />
+              </li>
+            ))
+          }
+        </ul>
+        <h1 class="text-5xl font-bold" transition:name={slug}>{title}</h1>
+        <time
+          transition:name={slug + "time"}
+          datetime={date.toISOString()}
+          class="text-sm">{parseDate(date)}</time
         >
-        <hr />
-      </section>
-    </div>
-    <section>
-      <Content />
+      </div>
     </section>
-  </article>
+    <hr />
+    <div transition:name="content">
+      <Prose>
+        <Content />
+      </Prose>
+    </div>
+  </div>
 </Layout>

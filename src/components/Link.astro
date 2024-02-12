@@ -1,0 +1,25 @@
+---
+type LinkTypes = "homepage" | "profile";
+
+interface Props {
+  type: LinkTypes;
+  href: string;
+  name: string;
+}
+
+const { type, href, name } = Astro.props;
+
+const titleMap = {
+  homepage: "홈페이지로 이동합니다. (새 창에서 열림)",
+  profile: "프로필로 이동합니다. (새 창에서 열림)",
+};
+
+const className = `hover:underline ${type === "homepage" ? "lg:hover:text-yellow-300 transition-color duration-300" : ""}`;
+---
+
+<a
+  href={`https://${href}`}
+  title={`${name} ${titleMap[type]}`}
+  target="_blank"
+  class={className}>{name}</a
+>

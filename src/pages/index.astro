@@ -1,63 +1,46 @@
 ---
+import Link from "~/components/Link.astro";
 import Layout from "~/layouts/Layout.astro";
+
+const stack = [
+  { name: "React", href: "react.dev" },
+  { name: "Remix", href: "remix.run" },
+  { name: "Astro", href: "astro.build" },
+  { name: "Vite", href: "vitejs.dev" },
+];
+
+const profile = [
+  { name: "Github", href: "github.com/jsparkdev" },
+  { name: "Twitter", href: "x.com/jsparkdev" },
+  { name: "Linkedin", href: "linkedin.com/in/jsparkdev" },
+];
 ---
 
-<Layout>
-  <main class="flex flex-col gap-10">
-    <div class="flex flex-col gap-1">
-      <p>웹 풀스택 개발자 박준성입니다.</p>
+<Layout
+  description="박준성 (Junseong Park) 웹 프론트엔드 (React, Remix, Astro, Vite) 웹 성능 최적화 및 사용자 경험 개선"
+>
+  <main class="flex flex-col gap-10 text-3xl">
+    <div class="flex flex-col gap-4">
+      <p>웹 프론트엔드 개발자 박준성입니다.</p>
       <p>
-        주로 <a
-          href="https://remix.run"
-          target="_blank"
-          class="underline lg:hover:text-yellow-300 transition-color duration-300"
-          title="Remix 프레임워크의 홈페이지로 이동합니다. (새 창에서 열림)"
-          >Remix</a
-        >, <a
-          href="https://astro.build"
-          target="_blank"
-          class="underline lg:hover:text-yellow-300 transition-color duration-300"
-          title="Astro 프레임워크의 홈페이지로 이동합니다. (새 창에서 열림)"
-          >Astro</a
-        > 프레임워크를 사용합니다.
+        {
+          stack.map((item, index) => [
+            <Link type="homepage" {...item} />,
+            `${index === stack.length - 1 ? "" : ", "}`,
+          ])
+        }와 같은 기술에 관심이 많습니다.
       </p>
-      <p>
-        스타일링을 위해 <a
-          href="https://tailwindcss.com"
-          target="_blank"
-          class="underline lg:hover:text-yellow-300 transition-color duration-300"
-          title="Tailwind CSS의 홈페이지로 이동합니다. (새 창에서 열림)"
-          >Tailwind CSS</a
-        >를 사용합니다.
-      </p>
-      <p>웹 성능 최적화에 관심이 많습니다.</p>
+      <p>또한 웹 성능 최적화 및 사용자 경험을 개선하는 일에 관심이 많습니다.</p>
     </div>
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-6">
       <ul class="flex gap-2 justify-end">
-        <li>
-          <a
-            href="https://github.com/jsparkdev"
-            target="_blank"
-            class="hover:underline"
-            title="Github 프로필로 이동합니다. (새 창에서 열림)">Github</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://x.com/jsparkdev"
-            target="_blank"
-            class="hover:underline"
-            title="Twitter 프로필로 이동합니다. (새 창에서 열림)">Twitter</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/jsparkdev"
-            target="_blank"
-            class="hover:underline"
-            title="Linkedin 프로필로 이동합니다. (새 창에서 열림)">Linkedin</a
-          >
-        </li>
+        {
+          profile.map((item) => (
+            <li>
+              <Link type="profile" {...item} />
+            </li>
+          ))
+        }
       </ul>
       <a
         href="/posts"
