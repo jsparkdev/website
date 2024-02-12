@@ -22,7 +22,7 @@ const { Content } = await postEntry.render();
 ---
 
 <Layout postsTitle={title} description={`${title} 게시물 페이지입니다.`}>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 md:w-full w-[90vw]">
     <section class="flex flex-col gap-6">
       <div class="flex flex-col gap-6">
         <ul class="flex gap-2" transition:name="tag-list">
@@ -43,10 +43,9 @@ const { Content } = await postEntry.render();
       </div>
     </section>
     <hr />
-    <div transition:name="content">
-      <Prose>
-        <Content />
-      </Prose>
-    </div>
+
+    <Prose>
+      <Content />
+    </Prose>
   </div>
 </Layout>
