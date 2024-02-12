@@ -32,11 +32,14 @@ const filteredPosts = allPosts.filter((post) => post.data.tags.includes(id));
         {
           filteredPosts.map((post) => (
             <li class="flex flex-col">
-              <time class="text-xs">{parseDate(post.data.date)}</time>
+              <time class="text-xs" transition:name={post.slug + "time"}>
+                {parseDate(post.data.date)}
+              </time>
               <a
                 href={`/posts/${post.slug}`}
                 class="hover:underline"
                 title={`${post.data.title} 게시물을 읽습니다.`}
+                transition:name={post.slug}
               >
                 {post.data.title}
               </a>
