@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import { parseDate } from "~/utils/date";
 import TagBox from "~/components/TagBox.astro";
 
-const allPosts = await getCollection("posts");
+const allPosts =( await getCollection("posts")).filter(post => !post.data.draft);
 
 const allTags = Array.from(
   new Set(allPosts.map((post) => post.data.tags).flat()),

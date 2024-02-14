@@ -2,6 +2,7 @@
 title: JSX를 JavaScript로 변환하기
 tags: [react]
 date: 2024-02-13
+description: JSX를 JavaScript로 변환하는 방법에 대해 알아봅니다.
 ---
 
 JSX란 HTML과 유사한 구문으로 원시 React API를 작성할 수 있게 해주는 구문 설탕입니다. 즉, 다음 두 코드는 같은 UI를 출력합니다.

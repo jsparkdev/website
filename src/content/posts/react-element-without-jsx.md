@@ -2,6 +2,7 @@
 title: JSX 없이 만들어보는 리액트 요소
 tags: [react]
 date: 2024-02-12
+description: JSX 없이 리액트 요소를 만드는 방법에 대해 알아봅니다.
 ---
 
 브라우저는 기본적으로 HTML 코드를 분석하여 DOM을 생성합니다. 이렇게 생성된 DOM은 브라우저에 의해 클라이언트 측 JavaScript에 노출됩니다. 이를 통해 클라이언트 측 JavaScript는 DOM에 상호작용 레이어를 추가할 수 있습니다.
