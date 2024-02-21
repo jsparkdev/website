@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   description: string;
@@ -24,6 +25,7 @@ const title = postsTitle ? postsTitle : "Junseong Park | 박준성";
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <ViewTransitions />
+    <SpeedInsights />
   </head>
   <body class="bg-[#011627] text-white p-10 flex justify-center">
     <div class="max-w-[1200px]">
