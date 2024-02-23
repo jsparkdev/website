@@ -5,13 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "deploy": "wrangler pages deploy ./build/client",
     "dev": "remix vite:dev",
-    "postinstall": "npm run typegen",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "wrangler pages dev ./build/client",
-    "typecheck": "tsc",
-    "typegen": "wrangler types"
+    "start": "wrangler pages dev ./build/client"
   },
   "dependencies": {
     "@remix-run/cloudflare": "^2.7.2",
@@ -25,7 +21,6 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240222.0",
     "@remix-run/dev": "^2.7.2",
-    "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "@types/react": "^18.2.58",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
