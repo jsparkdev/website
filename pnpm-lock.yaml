@@ -13,7 +13,7 @@ dependencies:
     version: 2.7.2(@cloudflare/workers-types@4.20240222.0)(typescript@5.3.3)
   '@remix-run/react':
     specifier: ^2.7.2
-    version: 2.7.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
+    version: 2.7.2(react-dom@18.3.0-canary-47beb96cc-20240222)(react@18.3.0-canary-47beb96cc-20240222)(typescript@5.3.3)
   isbot:
     specifier: ^5.1.0
     version: 5.1.0
@@ -21,11 +21,11 @@ dependencies:
     specifier: ^3.20240208.0
     version: 3.20240208.0
   react:
-    specifier: ^18.2.0
-    version: 18.2.0
+    specifier: 18.3.0-canary-47beb96cc-20240222
+    version: 18.3.0-canary-47beb96cc-20240222
   react-dom:
-    specifier: ^18.2.0
-    version: 18.2.0(react@18.2.0)
+    specifier: 18.3.0-canary-47beb96cc-20240222
+    version: 18.3.0-canary-47beb96cc-20240222(react@18.3.0-canary-47beb96cc-20240222)
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -38,8 +38,8 @@ devDependencies:
     specifier: 0.0.0-insiders.565cd3e
     version: 0.0.0-insiders.565cd3e(postcss@8.4.35)
   '@types/react':
-    specifier: ^18.2.57
-    version: 18.2.57
+    specifier: ^18.2.58
+    version: 18.2.58
   '@types/react-dom':
     specifier: ^18.2.19
     version: 18.2.19
@@ -1474,7 +1474,7 @@ packages:
       typescript: 5.3.3
     dev: true
 
-  /@remix-run/react@2.7.2(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3):
+  /@remix-run/react@2.7.2(react-dom@18.3.0-canary-47beb96cc-20240222)(react@18.3.0-canary-47beb96cc-20240222)(typescript@5.3.3):
     resolution: {integrity: sha512-Q/gsxJVEYYvkYM/immVFP4rBnGSzEFNJLRt6plO5knAy6NV1NNptsEnvh4GoTVQdTKdVw7wkJW26/YpnHzHiDA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -1487,10 +1487,10 @@ packages:
     dependencies:
       '@remix-run/router': 1.15.1
       '@remix-run/server-runtime': 2.7.2(typescript@5.3.3)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.22.1(react@18.2.0)
-      react-router-dom: 6.22.1(react-dom@18.2.0)(react@18.2.0)
+      react: 18.3.0-canary-47beb96cc-20240222
+      react-dom: 18.3.0-canary-47beb96cc-20240222(react@18.3.0-canary-47beb96cc-20240222)
+      react-router: 6.22.1(react@18.3.0-canary-47beb96cc-20240222)
+      react-router-dom: 6.22.1(react-dom@18.3.0-canary-47beb96cc-20240222)(react@18.3.0-canary-47beb96cc-20240222)
       typescript: 5.3.3
     dev: false
 
@@ -1748,11 +1748,11 @@ packages:
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.57
+      '@types/react': 18.2.58
     dev: true
 
-  /@types/react@18.2.57:
-    resolution: {integrity: sha512-ZvQsktJgSYrQiMirAN60y4O/LRevIV8hUzSOSNB6gfR3/o3wCBFQx3sPwIYtuDMeiVgsSS3UzCV26tEzgnfvQw==}
+  /@types/react@18.2.58:
+    resolution: {integrity: sha512-TaGvMNhxvG2Q0K0aYxiKfNDS5m5ZsoIBBbtfUorxdH4NGSXIlYvZxLJI+9Dd3KjeB3780bciLyAb7ylO8pLhPw==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -1938,7 +1938,7 @@ packages:
       '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.23.9)
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.5
       '@vanilla-extract/css': 1.14.1
-      esbuild: 0.17.6
+      esbuild: 0.19.12
       eval: 0.1.8
       find-up: 5.0.0
       javascript-stringify: 2.1.0
@@ -5657,14 +5657,14 @@ packages:
       unpipe: 1.0.0
     dev: true
 
-  /react-dom@18.2.0(react@18.2.0):
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  /react-dom@18.3.0-canary-47beb96cc-20240222(react@18.3.0-canary-47beb96cc-20240222):
+    resolution: {integrity: sha512-2nt1sjvoQXKJF3VcmqeQ7Bagcu6BvLFYY+4iVzV23hGEEtIp0/2GMJkKEtQd8omU5EwA+dp1Djl/fpgWx0pKcQ==}
     peerDependencies:
-      react: ^18.2.0
+      react: 18.3.0-canary-47beb96cc-20240222
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
-      scheduler: 0.23.0
+      react: 18.3.0-canary-47beb96cc-20240222
+      scheduler: 0.24.0-canary-47beb96cc-20240222
     dev: false
 
   /react-is@16.13.1:
@@ -5676,7 +5676,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /react-router-dom@6.22.1(react-dom@18.2.0)(react@18.2.0):
+  /react-router-dom@6.22.1(react-dom@18.3.0-canary-47beb96cc-20240222)(react@18.3.0-canary-47beb96cc-20240222):
     resolution: {integrity: sha512-iwMyyyrbL7zkKY7MRjOVRy+TMnS/OPusaFVxM2P11x9dzSzGmLsebkCvYirGq0DWB9K9hOspHYYtDz33gE5Duw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -5684,23 +5684,23 @@ packages:
       react-dom: '>=16.8'
     dependencies:
       '@remix-run/router': 1.15.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.22.1(react@18.2.0)
+      react: 18.3.0-canary-47beb96cc-20240222
+      react-dom: 18.3.0-canary-47beb96cc-20240222(react@18.3.0-canary-47beb96cc-20240222)
+      react-router: 6.22.1(react@18.3.0-canary-47beb96cc-20240222)
     dev: false
 
-  /react-router@6.22.1(react@18.2.0):
+  /react-router@6.22.1(react@18.3.0-canary-47beb96cc-20240222):
     resolution: {integrity: sha512-0pdoRGwLtemnJqn1K0XHUbnKiX0S4X8CgvVVmHGOWmofESj31msHo/1YiqcJWK7Wxfq2a4uvvtS01KAQyWK/CQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
     dependencies:
       '@remix-run/router': 1.15.1
-      react: 18.2.0
+      react: 18.3.0-canary-47beb96cc-20240222
     dev: false
 
-  /react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+  /react@18.3.0-canary-47beb96cc-20240222:
+    resolution: {integrity: sha512-ovx9lwCN5I26yjBBdVSyNZhH33Xmhz6jo5YqNA1or4sY4LEZMg+CTLqd919YV+RwlJwkycTEwvXsuuTLtI7TUQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
@@ -5975,8 +5975,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /scheduler@0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+  /scheduler@0.24.0-canary-47beb96cc-20240222:
+    resolution: {integrity: sha512-XOdz4qChotCKsf0K0QKhtSAPZZDLHg46+ChTHTtkTx8LbcPe9UxnwPbbUDIcXbn66TF/yCipJC43ykytdob1LA==}
     dependencies:
       loose-envify: 1.4.0
     dev: false

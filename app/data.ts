@@ -2,6 +2,7 @@ import {
   CSS3Icon,
   HTML5Icon,
   JavaScriptIcon,
+  NodejsIcon,
   PrismaIcon,
   ReactIcon,
   RemixIcon,
@@ -40,8 +41,8 @@ export const skills = [
   { title: 'JavaScript', icon: JavaScriptIcon },
   { title: 'TypeScript', icon: TypeScriptIcon },
   { title: 'React', icon: ReactIcon },
+  { title: 'Node.js', icon: NodejsIcon },
   { title: 'Remix', icon: RemixIcon },
   { title: 'TailwindCSS', icon: TailwindIcon },
   { title: 'Prisma', icon: PrismaIcon },
-  { title: 'Github', icon: GithubIcon },
 ];

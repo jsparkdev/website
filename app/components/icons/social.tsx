@@ -1,11 +1,15 @@
 import { SVGProps } from 'react';
 
+const size = {
+  width: '2em',
+  height: '2em',
+};
+
 export function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      {...size}
       viewBox="0 0 256 256"
       {...props}
     >
@@ -21,8 +25,7 @@ export function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1.23em"
-      height="1em"
+      {...size}
       viewBox="0 0 256 209"
       {...props}
     >
@@ -38,8 +41,7 @@ export function GithubIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1.03em"
-      height="1em"
+      {...size}
       viewBox="0 0 256 250"
       {...props}
     >
@@ -55,8 +57,7 @@ export function MailIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1.33em"
-      height="1em"
+      {...size}
       viewBox="0 0 256 193"
       {...props}
     >

@@ -4,10 +4,27 @@ import { skills, socials } from '~/data';
 
 function Heading({ name, position }: { name: string; position: string }) {
   return (
-    <div className="flex flex-col gap-2">
-      <h1 className="font-bold text-4xl">{name}</h1>
-      <span>{position}</span>
-    </div>
+    <header className="flex flex-col sm:flex-row sm:justify-between gap-6">
+      <div className="flex flex-col gap-2">
+        <h1 className="font-bold text-4xl">{name}</h1>
+        <span>{position}</span>
+      </div>
+      <ul className="flex gap-6">
+        {socials.map((social) => {
+          return (
+            <li key={social.title}>
+              <a
+                href={social.url}
+                title={social.title}
+                className="hover:opacity-70 duration-150"
+              >
+                {<social.icon />}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </header>
   );
 }
 
@@ -32,7 +49,6 @@ function IconWithTitle({ title, icon }: { title: string; icon: ReactNode }) {
 type ListElem = {
   title: string;
   icon: (props: SVGProps<SVGSVGElement>) => ReactNode;
-  url?: string;
 };
 
 function List({ list }: { list: ListElem[] }) {
@@ -43,15 +59,11 @@ function List({ list }: { list: ListElem[] }) {
       {list.map((elem) => (
         <li key={elem.title}>
           <Card>
-            {elem.url ? (
-              <a className={className} title={elem.title} href={elem.url}>
-                <IconWithTitle title={elem.title} icon={<elem.icon />} />
-              </a>
-            ) : (
+            {
               <div className={className} title={elem.title}>
                 <IconWithTitle title={elem.title} icon={<elem.icon />} />
               </div>
-            )}
+            }
           </Card>
         </li>
       ))}
@@ -61,20 +73,16 @@ function List({ list }: { list: ListElem[] }) {
 
 export default function Index() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-12">
       <Heading name="Junseong Park" position="Frontend Developer" />
       <Section title="I am interested in">
         <ul className="list-disc pl-6">
           <li>improving user experience in web applications</li>
-          <li>mobile application development using React Native</li>
           <li>implementing animation using CSS</li>
         </ul>
       </Section>
       <Section title="I use">
         <List list={skills} />
-      </Section>
-      <Section title="Social">
-        <List list={socials} />
       </Section>
     </div>
   );
