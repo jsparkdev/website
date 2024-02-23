@@ -1,11 +1,22 @@
 import {
   Links,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
 import './styles/tailwind.css';
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Junseong Park' },
+    {
+      name: 'description',
+      content: "Junseong Park's blog",
+    },
+  ];
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="p-10">
+      <body>
         {children}
         <ScrollRestoration />
         <Scripts />
