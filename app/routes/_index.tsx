@@ -23,7 +23,6 @@ function Heading({ name, position }: { name: string; position: string }) {
                 <TooltipTrigger>
                   <a
                     href={social.url}
-                    title={social.title}
                     className="hover:opacity-70 duration-150"
                   >
                     {<social.icon />}
