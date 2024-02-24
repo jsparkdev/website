@@ -10,13 +10,19 @@
     "start": "wrangler pages dev ./build/client"
   },
   "dependencies": {
+    "@radix-ui/react-tooltip": "^1.0.7",
     "@remix-run/cloudflare": "^2.7.2",
     "@remix-run/cloudflare-pages": "^2.7.2",
     "@remix-run/react": "^2.7.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "isbot": "^5.1.0",
+    "lucide-react": "^0.338.0",
     "miniflare": "^3.20240208.0",
     "react": "18.3.0-canary-47beb96cc-20240222",
-    "react-dom": "18.3.0-canary-47beb96cc-20240222"
+    "react-dom": "18.3.0-canary-47beb96cc-20240222",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240222.0",

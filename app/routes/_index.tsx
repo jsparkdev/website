@@ -1,6 +1,12 @@
 import { ReactNode, SVGProps } from 'react';
 import Card from '~/components/Card';
 import { skills, socials } from '~/data';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '~/components/ui/tooltip';
 
 function Heading({ name, position }: { name: string; position: string }) {
   return (
@@ -10,19 +16,34 @@ function Heading({ name, position }: { name: string; position: string }) {
         <span>{position}</span>
       </div>
       <ul className="flex gap-6">
-        {socials.map((social) => {
-          return (
-            <li key={social.title}>
-              <a
-                href={social.url}
-                title={social.title}
-                className="hover:opacity-70 duration-150"
-              >
-                {<social.icon />}
-              </a>
-            </li>
-          );
-        })}
+        {socials.map((social) => (
+          <li key={social.title}>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <a
+                    href={social.url}
+                    title={social.title}
+                    className="hover:opacity-70 duration-150"
+                  >
+                    {<social.icon />}
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div>
+                    <p>{social.title}</p>
+                    <a
+                      href={social.url}
+                      className="text-blue-400 hover:text-blue-300 duration-100"
+                    >
+                      {social.username}
+                    </a>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </li>
+        ))}
       </ul>
     </header>
   );
@@ -49,6 +70,7 @@ function IconWithTitle({ title, icon }: { title: string; icon: ReactNode }) {
 type ListElem = {
   title: string;
   icon: (props: SVGProps<SVGSVGElement>) => ReactNode;
+  href?: string;
 };
 
 function List({ list }: { list: ListElem[] }) {
@@ -58,13 +80,32 @@ function List({ list }: { list: ListElem[] }) {
     <ul className="flex flex-wrap gap-2">
       {list.map((elem) => (
         <li key={elem.title}>
-          <Card>
-            {
-              <div className={className} title={elem.title}>
-                <IconWithTitle title={elem.title} icon={<elem.icon />} />
-              </div>
-            }
-          </Card>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Card>
+                  {
+                    <div className={className}>
+                      <IconWithTitle title={elem.title} icon={<elem.icon />} />
+                    </div>
+                  }
+                </Card>
+              </TooltipTrigger>
+              <TooltipContent>
+                <div>
+                  <p>{elem.title}</p>
+                  {elem.href && (
+                    <a
+                      href={elem.href}
+                      className="text-blue-400 hover:text-blue-300 duration-100"
+                    >
+                      {elem.href}
+                    </a>
+                  )}
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </li>
       ))}
     </ul>
