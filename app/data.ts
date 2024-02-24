@@ -8,6 +8,7 @@ import {
   RemixIcon,
   TailwindIcon,
   TypeScriptIcon,
+  ViteIcon,
 } from '~/components/icons/skill';
 import {
   LinkedinIcon,
@@ -41,6 +42,7 @@ export const skills = [
   { title: 'JavaScript', icon: JavaScriptIcon },
   { title: 'TypeScript', icon: TypeScriptIcon },
   { title: 'React', icon: ReactIcon },
+  { title: 'Vite', icon: ViteIcon },
   { title: 'Node.js', icon: NodejsIcon },
   { title: 'Remix', icon: RemixIcon },
   { title: 'TailwindCSS', icon: TailwindIcon },
