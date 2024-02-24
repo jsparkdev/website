@@ -27,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="w-[80vw] mx-auto py-10">
+      <body>
         {children}
         <ScrollRestoration />
         <Scripts />

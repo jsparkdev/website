@@ -1,13 +1,10 @@
-import { SVGProps } from 'react';
-
-export function HTML5Icon(props: SVGProps<SVGSVGElement>) {
+function HTML5Icon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="0.71em"
       height="1em"
       viewBox="0 0 256 361"
-      {...props}
     >
       <path
         fill="#E44D26"
@@ -30,14 +27,13 @@ export function HTML5Icon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function CSS3Icon(props: SVGProps<SVGSVGElement>) {
+function CSS3Icon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="0.71em"
       height="1em"
       viewBox="0 0 256 361"
-      {...props}
     >
       <path
         fill="#264DE4"
@@ -57,14 +53,13 @@ export function CSS3Icon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function JavaScriptIcon(props: SVGProps<SVGSVGElement>) {
+function JavaScriptIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
       viewBox="0 0 256 256"
-      {...props}
     >
       <path fill="#F7DF1E" d="M0 0h256v256H0z"></path>
       <path d="m67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371c7.905 0 12.89-3.092 12.89-15.12v-81.798h24.057v82.138c0 24.917-14.606 36.259-35.916 36.259c-19.245 0-30.416-9.967-36.087-21.996m85.07-2.576l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607c9.969 0 16.325-4.984 16.325-11.858c0-8.248-6.53-11.17-17.528-15.98l-6.013-2.58c-17.357-7.387-28.87-16.667-28.87-36.257c0-18.044 13.747-31.792 35.228-31.792c15.294 0 26.292 5.328 34.196 19.247l-18.732 12.03c-4.125-7.389-8.591-10.31-15.465-10.31c-7.046 0-11.514 4.468-11.514 10.31c0 7.217 4.468 10.14 14.778 14.608l6.014 2.577c20.45 8.765 31.963 17.7 31.963 37.804c0 21.654-17.012 33.51-39.867 33.51c-22.339 0-36.774-10.654-43.819-24.574"></path>
@@ -72,14 +67,13 @@ export function JavaScriptIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function TypeScriptIcon(props: SVGProps<SVGSVGElement>) {
+function TypeScriptIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
       viewBox="0 0 256 256"
-      {...props}
     >
       <path
         fill="#3178C6"
@@ -93,14 +87,13 @@ export function TypeScriptIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function ReactIcon(props: SVGProps<SVGSVGElement>) {
+function ReactIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1.13em"
       height="1em"
       viewBox="0 0 256 228"
-      {...props}
     >
       <path
         fill="#00D8FF"
@@ -110,14 +103,13 @@ export function ReactIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function ViteIcon(props: SVGProps<SVGSVGElement>) {
+function ViteIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
       viewBox="0 0 256 257"
-      {...props}
     >
       <defs>
         <linearGradient
@@ -154,14 +146,13 @@ export function ViteIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function RemixIcon(props: SVGProps<SVGSVGElement>) {
+function RemixIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="0.87em"
       height="1em"
       viewBox="0 0 256 297"
-      {...props}
     >
       <path
         fill="#121212"
@@ -171,14 +162,13 @@ export function RemixIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function TailwindIcon(props: SVGProps<SVGSVGElement>) {
+function TailwindIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1.67em"
       height="1em"
       viewBox="0 0 256 154"
-      {...props}
     >
       <defs>
         <linearGradient
@@ -200,14 +190,13 @@ export function TailwindIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function NodejsIcon(props: SVGProps<SVGSVGElement>) {
+function NodejsIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="0.89em"
       height="1em"
       viewBox="0 0 256 289"
-      {...props}
     >
       <path
         fill="#539E43"
@@ -217,16 +206,28 @@ export function NodejsIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function PrismaIcon(props: SVGProps<SVGSVGElement>) {
+function PrismaIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="0.83em"
       height="1em"
       viewBox="0 0 256 310"
-      {...props}
     >
       <path d="M254.313 235.519L148 9.749A17.063 17.063 0 0 0 133.473.037a16.87 16.87 0 0 0-15.533 8.052L2.633 194.848a17.465 17.465 0 0 0 .193 18.747L59.2 300.896a18.13 18.13 0 0 0 20.363 7.489l163.599-48.392a17.929 17.929 0 0 0 11.26-9.722a17.542 17.542 0 0 0-.101-14.76zm-23.802 9.683l-138.823 41.05c-4.235 1.26-8.3-2.411-7.419-6.685l49.598-237.484c.927-4.443 7.063-5.147 9.003-1.035l91.814 194.973a6.63 6.63 0 0 1-4.18 9.18z"></path>
     </svg>
   );
 }
+
+export {
+  HTML5Icon,
+  CSS3Icon,
+  JavaScriptIcon,
+  TypeScriptIcon,
+  ReactIcon,
+  ViteIcon,
+  RemixIcon,
+  TailwindIcon,
+  NodejsIcon,
+  PrismaIcon,
+};
