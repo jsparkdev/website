@@ -54,7 +54,7 @@ function SocialNavBar() {
 
 function Header() {
   return (
-    <header className="sm:flex-row sm:justify-between gap-6">
+    <header className="sm:flex-row sm:justify-between gap-6 mb-12">
       <Profile name="Junseong Park" position="Frontend Developer" />
       <SocialNavBar />
     </header>

@@ -27,13 +27,14 @@ TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 type ToolTipProps = {
   trigger: React.ReactNode;
   children: React.ReactNode;
+  className?: string;
 };
 
-function ToolTip({ trigger, children }: ToolTipProps) {
+function ToolTip({ trigger, children, className }: ToolTipProps) {
   return (
     <TooltipProvider>
       <TooltipRoot>
-        <TooltipTrigger>{trigger}</TooltipTrigger>
+        <TooltipTrigger className={className}>{trigger}</TooltipTrigger>
         <TooltipContent>{children}</TooltipContent>
       </TooltipRoot>
     </TooltipProvider>
