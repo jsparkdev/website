@@ -1,6 +1,7 @@
 const interesting = [
+  'creating animation using CSS',
   'improving user experience in web applications',
-  'implementing animation using CSS',
+  'improving performance of web applications',
 ];
 
 export { interesting };

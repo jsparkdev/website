@@ -75,7 +75,7 @@ export default function Index() {
           ))}
         </ul>
       </Section>
-      <Section title="I use">
+      <Section title="using">
         <List list={skills} />
       </Section>
     </div>
