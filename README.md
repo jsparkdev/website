@@ -1,3 +1,3 @@
 # Website
 
-My website built with [Remix](https://remix.run)
+my personal website, built with Astro.
