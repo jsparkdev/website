@@ -15,5 +15,9 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <Content />
+  <article
+    class="prose prose-headings:text-4xl prose-headings:font-extrabold prose-headings:text-slate-200 prose-p:mt-0 prose-headings:mb-4 prose-p:text-slate-400"
+  >
+    <Content />
+  </article>
 </Layout>

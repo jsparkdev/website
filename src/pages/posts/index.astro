@@ -3,19 +3,21 @@ import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 
 const allPosts = await getCollection("posts");
-
-console.log(allPosts);
 ---
 
-<Layout title="dd">
-  <div>Posts</div>
-  <ul>
-    {
-      allPosts.map((post) => (
-        <li>
-          <a href={`/posts/${post.slug}`}>{post.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+<Layout title="Posts - Junseong Park">
+  <main>
+    <h1 class="text-4xl font-extrabold text-slate-200 mb-4">Posts</h1>
+    <ul>
+      {
+        allPosts.map((post) => (
+          <li>
+            <a href={`/posts/${post.slug}`} class="hover:text-slate-300">
+              {post.data.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
 </Layout>
