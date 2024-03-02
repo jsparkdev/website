@@ -1,11 +1,27 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import TechStack from "~/components/TechStack.astro";
 ---
 
 <Layout title="Junseong Park - Frontend Developer">
-  <main class="space-y-2">
-    <h1 class="text-4xl font-extrabold text-slate-200 mb-4">Junseong Park</h1>
-    <h2>Frontend Developer</h2>
-    <h2>x@jspark.dev</h2>
+  <main class="space-y-8">
+    <section>
+      <h1 class="text-4xl font-extrabold text-slate-200 mb-1">Junseong Park</h1>
+      <span>Frontend Developer</span>
+    </section>
+    <section class="space-y-2">
+      <p>
+        I build web applications using the Vite and React ecosystem and deploy
+        to serverless platforms such as Vercel, Netlify, and Cloudflare Pages.
+      </p>
+      <p>
+        Although I have little experience, I am also interested in building 3D
+        webs using Three.js and mobile applications using React Native.
+      </p>
+    </section>
+    <section>
+      <h2 class="text-2xl font-extrabold text-slate-200 mb-4">Tech Stack</h2>
+      <TechStack />
+    </section>
   </main>
 </Layout>
