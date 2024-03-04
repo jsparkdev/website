@@ -1,3 +1,3 @@
 # Website
 
-my personal website, built with Astro.
+My personal website built with Astro on Cloudflare Pages.
