@@ -3,12 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+  }
+
+  pre,
+  code {
+    font-family: "Fira Code Variable", ui-monospace, SFMono-Regular, Menlo,
+      Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
   h1 {
     @apply text-4xl font-extrabold text-slate-200;
   }
+
   h2 {
     @apply text-2xl font-extrabold text-slate-200;
   }
+
   a:hover {
     @apply text-slate-300;
   }
