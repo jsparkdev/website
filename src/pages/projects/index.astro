@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 
-const allPosts = await getCollection("projects");
+const allProjects = await getCollection("projects");
 
 const linkClass =
 	"p-4 bg-slate-700 rounded-xl hover:bg-slate-600 active:bg-slate-500 duration-200";
@@ -12,13 +12,13 @@ const linkClass =
   <h1 class="mb-10">Projects</h1>
   <ul class="space-y-6">
     {
-      allPosts.map((post) => (
-        <li class="bg-slate-800 p-4 pb-8 rounded-xl space-y-2">
-          <h2 class="text-3xl">{post.data.title}</h2>
-          <p class="pb-8">{post.data.description}</p>
+      allProjects.map((project, index) => (
+        <li class="bg-slate-800 p-4 pb-8 rounded-xl space-y-2" transition:name={`item-${index}`}>
+          <h2 class="text-3xl">{project.data.title}</h2>
+          <p class="pb-8">{project.data.description}</p>
           <div class="text-right space-x-2">
-            <a href={post.data.repository} class={linkClass}>Repository</a>
-            <a href={post.data.url} class={linkClass}>Website</a>
+            <a href={project.data.repository} class={linkClass}>Repository</a>
+            <a href={project.data.url} class={linkClass}>Website</a>
           </div>
         </li>
       ))

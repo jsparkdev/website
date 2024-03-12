@@ -31,9 +31,9 @@ const techStack = [
 
 <ul class="grid grid-cols-2 gap-4 portrait:grid-cols-1">
   {
-    techStack.map((stack) => (
+    techStack.map((stack, index) => (
       <li>
-        <div class="flex items-center gap-3 bg-slate-800 p-4 rounded-xl">
+        <div class="flex items-center gap-3 bg-slate-800 p-4 rounded-xl" transition:name={`item-${index}`}>
           <Icon name={stack.icon} size={48} />
           <span>{stack.name}</span>
         </div>
