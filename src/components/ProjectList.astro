@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+	preview?: boolean;
+}
+
+const { preview } = Astro.props;
+
+const allProjects = (await getCollection("projects")).slice(
+	0,
+	preview ? 2 : undefined,
+);
+
+const linkClass =
+	"py-2 px-3 bg-slate-700 rounded-xl hover:bg-slate-600 active:bg-slate-500 duration-200";
+---
+
+<ul class="space-y-3">
+  {
+    allProjects.map((project, index) => (
+      <li class="bg-slate-800 pl-8 pr-5 py-6 rounded-xl space-y-2" transition:name={`project-item-${index}`}>
+        <h2 class="text-4xl">{project.data.title}</h2>
+        <p class="pb-2">{project.data.description}</p>
+        <div class="text-right space-x-2">
+          <a href={project.data.repository} class={linkClass}>Repository</a>
+          <a href={project.data.url} class={linkClass}>Website</a>
+        </div>
+      </li>
+    ))
+  }
+</ul>

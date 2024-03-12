@@ -1,6 +1,8 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import TechStack from "~/components/TechStack.astro";
+import ProjectList from "~/components/ProjectList.astro";
+import PostList from "~/components/PostList.astro";
 ---
 
 <Layout title="Junseong Park - Frontend Developer">
@@ -16,5 +18,19 @@ import TechStack from "~/components/TechStack.astro";
       <h2 class="mb-4">Tech Stack</h2>
       <TechStack />
     </section>
+    <section>
+      <div class="flex justify-between items-center">
+        <h2 class="mb-4" transition:name="post-title">Posts</h2>
+        <a class="text-xs cursor-pointer" href="/posts">Read All Posts &rarr;</a>
+      </div>
+      <PostList preview />
+    </section>
+    <section>
+      <div class="flex justify-between items-center">
+        <h2 class="mb-4" transition:name="project-title">Projects</h2>
+        <a class="text-xs cursor-pointer" href="/projects">See All Projects &rarr;</a>
+      </div>
+      <ProjectList preview />
+    </section> 
   </main>
 </Layout>

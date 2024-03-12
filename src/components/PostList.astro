@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+	preview?: boolean;
+}
+
+const { preview } = Astro.props;
+
+const allPosts = (await getCollection("posts")).slice(
+	0,
+	preview ? 2 : undefined,
+);
+
+function parseDate(date: Date) {
+	return new Intl.DateTimeFormat("ko", { dateStyle: "medium" }).format(date);
+}
+---
+
+<ul class="space-y-2">
+  {
+    allPosts.map((post) => (
+      <li class="bg-slate-800 hover:bg-slate-700 active:bg-slate-600 rounded-xl" transition:name={`post-item-${post.slug}`}>
+        <a class="flex justify-between p-4 items-center" href={`/posts/${post.slug}`} title={post.data.title}>
+         <div>
+           <p class="mb-2" transition:name={`post-title-${post.slug}`}>{post.data.title}</p>
+           <p class="text-xs">{parseDate(post.data.pubDate)}</p>
+          </div>
+          <p>&rarr;</p>
+        </a>
+      </li>
+    ))
+  }
+</ul>
