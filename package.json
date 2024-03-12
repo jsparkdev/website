@@ -10,8 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.6",
-    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/check": "^0.5.7",
+    "@astrojs/mdx": "^2.2.0",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/fira-code": "^5.0.17",
@@ -19,13 +19,12 @@
     "@iconify-json/mdi": "^1.1.64",
     "@iconify-json/skill-icons": "^1.1.8",
     "@tailwindcss/typography": "^0.5.10",
-    "astro": "^4.4.11",
+    "astro": "^4.5.1",
     "astro-icon": "^1.1.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0"
+    "@biomejs/biome": "1.6.0"
   }
 }
