@@ -16,7 +16,7 @@ const { Content } = await entry.render();
 
 <Layout title={entry.data.title}>
   <article
-    class="prose prose-headings:text-slate-200 prose-headings:mb-4 prose-p:text-slate-400 prose-p:mt-0 prose-code:text-slate-400" transition:name={`post-title-${entry.slug}`}
+    class="prose prose-headings:text-slate-200 prose-headings:mb-4 prose-p:text-slate-400 prose-p:mt-0 prose-code:text-slate-400" transition:name={`post-title-${entry.id}`}
   >
     <Content />
   </article>

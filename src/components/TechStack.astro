@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import Card from "./Card.astro";
 
 const techStack = [
 	{
@@ -31,12 +32,14 @@ const techStack = [
 
 <ul class="grid grid-cols-2 gap-4 portrait:grid-cols-1">
   {
-    techStack.map((stack, index) => (
+    techStack.map((stack) => (
       <li>
-        <div class="flex items-center gap-3 bg-slate-800 p-4 rounded-xl">
-          <Icon name={stack.icon} size={48} />
-          <span>{stack.name}</span>
-        </div>
+				<Card>
+					<div class="flex items-center gap-3 p-4">
+						<Icon name={stack.icon} size={48} />
+						<span>{stack.name}</span>
+					</div>
+				</Card>
       </li>
     ))
   }
