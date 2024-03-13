@@ -19,18 +19,18 @@ import PostList from "~/components/PostList.astro";
       <TechStack />
     </section>
     <section>
-      <div class="flex justify-between items-center">
-        <h2 class="mb-4" transition:name="post-title">Posts</h2>
+      <h2 class="mb-4" transition:name="post-title">Posts</h2>
+      <PostList preview />
+      <div class="text-right">
         <a class="text-xs cursor-pointer" href="/posts">Read All Posts &rarr;</a>
       </div>
-      <PostList preview />
     </section>
     <section>
-      <div class="flex justify-between items-center">
-        <h2 class="mb-4" transition:name="project-title">Projects</h2>
+      <h2 class="mb-4" transition:name="project-title">Projects</h2>
+      <ProjectList preview />
+      <div class="text-right">
         <a class="text-xs cursor-pointer" href="/projects">See All Projects &rarr;</a>
       </div>
-      <ProjectList preview />
     </section> 
   </main>
 </Layout>
