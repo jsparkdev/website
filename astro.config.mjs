@@ -7,11 +7,11 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://jspark.dev",
-  integrations: [
-    tailwind({ applyBaseStyles: false }),
-    sitemap(),
-    mdx(),
-    icon(),
-  ],
+	site: "https://jspark.dev",
+	integrations: [
+		tailwind({ applyBaseStyles: false }),
+		sitemap(),
+		mdx(),
+		icon(),
+	],
 });
