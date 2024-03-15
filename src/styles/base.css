@@ -4,15 +4,12 @@
 
 @layer base {
   html {
-    font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji";
+    font-family: "Inter Variable";
   }
 
   pre,
   code {
-    font-family: "Fira Code Variable", ui-monospace, SFMono-Regular, Menlo,
-      Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: "Fira Code Variable";
   }
 
   h1 {
