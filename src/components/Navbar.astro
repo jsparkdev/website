@@ -2,11 +2,11 @@
 import SocialLinks from "./SocialLinks.astro";
 ---
 
-<nav class="flex items-center justify-between mb-6">
-  <div class="space-x-2">
-    <a href="/" class="hover:text-sky-400">Home</a>
-    <a href="/posts" class="hover:text-sky-400">Posts</a>
-    <a href="/projects" class="hover:text-sky-400">Projects</a>
-  </div>
+<header class="flex items-center justify-between mb-10">
+  <nav class="space-x-2">
+    <a href="/" class="hover:text-sky-400" title="Go to homepage">Home</a>
+    <a href="/posts" class="hover:text-sky-400" title="Show all posts">Posts</a>
+    <a href="/projects" class="hover:text-sky-400" title="Show all projects">Projects</a>
+  </nav>
   <SocialLinks />
-</nav>
+</header>

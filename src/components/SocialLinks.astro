@@ -16,7 +16,7 @@ const socialList = [
   {
     socialList.map((social) => (
       <li>
-        <a href={social.href} title={social.label}>
+        <a href={social.href} title={`Link to ${social.label}`}>
           <Icon name={`mdi:${social.icon}`} size={24} />
         </a>
       </li>

@@ -20,9 +20,9 @@ const allPosts = (await getCollection("posts")).slice(
     allPosts.map((post) => (
       <li transition:name={`post-item-${post.id}`}>
         <Card hover>
-          <a class="flex justify-between p-4 items-center" href={`/posts/${post.slug}`} title={`Read ${post.data.title}`}>
+          <a class="flex justify-between px-6 py-4 items-center" href={`/posts/${post.slug}`} title={`Read my post - ${post.data.title}`}>
             <div>
-              <p class="mb-2" transition:name={`post-title-${post.id}`}>{post.data.title}</p>
+              <p class="mb-2">{post.data.title}</p>
               <p class="text-xs">{parseDate(post.data.pubDate)}</p>
             </div>
             <p>&rarr;</p>

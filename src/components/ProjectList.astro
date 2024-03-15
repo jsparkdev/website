@@ -19,8 +19,8 @@ const allProjects = (await getCollection("projects")).slice(
     allProjects.map((project) => (
       <li transition:name={`project-item-${project.id}`}>
         <Card hover>
-          <a href={project.data.url} class="flex flex-col p-4" title={`Link to ${project.data.title}`}>
-            <h2 class="text-2xl">{project.data.title}</h2>
+          <a href={project.data.url} class="flex flex-col px-6 py-4" title={`Link to my project - ${project.data.title}`}>
+            <h2>{project.data.title}</h2>
             <p>{project.data.description}</p>
           </a>
         </Card>

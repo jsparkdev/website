@@ -7,29 +7,32 @@ import PostList from "~/components/PostList.astro";
 
 <Layout title="Junseong Park - Frontend Developer">
   <main class="space-y-8">
-    <section>
-      <h1 class="mb-1">Junseong Park</h1>
-      <span>Frontend Developer</span>
-    </section>
-    <section>
-      I develop web applications primarily with the Remix and Astro frameworks. Additionally, I have a keen interest in the latest technologies and open-source projects.
+    <section class="space-y-5">
+      <div>
+        <h1>Junseong Park</h1>
+        <span>Frontend Developer</span>
+      </div>
+      <div>
+        <p> I build web applications with Remix and Astro.</>
+        <p>Additionally, I have a keen interest in the new technology trends.</p>
+      </div>
     </section>
     <section>
       <h2 class="mb-4">Tech Stack</h2>
       <TechStack />
     </section>
     <section>
-      <h2 class="mb-4" transition:name="post-title">Posts</h2>
+      <h2 class="mb-4">Posts</h2>
       <PostList preview />
       <div class="text-right">
-        <a class="text-xs cursor-pointer" href="/posts">Read All Posts &rarr;</a>
+        <a class="text-xs cursor-pointer" href="/posts" title="Show all posts">Show all posts &rarr;</a>
       </div>
     </section>
     <section>
-      <h2 class="mb-4" transition:name="project-title">Projects</h2>
+      <h2 class="mb-4">Projects</h2>
       <ProjectList preview />
       <div class="text-right">
-        <a class="text-xs cursor-pointer" href="/projects">See All Projects &rarr;</a>
+        <a class="text-xs cursor-pointer" href="/projects" title="Show all projects">show all projects &rarr;</a>
       </div>
     </section> 
   </main>
