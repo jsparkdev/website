@@ -1,5 +1,6 @@
 {
 	"title": "Website",
-	"description": "My personal website (this website)",
-	"url": "https://jspark.dev"
+	"description": "My website built with Astro.",
+	"url": "https://jspark.dev",
+	"repository": "https://github.com/jsparkdev/website"
 }

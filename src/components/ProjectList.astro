@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Card from "./Card.astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
 	preview?: boolean;
@@ -18,11 +19,21 @@ const allProjects = (await getCollection("projects")).slice(
   {
     allProjects.map((project) => (
       <li transition:name={`project-item-${project.id}`}>
-        <Card hover>
-          <a href={project.data.url} class="flex flex-col px-6 py-4" title={`Link to my project - ${project.data.title}`}>
-            <h2>{project.data.title}</h2>
+        <Card>
+          <div class="flex flex-col px-6 py-4">
+            <section class="flex justify-between items-center">
+              <h2>{project.data.title}</h2>
+              <div class="flex gap-4">
+                <a href={project.data.repository} title={`Link to my project Github repository - ${project.data.title}`}>
+                  <Icon name="mdi:github" size={24} />
+                </a>
+                <a href={project.data.url} title={`Link to my project website - ${project.data.title}`}>
+                  <Icon name="mdi:monitor-cellphone" size={24} />
+                </a>
+              </div>
+            </section>
             <p>{project.data.description}</p>
-          </a>
+          </div>
         </Card>
       </li>
     ))

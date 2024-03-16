@@ -1,3 +1,3 @@
 # Website
 
-My personal website
+My website built with Astro.
