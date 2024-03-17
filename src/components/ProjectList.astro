@@ -9,10 +9,9 @@ interface Props {
 
 const { preview } = Astro.props;
 
-const allProjects = (await getCollection("projects")).slice(
-	0,
-	preview ? 2 : undefined,
-);
+const allProjects = (await getCollection("projects"))
+	.filter((pj) => pj.data.finish)
+	.slice(0, preview ? 2 : undefined);
 ---
 
 <ul class="space-y-2">
