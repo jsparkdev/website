@@ -1,0 +1,45 @@
+import { defineConfig } from "vitepress";
+import { transformerTwoslash } from "@shikijs/vitepress-twoslash";
+
+export default defineConfig({
+	title: "Junseong Park",
+	description: "Junseong Park's personal website",
+	lang: "ko-KR",
+	head: [["link", { rel: "icon", href: "/favicon.svg" }]],
+	cleanUrls: true,
+	markdown: { codeTransformers: [transformerTwoslash()] },
+	themeConfig: {
+		logo: "/favicon.svg",
+		nav: [
+			{ text: "Home", link: "/" },
+			{ text: "Blog", link: "/blog/a" },
+			{ text: "Projects", link: "/projects/a" },
+		],
+		sidebar: {
+			"/blog": [
+				{
+					text: "",
+					items: [
+						{ text: "A", link: "/blog/a" },
+						{ text: "B", link: "/blog/b" },
+					],
+				},
+			],
+			"/projects": [
+				{
+					text: "",
+					items: [
+						{ text: "A", link: "/projects/a" },
+						{ text: "B", link: "/projects/b" },
+					],
+				},
+			],
+		},
+
+		socialLinks: [
+			{ icon: "github", link: "https://github.com/jsparkdev" },
+			{ icon: "x", link: "https://x.com/jsparkdev" },
+			{ icon: "linkedin", link: "https://linkedin.com/in/jsparkdev" },
+		],
+	},
+});
