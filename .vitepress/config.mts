@@ -12,14 +12,19 @@ export default defineConfig({
 		logo: "/favicon.svg",
 		nav: [
 			{ text: "Home", link: "/" },
-			{ text: "Blog", link: "/blog/a" },
+			{ text: "Blog", link: "/blog/object-type" },
 			{ text: "Projects", link: "/projects/a" },
 		],
 		sidebar: {
 			"/blog": [
 				{
 					text: "",
-					items: [{ text: "A", link: "/blog/a" }],
+					items: [
+						{
+							text: "객체 타입을 정의하는 세 가지 방법",
+							link: "/blog/object-type",
+						},
+					],
 				},
 			],
 			"/projects": [

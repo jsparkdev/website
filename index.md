@@ -13,7 +13,7 @@ hero:
   actions:
   - theme: brand
     text: 📖 Go to my blog
-    link: /blog/a
+    link: /blog/object-type
   - theme: alt
     text: 🎨 Go to my projects
     link: /projects/a
