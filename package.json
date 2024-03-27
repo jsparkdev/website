@@ -8,7 +8,7 @@
 		"docs:preview": "vitepress preview"
 	},
 	"devDependencies": {
-		"@shikijs/vitepress-twoslash": "^1.2.0",
+		"@shikijs/vitepress-twoslash": "^1.2.1",
 		"vitepress": "^1.0.1"
 	}
 }

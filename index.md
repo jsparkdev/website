@@ -20,7 +20,7 @@ hero:
 ---
 
 ```tsx twoslash
-const I = {
+const I_am = {
   name: 'Junseong Park',
   position: 'Frontend Developer',
 }
@@ -31,7 +31,7 @@ const social = {
   Linkedin: 'https://linkedin.com/in/jsparkdev',
 }
 
-const techStack = [
+const tech_stack = [
   'HTML',
   'CSS',
   'JavaScript',

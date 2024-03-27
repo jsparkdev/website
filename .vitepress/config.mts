@@ -19,23 +19,16 @@ export default defineConfig({
 			"/blog": [
 				{
 					text: "",
-					items: [
-						{ text: "A", link: "/blog/a" },
-						{ text: "B", link: "/blog/b" },
-					],
+					items: [{ text: "A", link: "/blog/a" }],
 				},
 			],
 			"/projects": [
 				{
 					text: "",
-					items: [
-						{ text: "A", link: "/projects/a" },
-						{ text: "B", link: "/projects/b" },
-					],
+					items: [{ text: "A", link: "/projects/a" }],
 				},
 			],
 		},
-
 		socialLinks: [
 			{ icon: "github", link: "https://github.com/jsparkdev" },
 			{ icon: "x", link: "https://x.com/jsparkdev" },

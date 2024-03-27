@@ -1,17 +1,7 @@
----
-outline: deep
----
-
-# React First Post
+# First Post
 
 ```ts twoslash
-type User = {
-  name: string
-  age: number
-}
+const greeting = 'Hello, World!';
 
-const user: User = {
-  name: 'Junseong Park',
-  age: 25
-}
+console.log(greeting);
 ```
