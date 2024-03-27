@@ -21,8 +21,7 @@ hero:
 
 ```tsx twoslash
 const I_am = {
-  name: 'Junseong Park',
-  position: 'Frontend Developer',
+  name: 'Junseong Park'
 }
 
 const social = {
