@@ -24,6 +24,10 @@ export default defineConfig({
 							text: "객체 타입 정의",
 							link: "/blog/object-type",
 						},
+						{
+							text: "satisfies 연산자",
+							link: "/blog/satisfies",
+						},
 					],
 				},
 			],
