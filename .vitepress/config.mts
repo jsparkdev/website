@@ -21,12 +21,21 @@ export default defineConfig({
 					text: "TypeScript",
 					items: [
 						{
-							text: "객체 타입 정의",
+							text: "객체 타입 정의하기",
 							link: "/blog/object-type",
 						},
 						{
-							text: "satisfies 연산자",
+							text: "satisfies 연산자 알아보기",
 							link: "/blog/satisfies",
+						},
+					],
+				},
+				{
+					text: "React",
+					items: [
+						{
+							text: "Error Boundary 알아보기",
+							link: "/blog/error-boundary",
 						},
 					],
 				},

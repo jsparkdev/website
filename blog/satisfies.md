@@ -1,10 +1,10 @@
 ---
-title: satisfies 연산자
+title: satisfies 연산자 알아보기
 description: TypeScript의 satisfies 연산자에 대해 알아봅니다.
 titleTemplate: ':title | TypeScript'
 ---
 
-# satisfies 연산자
+# satisfies 연산자 알아보기
 
 색상에 대한 정보를 가진 객체를 사용하려고 합니다.
 

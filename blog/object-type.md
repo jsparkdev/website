@@ -1,10 +1,10 @@
 ---
-title: 객체 타입 정의
+title: 객체 타입 정의하기
 description: TypeScript를 사용하여 객체의 타입을 정의하는 세 가지 방법에 대해 알아봅니다.
 titleTemplate: ':title | TypeScript'
 ---
 
-# 객체 타입 정의
+# 객체 타입 정의하기
 
 TypeScript를 사용하여 객체의 타입을 정의하는 세 가지 방법이 존재합니다.
 
