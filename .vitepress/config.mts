@@ -18,10 +18,10 @@ export default defineConfig({
 		sidebar: {
 			"/blog": [
 				{
-					text: "",
+					text: "TypeScript",
 					items: [
 						{
-							text: "객체 타입을 정의하는 세 가지 방법",
+							text: "객체 타입 정의",
 							link: "/blog/object-type",
 						},
 					],
