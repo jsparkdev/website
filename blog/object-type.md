@@ -28,6 +28,7 @@ const person: Person = {
 ```
 런타임에 새로운 프로퍼티를 추가하는 것을 허용하지 않습니다.
 ```ts twoslash
+// @errors: 2339
 type Person = {
   name: string;
   age: number;
@@ -38,7 +39,7 @@ const person: Person = {
   age: 23
 }
 
-person.email = "may@gmail.com"  // [!code error] // 에러 발생
+person.email = "may@gmail.com"
 ```
 
 ## Interface
