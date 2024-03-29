@@ -36,6 +36,7 @@ const tech_stack = [
   'JavaScript',
   'TypeScript',
   'React',
+  'Next.js',
   'Remix',
   'Astro',
   'Vite',
