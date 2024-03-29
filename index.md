@@ -43,6 +43,7 @@ const tech_stack = [
   'Tailwind CSS',
   'Radix UI',
   'Cloudflare',
+  'Vercel',
   'Github'
 ]
 ```
