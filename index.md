@@ -12,39 +12,28 @@ hero:
 
   actions:
   - theme: brand
-    text: 📖 Go to my blog
-    link: /blog/object-type
+    text: 📖 What I've Learned
+    link: /learn/object-type
   - theme: alt
-    text: 🎨 Go to my projects
+    text: 📖 My Thoughts
+    link: /blog/test
+  - theme: alt
+    text: 🎨 My Projects
     link: /projects/a
 ---
 
-```tsx twoslash
-const I_am = {
-  name: 'Junseong Park'
-}
-
-const social = {
+```ts twoslash
+const Social_Links = {
   Github: 'https://github.com/jsparkdev',
-  'X.com': 'https://x.com/jsparkdev',
+  Twitter: 'https://x.com/jsparkdev',
   Linkedin: 'https://linkedin.com/in/jsparkdev',
+} as const
+
+const Skills = {
+  Languages: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
+  Frameworks: ['React', 'Next.js', 'Remix', 'Astro'],
+  Styling: ['Tailwind CSS', 'Radix UI'],
+  Deployment: ['Cloudflare', 'Vercel'],
+  Version_Control: ['Github'],
 }
-
-const tech_stack = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Remix',
-  'Astro',
-  'Vite',
-  'Tailwind CSS',
-  'Radix UI',
-  'Cloudflare',
-  'Vercel',
-  'Github'
-]
 ```
-

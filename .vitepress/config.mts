@@ -12,21 +12,22 @@ export default defineConfig({
 		logo: "/favicon.svg",
 		nav: [
 			{ text: "Home", link: "/" },
-			{ text: "Blog", link: "/blog/object-type" },
+			{ text: "Blog", link: "/blog/test" },
+			{ text: "Learn", link: "/learn/object-type" },
 			{ text: "Projects", link: "/projects/a" },
 		],
 		sidebar: {
-			"/blog": [
+			"/learn": [
 				{
 					text: "TypeScript",
 					items: [
 						{
 							text: "객체 타입 정의하기",
-							link: "/blog/object-type",
+							link: "/learn/object-type",
 						},
 						{
 							text: "satisfies 연산자 알아보기",
-							link: "/blog/satisfies",
+							link: "/learn/satisfies",
 						},
 					],
 				},
@@ -35,15 +36,21 @@ export default defineConfig({
 					items: [
 						{
 							text: "Error Boundary 알아보기",
-							link: "/blog/error-boundary",
+							link: "/learn/error-boundary",
 						},
 					],
+				},
+			],
+			"/blog": [
+				{
+					text: "테스트 포스트",
+					link: "/blog/test",
 				},
 			],
 			"/projects": [
 				{
 					text: "",
-					items: [{ text: "A", link: "/projects/a" }],
+					items: [{ text: "First Post", link: "/projects/a" }],
 				},
 			],
 		},

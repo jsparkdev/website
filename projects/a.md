@@ -1,4 +1,4 @@
-# First Projects
+# First Project
 
 ```ts twoslash
 const greeting = 'Hello, World!';
