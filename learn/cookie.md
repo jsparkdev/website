@@ -1,0 +1,150 @@
+---
+title: Cookie 알아보기
+description: Cookie를 사용하여 웹 애플리케이션의 상태를 관리하는 방법에 대해 알아봅니다.
+titleTemplate: ":title | Web API"
+---
+
+# Cookie 알아보기
+
+Cookie는 특정 기간동안 여러 페이지에 걸쳐 유지되는 웹 애플리케이션의 상태를 관리하기 위해 사용됩니다.
+
+## 기본 동작
+
+1. 사용자가 클라이언트에서 서버로 최초 요청을 전송합니다.
+
+   ```bash
+   GET https://example.com
+   ```
+
+2. 요청을 받은 서버는 `set-cookie` 헤더가 포함된 응답 객체를 클라이언트로 전송합니다.
+
+   ```js
+   const response = new Response(body, {
+     headers: {
+       // 한 번에 하나의 값만 설정 가능합니다.
+       "set-cookie": "name=John Doe",
+     },
+   });
+   ```
+
+3. 응답을 받은 클라이언트는 브라우저에 쿠키를 저장합니다. 클라이언트는 후속 요청의 헤더에 쿠키를 포함하여 서버로 전송합니다.
+
+## 쿠키 설정하기
+
+쿠키는 기본적으로 클라이언트와 서버 모두에서 설정할 수 있지만, 서버에서 설정하는 것이 일반적입니다.
+
+### 클라이언트
+
+아래와 같이 직접 설정하거나 [`js-cookie`](https://www.npmjs.com/package/js-cookie)와 같은 라이브러리를 사용할 수 있습니다.
+
+```js
+document.cookie = "name=John Doe";
+```
+
+### 서버
+
+아래와 같이 직접 설정하거나 [`cookie`](https://www.npmjs.com/package/cookie)와 같은 라이브러리를 사용할 수 있습니다.
+
+```js
+const response = new Response(body, {
+  headers: {
+    "set-cookie": "name=John Doe",
+  },
+});
+```
+
+## 속성
+
+### `domain`
+
+**기본값**: 현재 도메인 (`https://example.com`)
+
+설정된 도메인 및 하위 도메인으로 전송되는 요청의 헤더에 쿠키가 포함됩니다.
+
+`domain` 속성을 생략한 경우, 하위 도메인으로 전송되는 요청의 헤더에 쿠키가 포함되지 않습니다.
+
+```bash
+# domain 속성 생략 (기본값 사용)
+GET https://example.com # 쿠키 전송
+GET https://sub.example.com # 쿠키 전송 X
+
+# domain 속성 설정 (example.com)
+GET https://example.com # 쿠키 전송
+GET https://sub.example.com # 쿠키 전송
+```
+
+### `path`
+
+**기본값**: `/`
+
+설정된 경로 및 하위 경로로 전송되는 요청의 헤더에 쿠키가 포함됩니다.
+
+```bash
+# path 속성이 /users로 설정된 경우
+
+GET https://example.com # 쿠키 전송 X
+GET https://example.com/users # 쿠키 전송
+GET https://example.com/users/1 # 쿠키 전송
+```
+
+### `expires`
+
+**기본값**: `session`
+
+쿠키가 만료되는 날짜를 `UTC` 형식의 문자열로 설정합니다. [`toUTCString()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString)을 사용하면 이를 쉽게 설정할 수 있습니다.
+
+```js
+// 7일 후 만료되는 쿠키 설정
+const expires = new Date();
+expires.setTime(expires.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+const response = new Response(body, {
+  headers: {
+    "set-cookie": `name=John Doe; expires=${expires.toUTCString()}`,
+  },
+});
+```
+
+### `max-age`
+
+쿠키의 수명을 초 단위로 설정합니다.
+
+값이 0 또는 음수라면 쿠키를 즉시 삭제하며, `expires`와 `max-age`가 모두 설정된 경우 `max-age`가 우선 적용됩니다.
+
+```js
+// 7일 후 만료되는 쿠키 설정
+const maxAge = 7 * 24 * 60 * 60;
+const response = new Response(body, {
+  headers: {
+    "set-cookie": `name=John Doe; max-age=${maxAge}`,
+  },
+});
+```
+
+### `secure`
+
+쿠키가 `HTTPS` 프로토콜을 통해 암호화된 상태로만 전송되도록 설정합니다.
+
+### `httpOnly`
+
+클라이언트 측 JavaScript가 쿠키에 접근하는 것을 방지합니다.
+
+## 로컬 스토리지와 비교
+
+로컬 스토리지와 쿠키는 모두 브라우저에 데이터를 저장하는 데 사용된다는 공통점이 존재합니다.
+
+하지만, 두 기술에는 여러 차이점이 존재합니다.
+
+### 사용 목적
+
+| 저장소        | 목적                                                                    |
+| ------------- | ----------------------------------------------------------------------- |
+| 로컬 스토리지 | 웹 사이트 성능에 영향을 미치지 않고 많은 (최대 10MB) 데이터 저장        |
+| 쿠키          | 서버 및 여러 페이지에서 지속적으로 사용되는 작은 (최대 4KB) 데이터 저장 |
+
+### 액세스 가능 위치
+
+| 저장소        | 클라이언트 | 서버 |
+| ------------- | ---------- | ---- |
+| 로컬 스토리지 | O          | X    |
+| 쿠키          | O          | O    |
