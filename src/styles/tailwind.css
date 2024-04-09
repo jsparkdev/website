@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a {
+    @apply hover:opacity-50 duration-200
+  }
+
+  table {
+    thead {
+      @apply bg-blue-100;
+    }
+    tbody {
+      & td:nth-child(1) {
+        @apply bg-blue-50
+      }
+    }
+    td {
+      @apply text-center
+    }
+  }
+}
+
+@layer components {
+  .prose {
+    a {
+      @apply text-blue-500
+    }
+    blockquote {
+      @apply bg-blue-200 px-6 py-0.5 rounded-xl
+    }
+    :not(pre) > code {
+      @apply bg-blue-100 px-2 py-1 rounded-md;
+
+      &::before {
+        content: "";
+      }
+      &::after {
+        content: "";
+      }
+    }
+  }
+}
+
+@layer utilities {
+  .prose blockquote {
+    font-style: normal;
+    border-inline-start-width: 0;
+    p {
+      &::before {
+        content: "";
+      }
+    }
+  }
+}

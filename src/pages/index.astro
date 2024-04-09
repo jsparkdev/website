@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Card from "~/components/Card.astro";
+import Card from "~/components/PostLink.astro";
 import Layout from "~/layouts/Layout.astro";
 
 const postsCollection = await getCollection("posts");
@@ -11,7 +11,7 @@ const postsCollection = await getCollection("posts");
 		{
 			postsCollection.map(post => (
 				<li class="mb-4">
-					<a href={'/posts/' + post.slug} title={`${post.data.title} 읽기`} class="hover:opacity-50">
+					<a href={'/posts/' + post.slug} title={`${post.data.title} 읽기`}>
 						<Card title={post.data.title} description={post.data.description} /> 
 					</a>	
 				</li>

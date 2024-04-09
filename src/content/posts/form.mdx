@@ -1,7 +1,6 @@
 ---
 title: Form 알아보기
 description: HTML의 form 요소를 사용하여 사용자가 입력한 데이터를 서버로 전송하는 방법에 대해 알아봅니다.
-titleTemplate: ":title | HTML"
 ---
 
 # Form 알아보기
@@ -82,10 +81,9 @@ POST https://example.com
 
 ## 리디렉션
 
-> 양식 재제출 경고
->
+
 > POST 요청을 전송한 후, 브라우저의 뒤로 가기 버튼을 누르면 양식 재제출 경고 알림이 나타납니다.
->
+
 > 즉, 이전에 수행한 송금, 물건 구매 등의 작업이 또 다시 일어날 수 있다는 의미입니다.
 
 이러한 이유로, POST 요청을 받은 서버는 HTML을 응답으로 전송하지 않고, [PRG 패턴](https://en.wikipedia.org/wiki/Post/Redirect/Get)을 통한 리디렉션을 사용합니다.

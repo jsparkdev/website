@@ -12,5 +12,9 @@ export default defineConfig({
 			theme: "night-owl",
 		},
 	},
-	integrations: [tailwind(), sitemap(), mdx()],
+	integrations: [
+		tailwind({ applyBaseStyles: false, nesting: true }),
+		sitemap(),
+		mdx(),
+	],
 });
