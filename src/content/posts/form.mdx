@@ -14,33 +14,33 @@ titleTemplate: ":title | HTML"
 
 1. 브라우저는 모든 필드의 값을 직렬화하여 URL에 쿼리스트링으로 추가합니다.
 
-   ```html
-   <form action="https://example.com">
-     <input type="text" name="name" value="John Doe" />
-     <input type="number" name="age" value="25" />
-     <button type="submit">Submit</button>
-   </form>
-   ```
+```html
+<form action="https://example.com">
+  <input type="text" name="name" value="John Doe" />
+  <input type="number" name="age" value="25" />
+  <button type="submit">Submit</button>
+</form>
+```
 
-   ```bash
-   GET https://example.com?name=John%20Doe&age=25
-   ```
+```bash
+GET https://example.com?name=John%20Doe&age=25
+```
 
 2. 요청을 서버로 전송합니다.
 3. 서버는 요청 객체의 쿼리스트링을 이용해 응답을 만들어 클라이언트에 전송합니다.
 
-   ```js
-   import express from "express";
+```js
+import express from "express";
 
-   const app = express();
+const app = express();
 
-   app.get("/", (req, res) => {
-     const name = req.query.name;
-     const age = req.query.age;
+app.get("/", (req, res) => {
+  const name = req.query.name;
+  const age = req.query.age;
 
-     res.send(`Name: ${name}, Age: ${age}`);
-   });
-   ```
+  res.send(`Name: ${name}, Age: ${age}`);
+});
+```
 
 4. 응답을 받은 브라우저는 서버가 전송한 새 페이지를 로드합니다.
 
@@ -50,32 +50,32 @@ titleTemplate: ":title | HTML"
 
 1. 기본적으로 브라우저는 모든 필드를 `x-www-form-urlencoded`로 인코딩하여 키-값 쌍으로 변환합니다.
 
-   ```html
-   <form action="https://example.com" method="POST">
-     <input type="text" name="name" value="John Doe" />
-     <input type="number" name="age" value="25" />
-     <button type="submit">Submit</button>
-   </form>
-   ```
+```html
+<form action="https://example.com" method="POST">
+  <input type="text" name="name" value="John Doe" />
+  <input type="number" name="age" value="25" />
+  <button type="submit">Submit</button>
+</form>
+```
 
-   ```bash
-   POST https://example.com
-   ```
+```bash
+POST https://example.com
+```
 
-   필드에 파일을 첨부하는 경우, `enctype`의 값을 `multipart/form-data`로 설정합니다.
+필드에 파일을 첨부하는 경우, `enctype`의 값을 `multipart/form-data`로 설정합니다.
 
-   이를 통해 브라우저는 요청을 `multipart/form-data`로 인코딩합니다.
+이를 통해 브라우저는 요청을 `multipart/form-data`로 인코딩합니다.
 
-   ```html
-   <form
-     action="https://example.com"
-     method="POST"
-     enctype="multipart/form-data"
-   >
-     <input type="file" name="avatar" />
-     <button type="submit">Submit</button>
-   </form>
-   ```
+```html
+<form
+  action="https://example.com"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <input type="file" name="avatar" />
+  <button type="submit">Submit</button>
+</form>
+```
 
 2. 브라우저는 인코딩된 키-값 쌍을 요청 본문 (payload)에 첨부하여 요청을 서버로 전송합니다.
 3. 서버는 요청 객체에 첨부된 데이터를 사용하여 기존 데이터를 업데이트하거나 새 데이터를 추가합니다.
@@ -96,18 +96,18 @@ PRG 패턴은 다음과 같은 순서로 작동합니다.
 
 1. 클라이언트가 서버로 POST 요청을 전송합니다.
 
-   ```html
-   <form action="https://example.com" method="POST">
-     <input type="text" name="name" value="John Doe" />
-     <input type="number" name="age" value="25" />
-     <button type="submit">Submit</button>
-   </form>
-   ```
+```html
+<form action="https://example.com" method="POST">
+  <input type="text" name="name" value="John Doe" />
+  <input type="number" name="age" value="25" />
+  <button type="submit">Submit</button>
+</form>
+```
 
 2. 요청을 받은 서버는 응답 객체의 헤더에 [302 상태 코드](https://developer.mozilla.org/ko/docs/Web/HTTP/Status/302)와 [Location 헤더](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Location)를 추가합니다.
-   ```js
-   res.status(302).set("Location", "/login").send();
-   ```
+```js
+res.status(302).set("Location", "/login").send();
+```
 3. 응답을 받은 클라이언트는 Location 헤더에 있는 주소로 GET 요청을 전송합니다. 이는 302 상태코드를 수신한 브라우저의 기본 동작입니다.
 4. GET 요청을 받은 서버는 HTML을 응답으로 전송합니다.
 5. 응답을 받은 클라이언트는 서버가 전송한 HTML을 렌더링합니다.

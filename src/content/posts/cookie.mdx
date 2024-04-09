@@ -11,20 +11,20 @@ Cookie는 특정 기간동안 여러 페이지에 걸쳐 유지되는 웹 애플
 
 1. 사용자가 클라이언트에서 서버로 최초 요청을 전송합니다.
 
-   ```bash
-   GET https://example.com
-   ```
+```bash
+GET https://example.com
+```
 
 2. 요청을 받은 서버는 `set-cookie` 헤더가 포함된 응답 객체를 클라이언트로 전송합니다.
 
-   ```js
-   const response = new Response(body, {
-     headers: {
-       // 한 번에 하나의 값만 설정 가능합니다.
-       "set-cookie": "name=John Doe",
-     },
-   });
-   ```
+```js
+const response = new Response(body, {
+  headers: {
+    // 한 번에 하나의 값만 설정 가능합니다.
+    "set-cookie": "name=John Doe",
+  },
+});
+```
 
 3. 응답을 받은 클라이언트는 브라우저에 쿠키를 저장합니다. 클라이언트는 후속 요청의 헤더에 쿠키를 포함하여 서버로 전송합니다.
 
