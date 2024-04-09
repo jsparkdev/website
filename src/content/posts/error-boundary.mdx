@@ -8,9 +8,8 @@ titleTemplate: ':title | React'
 
 컴포넌트에서 렌더링 로직이 실행되는 동안 오류가 발생하면 React는 컴포넌트를 DOM에 마운트하지 않기 때문에 전체 애플리케이션이 동작하지 않습니다.
 
-```tsx twoslash
+```tsx
 function App() {
-// @errors: 2339
   const count = 10;
   const result = count.toUpperCase();
   // ...
@@ -25,12 +24,12 @@ function App() {
 function App() {
   const count = 10;
 
-  try { // [!code ++]
+  try {
     const result = count.toUpperCase();
     return <div>The result is {result}</div>;
-  } catch (error) { // [!code ++]
-    return <div>Something went wrong.</div>; // [!code ++]
-  } // [!code ++]
+  } catch (error) {
+    return <div>Something went wrong.</div>;
+  }
 }
 ```
 
@@ -60,8 +59,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 아래 코드에서 버튼을 클릭해도 `ErrorBoundary`가 오류를 감지하지 못합니다.
 
-::: code-group
-```tsx [App.tsx]
+```tsx
 function App() {
   function handleButtonClick() {
     try {
@@ -82,7 +80,7 @@ function App() {
 
 export default App;
 ```
-```tsx [main.tsx]
+```tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
@@ -96,16 +94,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   </React.StrictMode>,
 );
 ```
-:::
 
 이 문제를 해결하기 위한 가장 쉬운 방법은 React가 감지하지 못하는 오류를 Error Boundary에 알려주는 `showBoundary` 함수를 사용하는 것입니다.
 
-::: code-group
-```tsx [App.tsx]
-import { useErrorBoundary } from "react-error-boundary"; // [!code ++]
+```tsx
+import { useErrorBoundary } from "react-error-boundary";
 
 function App() {
-  const { showBoundary } = useErrorBoundary(); // [!code ++]
+  const { showBoundary } = useErrorBoundary();
 
   function handleButtonClick() {
     try {
@@ -113,8 +109,8 @@ function App() {
       const result = count.toUpperCase();
       console.log(result);
     } catch (error) {
-      console.error(error); // [!code --]
-      showBoundary(error); // [!code ++]
+      console.error(error);
+      showBoundary(error);
     }
   }
 
@@ -127,7 +123,7 @@ function App() {
 
 export default App;
 ```
-```tsx [main.tsx]
+```tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
@@ -141,7 +137,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   </React.StrictMode>,
 );
 ```
-:::
 
 ## 대체 컴포넌트 정의
 
@@ -149,23 +144,23 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 대체 컴포넌트는 인자의 타입이 `FallbackProps`인 컴포넌트입니다.
 
-```tsx{4,20}
+```tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { ErrorBoundary, type FallbackProps } from "react-error-boundary";
 
-function FallbackComponent({ error, resetErrorBoundary }: FallbackProps) { // [!code ++] 
-  return ( // [!code ++]
-    <div> // [!code ++]
-      <p>Something went wrong:</p> // [!code ++]
-      <pre>{error.message}</pre> // [!code ++]
-      <button onClick={resetErrorBoundary} type="button"> // [!code ++]
-        Try again // [!code ++]
-      </button> // [!code ++]
-    </div> // [!code ++]
-  ); // [!code ++]
-} // [!code ++]
+function FallbackComponent({ error, resetErrorBoundary }: FallbackProps) { 
+  return (
+    <div>
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary} type="button">
+        Try again
+      </button>
+    </div>
+  );
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>

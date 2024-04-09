@@ -1,0 +1,30 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Header from "~/components/Header.astro";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko-KR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<Header />
+		<main class="portrait:px-0 landscape:px-16 py-20 mx-auto">
+			<slot />
+		</main>
+	</body>
+</html>

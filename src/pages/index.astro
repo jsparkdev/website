@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Card from "~/components/Card.astro";
+import Layout from "~/layouts/Layout.astro";
+
+const postsCollection = await getCollection("posts");
+---
+
+<Layout title="Junseong Park">
+	<ul>
+		{
+			postsCollection.map(post => (
+				<li class="mb-4">
+					<a href={'/posts/' + post.slug} title={`${post.data.title} 읽기`} class="hover:opacity-50">
+						<Card title={post.data.title} description={post.data.description} /> 
+					</a>	
+				</li>
+			))
+		}
+	</ul>
+</Layout>
