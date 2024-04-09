@@ -75,7 +75,7 @@ export const itemsRelations = relations(items, ({ one }) => ({
 
 프로젝트 루트에 `drizzle.config.ts` 파일을 생성합니다.
 
-```ts title="drizzle.config.ts"
+```ts
 import type { Config } from "drizzle-kit";
 
 export default {
@@ -101,7 +101,7 @@ pnpm drizzle-kit generate:sqlite
 
 `wrangler.toml` 파일에 다음 코드를 추가하여 마이그레이션 파일의 위치를 제공합니다.
 
-```toml title=wrangler.toml
+```toml
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "<DB_NAME>"
@@ -125,7 +125,7 @@ pnpm wrangler d1 migrations apply <DB_NAME> --local
 
 로컬 데이터베이스와 프로젝트가 연결되었는지 확인하기 위해 다음과 같은 상호작용을 추가해볼 수 있습니다.
 
-```tsx title="app/routes/index.tsx"
+```tsx
 // Rmmix loader 함수의 예시
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
@@ -163,7 +163,7 @@ pnpm wrangler d1 migrations apply <DB_NAME>
 
 배포된 프로젝트가 D1에 액세스하기 위해서는 Cloudflare 대시보드에서 D1 데이터베이스 바인딩을 추가해야 합니다.
 
-> [!TIP] 다음 순서대로 실행하세요.
+> 다음 순서대로 실행하세요.
 >
 > 1. [Cloudflare Dashboard](https://dash.cloudflare.com) 접속
 > 2. `Workers 및 Pages` 선택
