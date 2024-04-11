@@ -9,15 +9,18 @@
 
   table {
     thead {
-      @apply bg-blue-100;
+      @apply bg-blue-400;
+      th {
+        @apply border text-nowrap;
+      }
     }
     tbody {
       & td:nth-child(1) {
-        @apply bg-blue-50
+        @apply bg-blue-300 px-2 font-bold
       }
 
       td {
-        @apply text-center
+        @apply text-center border bg-blue-200 text-nowrap
       }
     } 
   }
@@ -32,18 +35,18 @@
       border-inline-start-width: 0;
       p {
       &::before {
-        content: "";
+        content: none;
         }
       }
     }
 
     :not(pre) > code {
-      @apply bg-blue-100 px-2 py-1 rounded-md;
+      @apply bg-blue-100 mx-1 px-2 py-1 rounded-md;
       &::before {
-        content: "";
+        content: none;
       }
       &::after {
-        content: "";
+        content: none;
       }
     }
   }
