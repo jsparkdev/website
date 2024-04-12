@@ -10,7 +10,7 @@ const postsCollection = await getCollection("posts");
 	<ul>
 		{
 			postsCollection.map(post => (
-				<li class="mb-4">
+				<li>
 					<a href={'/posts/' + post.slug} title={`${post.data.title}`}>
 						<Card title={post.data.title} description={post.data.description} /> 
 					</a>	
