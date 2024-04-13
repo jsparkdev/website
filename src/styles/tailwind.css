@@ -6,22 +6,6 @@
   a {
     @apply hover:opacity-50 duration-200
   }
-
-  thead {
-    @apply bg-blue-400;
-  }
-
-  th {
-    @apply border text-nowrap;
-  }
-
-  td {
-    @apply text-center border bg-blue-200
-  }
-  
-  td:nth-child(1) {
-    @apply bg-blue-300 px-2 font-bold
-  }
 }
 
 @layer components {
