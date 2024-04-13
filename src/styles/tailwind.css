@@ -16,7 +16,7 @@
   }
 
   td {
-    @apply text-center border bg-blue-200 text-nowrap
+    @apply text-center border bg-blue-200
   }
   
   td:nth-child(1) {
