@@ -1,0 +1,36 @@
+.diff.add {
+  background-color: rgba(0, 72, 10, 0.928);
+  transition: background-color .5s;
+  margin: 0 -24px;
+  padding: 0 12px;
+  width: calc(100% + 48px);
+  display: inline-block;
+  &::before {
+    content: "+";
+    color: #12ff95;
+    padding-right: 4px;
+  }
+}
+
+.diff.remove {
+  background-color: rgba(119, 0, 0, 0.928);
+  transition: background-color .5s;
+  margin: 0 -24px;
+  padding: 0 12px;
+  width: calc(100% + 48px);
+  display: inline-block;
+  &::before {
+    content: "-";
+    color: #ff6f6f;
+    padding-right: 4px;
+  }
+}
+
+.highlighted.error {
+  background-color: rgba(80, 71, 0, 0.928);
+  transition: background-color .5s;
+  margin: 0 -24px; 
+  padding: 0 24px;  
+  width: calc(100% + 48px);
+  display: inline-block;
+}

@@ -11,18 +11,18 @@ description: TypeScript의 satisfies 연산자에 대해 알아봅니다.
 const palette = {
   red: [255, 0, 0],
   green: '#00FF00',
-  bule: [0, 0, 255]
+  bule: [0, 0, 255] // [!code error]
 }
 ```
 
 위 코드에서 파란색을 나타내기 위한 `blue` 프로퍼티에 오타가 있습니다. 앞으로 이런 실수를 방지하기 위해 타입을 추가해줍시다.
 
 ```ts
-type ColorName = 'red' | 'green' | 'blue';
-type RGB = [red: number, green: number, blue: number];
-type ColorValue = RGB | string;
+type ColorName = 'red' | 'green' | 'blue'; // [!code ++]
+type RGB = [red: number, green: number, blue: number]; // [!code ++]
+type ColorValue = RGB | string; // [!code ++]
 
-const palette: Record<ColorName, ColorValue> = {
+const palette: Record<ColorName, ColorValue> = { // [!code ++]
   red: [255, 0, 0],
   green: '#00FF00',
   bule: [0, 0, 255]
@@ -42,7 +42,7 @@ const palette: Record<ColorName, ColorValue> = {
   blue: [0, 0, 255]
 }
 
-const result = palette.green.toLowerCase()
+const result = palette.green.toLowerCase() // [!code error]
 ```
 
 하지만 오류가 발생했습니다. 이는 `palette.green`이 유니언 타입이기 때문에 발생하는 문제입니다.
@@ -60,9 +60,7 @@ const palette = {
   red: [255, 0, 0],
   green: '#00FF00',
   blue: [0, 0, 255]
-} satisfies Record<ColorName, ColorValue>
+} satisfies Record<ColorName, ColorValue> // [!code ++]
 
 const result = palette.red.at(1);
 ```
-
-
