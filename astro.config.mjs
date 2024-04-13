@@ -9,12 +9,8 @@ export default defineConfig({
 	markdown: {
 		syntaxHighlight: "shiki",
 		shikiConfig: {
-			theme: "night-owl",
+			theme: "aurora-x",
 		},
 	},
-	integrations: [
-		tailwind({ applyBaseStyles: false, nesting: true }),
-		sitemap(),
-		mdx(),
-	],
+	integrations: [tailwind({ applyBaseStyles: false }), sitemap(), mdx()],
 });
