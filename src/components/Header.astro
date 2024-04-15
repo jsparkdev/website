@@ -1,12 +1,18 @@
-<header class="flex portrait:flex-col portrait:gap-10 justify-between items-center px-16 py-5">
-  <a href="/" class="flex items-center gap-3" title="홈 페이지로 이동">
-    <p>jspark.dev</p>
+---
+import { Icon } from "astro-icon/components";
+
+const iconSize = 30;
+---
+
+<header class="flex portrait:flex-col portrait:gap-10 justify-between items-center px-16 py-5 fixed w-full bg-white z-50 border-b">
+  <a href="/" class="flex items-center gap-3 font-extrabold text-2xl" title="홈 페이지로 이동">
+   jspark.dev
   </a>
   <nav>
-    <ul class="flex gap-8">
-      <li><a href="https://github.com/jsparkdev" title="Github로 이동">Github</a></li>
-      <li><a href="https://linkedin.com/in/jsparkdev" title="Linkedin으로 이동">Linkedin</a></li>
-      <li><a href="https://x.com/jsparkdev" title="Twitter로 이동">Twitter</a></li>
+    <ul class="flex gap-4">
+      <li><a target="_blank" href="https://github.com/jsparkdev" title="Github로 이동"><Icon name="github" size={iconSize} /></a></li>
+      <li><a target="_blank" href="https://linkedin.com/in/jsparkdev" title="Linkedin으로 이동"><Icon name="linkedin" size={iconSize} /></a></li>
+      <li><a target="_blank" href="https://x.com/jsparkdev" title="Twitter로 이동"><Icon name="twitter" size={iconSize} /></a></li>
     </ul>
   </nav>
 </header>
