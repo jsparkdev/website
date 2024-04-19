@@ -1,11 +1,19 @@
 ---
-title: satisfies 연산자 알아보기
+title: TypeScript satisfies 연산자
 description: TypeScript의 satisfies 연산자에 대해 알아봅니다.
 ---
 
-색상에 대한 정보를 가진 객체를 사용하려고 합니다.
+결론부터 말하자면, `satisfies` 연산자는 특정 값이 특정 타입을 만족시키는지 확인하는 연산자입니다.
 
-각 색상의 정보는 RGB를 나타내기 위한 튜플 또는 HEX를 나타내기 위한 문자열로 표현됩니다.
+아래와 같은 형태로 사용되며, 이는 `AValue`가 `BType`을 만족시키는지 확인합니다.
+
+```ts
+AValue satisfies BType
+```
+
+## 예시
+
+여러 색의 정보가 튜플 또는 문자열로 표현되는 색상 팔레트 객체를 사용하기 위해 다음 객체를 정의하였습니다.
 
 ```ts
 const palette = {
@@ -15,7 +23,7 @@ const palette = {
 }
 ```
 
-위 코드에서 파란색을 나타내기 위한 `blue` 프로퍼티에 오타가 있습니다. 앞으로 이런 실수를 방지하기 위해 타입을 추가해줍시다.
+객체에서 오타가 발견되었고, 이런 실수를 방지하기 위해 타입을 정의하였습니다.
 
 ```ts
 type ColorName = 'red' | 'green' | 'blue'; // [!code ++]
@@ -29,7 +37,7 @@ const palette: Record<ColorName, ColorValue> = { // [!code ++]
 }
 ```
 
-오타를 수정하고, `green` 프로퍼티의 HEX 값을 소문자로 변환하여 가져오려고 합니다.
+오타를 수정하고, `green` 프로퍼티의 값을 가져와 소문자로 변환하려고 하지만 오류가 발생합니다.
 
 ```ts
 type ColorName = 'red' | 'green' | 'blue';
@@ -45,11 +53,11 @@ const palette: Record<ColorName, ColorValue> = {
 const result = palette.green.toLowerCase() // [!code error]
 ```
 
-하지만 오류가 발생했습니다. 이는 `palette.green`이 유니언 타입이기 때문에 발생하는 문제입니다.
+타입을 설정하여 `palette.green`의 타입이 `ColorValue`가 되었기 때문에 `toLowerCase` 메서드를 사용할 수 없습니다.
 
-TypeScript는 이 값의 타입이 `RGB`인지 `string`인지 정확하게 알지 못하기 때문에 `toLowerCase` 메서드를 사용할 수 없습니다.
+물론 타입을 제거하여 이 문제를 해결할 수 있지만, 타입 안정성을 잃게 됩니다.
 
-이렇게 TypeScript가 유니언 타입으로 정의된 값의 타입을 제대로 추론하지 못하는 경우 `satisfies` 연산자를 사용하여 이 문제를 해결할 수 있습니다.
+즉, 우리는 타입을 강제하지 않으면서 해당 타입을 만족하는지 확인할 수 있는 방법이 필요합니다. 이 방법이 바로 `satisfies` 연산자입니다.
 
 ```ts
 type ColorName = 'red' | 'green' | 'blue';
@@ -62,5 +70,10 @@ const palette = {
   blue: [0, 0, 255]
 } satisfies Record<ColorName, ColorValue> // [!code ++]
 
-const result = palette.red.at(1);
+const result = palette.green.toLowerCase();
 ```
+
+## 참고 자료
+
+- https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html
+- https://www.totaltypescript.com/clarifying-the-satisfies-operator
