@@ -26,6 +26,15 @@
   }
 }
 
+.line.highlighted {
+  background-color: rgba(50, 50, 50, 0.928);
+  transition: background-color .5s;
+  margin: 0 -24px; 
+  padding: 0 24px;  
+  width: calc(100% + 40px);
+  display: inline-block;
+}
+
 .highlighted.error {
   background-color: rgba(80, 71, 0, 0.928);
   transition: background-color .5s;

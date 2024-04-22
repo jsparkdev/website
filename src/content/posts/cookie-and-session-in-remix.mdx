@@ -1,0 +1,197 @@
+---
+title: Remix에서 쿠키와 세션 사용하기
+description: Remix에서 쿠키와 세션을 사용하는 방법을 알아봅니다.
+---
+
+## 쿠키
+
+쿠키는 일반적으로 서버 측에서 생성되어 데이터를 읽고 쓰는 공간에서 사용됩니다.
+
+즉, Remix에서는 서버 모듈로 쿠키를 생성하는 파일을 만들고 (예: `cookies.server.ts`) `loader` 함수와 `action` 함수에서 사용하는 것이 일반적입니다.
+
+### createCookie
+
+Remix에서 쿠키를 생성할 때 사용되는 유틸리티 메서드입니다. 다음 코드는 이 메서드를 이용하여 쿠키를 생성하는 예시입니다.
+
+```ts
+import { createCookie } from "@remix-run/node";
+
+export const userPrefs = createCookie("user-prefs", {
+	sameSite: "lax",
+	path: "/",
+	maxAge: 60 * 60 * 24 * 365,
+	secure: process.env.NODE_ENV === "production",
+	httpOnly: true,
+	secrets: ["123"],
+});
+```
+
+이렇게 생성한 쿠키를 경로 모듈로 가져와 사용할 수 있습니다. 
+
+쿠키의 `parse` 메서드에 쿠키 헤더를 전달하면 쿠키 헤더에서 쿠키의 값을 가져올 수 있습니다.
+
+다음 코드는 쿠키 헤더에서 `name`이 `use-prefs`인 쿠키의 값을 가져와 반환합니다.
+
+```tsx
+export async function loader({ request }: LoaderFunctionArgs) {
+	const cookieHeader = request.headers.get("cookie");
+	const cookie = (await userPrefs.parse(cookieHeader)) || {}; // [!code highlight]
+
+	return json({ cookieValue: cookie.myValue });
+}
+```
+
+`serialize` 메서드에 쿠키 객체를 전달하면 쿠키 헤더의 값으로 사용할 수 있도록 값을 직렬화시킵니다.
+
+다음 코드는 쿠키 객체에 `myValue`와 `yourValue`를 추가하고, 이를 쿠키 헤더의 값으로 직렬화하여 반환합니다.
+
+```tsx
+export async function action({ request }: ActionFunctionArgs) {
+	const cookieHeader = request.headers.get("cookie");
+	const cookie = (await userPrefs.parse(cookieHeader)) || {};
+
+	cookie.myValue = "some value";
+	cookie.yourValue = "your value";
+
+	return redirect("/", {
+		headers: {
+			"set-cookie": await userPrefs.serialize(cookie), // [!code highlight]
+		},
+	});
+}
+```
+
+## 세션
+
+`createCookie`를 사용하면 쿠키를 직접 생성하여 사용할 수 있지만, Remix는 사용자 인증을 위한 세션을 생성하고 관리하기 위한 별도의 세션 저장소 유틸리티도 제공합니다.
+
+Remix는 세션 저장소를 구현하기 위한 다양한 옵션 (쿠키, 메모리, 파일 시스템, Cloudflare KV 등)을 제공하지만, 이 문서에서는 쿠키를 이용한 세션 저장소를 사용하는 방법에 대해 알아봅니다.
+
+### createCookieSessionStorage
+
+쿠키 기반 세션을 구현하기 위해 사용되는 유틸리티 메서드입니다. 이 방법의 가장 큰 장점은 인증을 위한 백엔드 서비스나 데이터베이스가 필요하지 않다는 것입니다.
+
+다음 코드는 `createCookieSessionStorage`를 이용하여 세션 저장소를 생성하는 예시입니다.
+
+```ts
+import { createCookieSessionStorage } from "@remix-run/node";
+
+type SessionData = {
+	userId: string;
+};
+
+type SessionFlashData = {
+	message: string;
+};
+
+const { getSession, commitSession, destroySession } =
+	createCookieSessionStorage<SessionData, SessionFlashData>({
+		cookie: {
+			name: "__session",
+			sameSite: "lax",
+			path: "/",
+			maxAge: 60 * 60 * 24 * 365,
+			secure: process.env.NODE_ENV === "production",
+			httpOnly: true,
+		},
+	});
+
+export { getSession, commitSession, destroySession };
+```
+
+`loader` 함수에서는 세션을 확인해야 합니다. `getSession` 메서드를 사용하면 요청에 포함된 쿠키 헤더에서 현재 세션을 검색하고 반환할 수 있습니다.
+
+다음 코드는 요청의 쿠키 헤더에서 키가 `__session`인 쿠키를 찾고, 이 쿠키에 포함된 `userId`의 값을 반환합니다.
+
+```tsx
+export async function loader({ request }: LoaderFunctionArgs) {
+	const session = await getSession(request.headers.get("cookie")); // [!code highlight]
+
+	return json({ userId: session.get("userId") });
+}
+```
+
+`action` 함수에서는 로그인 및 로그아웃을 실행해야 합니다.
+
+로그인 버튼을 누르면 `set` 메서드를 이용해 세션 쿠키의 `userId`의 값을 설정하고, 쿠키 헤더를 업데이트하기 위해 `commitSession` 메서드를 실행합니다.
+
+로그아웃 버튼을 누르면 세션 쿠키를 제거하기 위해 `destroySession` 메서드를 실행합니다.
+
+```tsx
+export async function action({ request }: ActionFunctionArgs) {
+	const session = await getSession(request.headers.get("cookie")); // [!code highlight]
+
+	const formData = await request.formData();
+	const indent = formData.get("indent");
+
+    // 로그인
+	if (indent === "login") {
+		session.set("userId", "jsparkdev"); // [!code highlight]
+		return redirect("/", {
+			headers: {
+				"set-cookie": await commitSession(session), // [!code highlight]
+			},
+		});
+	}
+
+    // 로그아웃
+	if (indent === "logout") {
+		return redirect("/", {
+			headers: {
+				"set-cookie": await destroySession(session), // [!code highlight]
+			},
+		});
+	}
+}
+```
+
+### 플래시 패턴
+
+간혹 쿠키를 생성하여 사용하고 바로 제거해야 하는 경우가 존재합니다. 주로, 특정 동작에 대한 알림 메시지를 한 번만 표시하고 싶을 때 사용됩니다.
+
+이는 세션의 `set`과 `unset`을 사용하여 구현할 수 있지만, 플래시 패턴을 구현하는 `flash` 메서드를 사용하면 더 쉽게 구현할 수 있습니다. `flash` 메서드는 세션에 값을 추가하고, `get` 메서드를 이 값을 읽으면 세션에서 이 값을 제거합니다.
+
+다음 코드는 버튼 클릭시 `message`를 세션에 저장하고, 이를 표시한 후 세션에서 제거하는 예시입니다.
+
+1. 버튼 클릭시 `action` 함수를 통해 세션에 값이 추가되고 쿠키 헤더 업데이트와 함께 리디렉션됩니다.
+2. 리디렉션되어 `loader` 함수를 통해 세션의 `message` 값을 UI로 전달하면서 쿠키 헤더를 업데이트하여 세션에서 `message` 값을 제거합니다.
+
+```tsx
+export async function loader({ request }: LoaderFunctionArgs) {
+	const session = await getSession(request.headers.get("cookie"));
+
+	return json(
+		{ message: session.get("message") },
+		{
+			headers: {
+				"set-cookie": await commitSession(session),
+			},
+		},
+	);
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+	const session = await getSession(request.headers.get("cookie"));
+
+	session.flash("message", "Hello World!");
+
+	return redirect("/", {
+		headers: {
+			"set-cookie": await commitSession(session),
+		},
+	});
+}
+
+export default function Index() {
+	const { message } = useLoaderData<typeof loader>();
+
+	return (
+		<div>
+			{message ?? "No message"}
+			<Form method="post">
+				<button type="submit">Show</button>
+			</Form>
+		</div>
+	);
+}
+```
