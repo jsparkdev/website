@@ -17,12 +17,12 @@ Remix에서 쿠키를 생성할 때 사용되는 유틸리티 메서드입니다
 import { createCookie } from "@remix-run/node";
 
 export const userPrefs = createCookie("user-prefs", {
-	sameSite: "lax",
-	path: "/",
-	maxAge: 60 * 60 * 24 * 365,
-	secure: process.env.NODE_ENV === "production",
-	httpOnly: true,
-	secrets: ["123"],
+  sameSite: "lax",
+  path: "/",
+  maxAge: 60 * 60 * 24 * 365,
+  secure: process.env.NODE_ENV === "production",
+  httpOnly: true,
+  secrets: ["123"],
 });
 ```
 
@@ -34,10 +34,10 @@ export const userPrefs = createCookie("user-prefs", {
 
 ```tsx
 export async function loader({ request }: LoaderFunctionArgs) {
-	const cookieHeader = request.headers.get("cookie");
-	const cookie = (await userPrefs.parse(cookieHeader)) || {}; // [!code highlight]
+  const cookieHeader = request.headers.get("cookie");
+  const cookie = (await userPrefs.parse(cookieHeader)) || {}; // [!code highlight]
 
-	return json({ cookieValue: cookie.myValue });
+  return json({ cookieValue: cookie.myValue });
 }
 ```
 
@@ -47,17 +47,17 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 ```tsx
 export async function action({ request }: ActionFunctionArgs) {
-	const cookieHeader = request.headers.get("cookie");
-	const cookie = (await userPrefs.parse(cookieHeader)) || {};
+  const cookieHeader = request.headers.get("cookie");
+  const cookie = (await userPrefs.parse(cookieHeader)) || {};
 
-	cookie.myValue = "some value";
-	cookie.yourValue = "your value";
+  cookie.myValue = "some value";
+  cookie.yourValue = "your value";
 
-	return redirect("/", {
-		headers: {
-			"set-cookie": await userPrefs.serialize(cookie), // [!code highlight]
-		},
-	});
+  return redirect("/", {
+    headers: {
+      "set-cookie": await userPrefs.serialize(cookie), // [!code highlight]
+    },
+  });
 }
 ```
 
@@ -77,24 +77,24 @@ Remix는 세션 저장소를 구현하기 위한 다양한 옵션 (쿠키, 메�
 import { createCookieSessionStorage } from "@remix-run/node";
 
 type SessionData = {
-	userId: string;
+  userId: string;
 };
 
 type SessionFlashData = {
-	message: string;
+  message: string;
 };
 
 const { getSession, commitSession, destroySession } =
-	createCookieSessionStorage<SessionData, SessionFlashData>({
-		cookie: {
-			name: "__session",
-			sameSite: "lax",
-			path: "/",
-			maxAge: 60 * 60 * 24 * 365,
-			secure: process.env.NODE_ENV === "production",
-			httpOnly: true,
-		},
-	});
+  createCookieSessionStorage<SessionData, SessionFlashData>({
+    cookie: {
+      name: "__session",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365,
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+    },
+  });
 
 export { getSession, commitSession, destroySession };
 ```
@@ -105,9 +105,9 @@ export { getSession, commitSession, destroySession };
 
 ```tsx
 export async function loader({ request }: LoaderFunctionArgs) {
-	const session = await getSession(request.headers.get("cookie")); // [!code highlight]
+  const session = await getSession(request.headers.get("cookie")); // [!code highlight]
 
-	return json({ userId: session.get("userId") });
+  return json({ userId: session.get("userId") });
 }
 ```
 
@@ -119,29 +119,29 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 ```tsx
 export async function action({ request }: ActionFunctionArgs) {
-	const session = await getSession(request.headers.get("cookie")); // [!code highlight]
+  const session = await getSession(request.headers.get("cookie")); // [!code highlight]
 
-	const formData = await request.formData();
-	const indent = formData.get("indent");
+  const formData = await request.formData();
+  const indent = formData.get("indent");
 
     // 로그인
-	if (indent === "login") {
-		session.set("userId", "jsparkdev"); // [!code highlight]
-		return redirect("/", {
-			headers: {
-				"set-cookie": await commitSession(session), // [!code highlight]
-			},
-		});
-	}
+  if (indent === "login") {
+    session.set("userId", "jsparkdev"); // [!code highlight]
+    return redirect("/", {
+      headers: {
+        "set-cookie": await commitSession(session), // [!code highlight]
+      },
+    });
+  }
 
     // 로그아웃
-	if (indent === "logout") {
-		return redirect("/", {
-			headers: {
-				"set-cookie": await destroySession(session), // [!code highlight]
-			},
-		});
-	}
+  if (indent === "logout") {
+    return redirect("/", {
+      headers: {
+        "set-cookie": await destroySession(session), // [!code highlight]
+      },
+    });
+  }
 }
 ```
 
@@ -158,41 +158,41 @@ export async function action({ request }: ActionFunctionArgs) {
 
 ```tsx
 export async function loader({ request }: LoaderFunctionArgs) {
-	const session = await getSession(request.headers.get("cookie"));
+  const session = await getSession(request.headers.get("cookie"));
 
-	return json(
-		{ message: session.get("message") },
-		{
-			headers: {
-				"set-cookie": await commitSession(session),
-			},
-		},
-	);
+  return json(
+    { message: session.get("message") },
+    {
+      headers: {
+        "set-cookie": await commitSession(session),
+      },
+    },
+  );
 }
 
 export async function action({ request }: ActionFunctionArgs) {
-	const session = await getSession(request.headers.get("cookie"));
+  const session = await getSession(request.headers.get("cookie"));
 
-	session.flash("message", "Hello World!");
+  session.flash("message", "Hello World!");
 
-	return redirect("/", {
-		headers: {
-			"set-cookie": await commitSession(session),
-		},
-	});
+  return redirect("/", {
+    headers: {
+      "set-cookie": await commitSession(session),
+    },
+  });
 }
 
 export default function Index() {
-	const { message } = useLoaderData<typeof loader>();
+  const { message } = useLoaderData<typeof loader>();
 
-	return (
-		<div>
-			{message ?? "No message"}
-			<Form method="post">
-				<button type="submit">Show</button>
-			</Form>
-		</div>
-	);
+  return (
+    <div>
+      {message ?? "No message"}
+      <Form method="post">
+        <button type="submit">Show</button>
+      </Form>
+    </div>
+  );
 }
 ```
 

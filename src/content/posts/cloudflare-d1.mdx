@@ -73,15 +73,15 @@ D1 클라이언트는 `prepare` 메서드를 사용하여 쿼리를 실행하고
 
 ```ts
 export default {
-	async fetch(request: Request, env: Env) {
-		const { results } = await env.DB.prepare(
-			"SELECT * FROM Customers WHERE CompanyName = ?",
-		)
-			.bind("Bs Beverages")
-			.all();
+  async fetch(request: Request, env: Env) {
+    const { results } = await env.DB.prepare(
+      "SELECT * FROM Customers WHERE CompanyName = ?",
+    )
+      .bind("Bs Beverages")
+      .all();
 
-		return Response.json(results);
-	},
+    return Response.json(results);
+  },
 };
 ```
 
