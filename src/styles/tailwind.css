@@ -3,15 +3,22 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    background-image: radial-gradient(
+      farthest-corner circle at 100% 0% in oklab,
+      oklch(50% .4 222) 0%, oklch(35% .5 313) 100%
+    );
+  }
+
   a {
-    @apply hover:opacity-50 duration-200
+    @apply hover:opacity-50 duration-500;
   }
 }
 
 @layer components {
   .prose {
     a {
-      @apply text-blue-500 break-all
+      @apply text-blue-300 break-all
     }
 
     blockquote {
@@ -19,7 +26,7 @@
     }
 
     :not(pre) > code {
-      @apply bg-blue-100  text-blue-800 px-1.5 py-1 mx-1 rounded-md before:content-[''] after:content-['']
+      @apply bg-blue-100 text-blue-800 px-1.5 py-1 mx-1 rounded-md before:content-[''] after:content-['']
     }
   }
 }

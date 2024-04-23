@@ -7,7 +7,7 @@ const postsCollection = await getCollection("posts");
 ---
 
 <Layout title="Junseong Park">
-	<ul>
+	<ul class="flex flex-col gap-8">
 		{
 			postsCollection.map(post => (
 				<li>
