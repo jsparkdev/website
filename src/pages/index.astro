@@ -6,7 +6,7 @@ import Layout from "~/layouts/Layout.astro";
 const postsCollection = await getCollection("posts");
 ---
 
-<Layout title="Junseong Park">
+<Layout>
 	<ul class="flex flex-col gap-8">
 		{
 			postsCollection.map(post => (

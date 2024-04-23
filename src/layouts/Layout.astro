@@ -4,22 +4,25 @@ import Header from "~/components/Header.astro";
 import "~/styles/tailwind.css";
 
 interface Props {
-	title: string;
+	title?: string;
+	description?: string;
+	canonicalPath?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, canonicalPath } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ko-KR">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description ?? "이 웹사이트는 TypeScript, React, Remix, Astro, Cloudflare 등 웹 애플리케이션을 구축하기 위해 사용되는 다양한 기술에 대한 지식과 경험을 공유합니다."} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<title>{title}</title>
+		<link rel="canonical" href=`https://jspark.dev${canonicalPath ? canonicalPath : ""}` />
+		<title>{title ? `${title} | Junseong Park` : `Home | Junseong Park`}</title>
 		<ViewTransitions />
 	</head>
 	<body class="text-white">
