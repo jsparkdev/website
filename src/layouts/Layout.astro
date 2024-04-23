@@ -21,7 +21,7 @@ const { title, description, canonicalPath } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<link rel="canonical" href=`https://jspark.dev${canonicalPath ? canonicalPath : ""}` />
+		<link rel="canonical" href=`${Astro.site}${canonicalPath ? canonicalPath : ""}` />
 		<title>{title ? `${title} | Junseong Park` : `Home | Junseong Park`}</title>
 		<ViewTransitions />
 	</head>
