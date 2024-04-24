@@ -50,7 +50,14 @@ const username = "@jsparkdev";
 		<meta name="twitter:site" content={username}>
 		<meta name="twitter:creator" content={username}>
 		<meta name="twitter:title" content={name}>
+		<meta name="twitter:image" content='/favicon-96x96.png'>
+		<meta name="twitter:image:alt" content={name}>
 		<meta name="twitter:description" content={descriptionResult}>
+		<meta property="og:title" content={name} />
+		<meta property="og:description" content={descriptionResult} />
+		<meta property="og:url" content={`${Astro.site}${canonicalPath ? canonicalPath : ""}`} />
+		<meta property="og:image" content="/favicon-96x96.png" />
+		<meta property="og:type" content="website" />
 		<title>{title ? `${title} | ${name}` : `Home | ${name}`}</title>
 		<ViewTransitions />
 	</head>
