@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const date = entry.data.updatedAt.toISOString();
-const canonicalPath = `posts/${entry.slug}`;
+const canonicalPath = `posts/${entry.slug}/`;
 ---
 
 <Layout title={entry.data.title} description={`이 게시물에서는 ${entry.data.description}`} canonicalPath={canonicalPath}>
