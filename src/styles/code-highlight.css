@@ -1,24 +1,22 @@
-.diff.add {
-  background-color: rgba(0, 72, 10, 0.928);
+[class*="line"]:not([class="line"]) {
   transition: background-color .5s;
   margin: 0 -24px;
   padding: 0 12px;
   width: calc(100% + 40px);
   display: inline-block;
+}
+
+.diff.add {
+  background-color: rgba(0, 77, 10, 0.928);
   &::before {
     content: "+";
-    color: #12ff95;
+    color: #2effa1;
     padding-right: 4px;
   }
 }
 
 .diff.remove {
   background-color: rgba(119, 0, 0, 0.928);
-  transition: background-color .5s;
-  margin: 0 -24px;
-  padding: 0 12px;
-  width: calc(100% + 40px);
-  display: inline-block;
   &::before {
     content: "-";
     color: #ff6f6f;
@@ -27,19 +25,10 @@
 }
 
 .line.highlighted {
+  padding-left: 24px;
   background-color: rgba(50, 50, 50, 0.928);
-  transition: background-color .5s;
-  margin: 0 -24px; 
-  padding: 0 24px;  
-  width: calc(100% + 40px);
-  display: inline-block;
 }
 
-.highlighted.error {
+.line.highlighted.error {
   background-color: rgba(80, 71, 0, 0.928);
-  transition: background-color .5s;
-  margin: 0 -24px; 
-  padding: 0 24px;  
-  width: calc(100% + 40px);
-  display: inline-block;
 }
