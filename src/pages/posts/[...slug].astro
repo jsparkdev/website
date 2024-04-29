@@ -4,12 +4,12 @@ import Layout from "~/layouts/Layout.astro";
 import "~/styles/code-highlight.css";
 
 export async function getStaticPaths() {
-	const postsCollection = await getCollection("posts");
+  const postsCollection = await getCollection("posts");
 
-	return postsCollection.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+  return postsCollection.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
 const { entry } = Astro.props;

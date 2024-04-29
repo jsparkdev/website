@@ -4,16 +4,16 @@ import Header from "~/components/Header.astro";
 import "~/styles/tailwind.css";
 
 interface Props {
-	title?: string;
-	description?: string;
-	canonicalPath?: string;
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
 }
 
 const { title, description, canonicalPath } = Astro.props;
 const baseDescription =
-	"이 웹사이트는 TypeScript, React, Remix, Astro, Cloudflare 등 웹 애플리케이션을 구축하기 위해 사용되는 다양한 기술에 대한 지식과 경험을 공유합니다.";
+  "이 웹사이트는 TypeScript, React, Remix, Astro, Cloudflare 등 웹 애플리케이션을 구축하기 위해 사용되는 다양한 기술에 대한 지식과 경험을 공유합니다.";
 const descriptionResult = `${baseDescription} ${
-	description ? description : ""
+  description ? description : ""
 }`.trim();
 
 const name = "Junseong Park";
