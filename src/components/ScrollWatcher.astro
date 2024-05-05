@@ -1,0 +1,16 @@
+<div class="scroll-watcher min-h-1 w-full z-50 fixed origin-left"></div>
+
+<style>
+  .scroll-watcher {
+    scale: 0 1;
+    animation: scroll linear;
+    animation-timeline: scroll(y);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(12, 97, 255) 0%, rgba(248,89,255,1) 100%);
+  }
+  @keyframes scroll {
+    to {
+      scale: 1 1;
+    }
+  }
+</style>

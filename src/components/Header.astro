@@ -1,18 +1,20 @@
 ---
 import { Icon } from "astro-icon/components";
+import ScrollWatcher from './ScrollWatcher.astro';
 
 const iconSize = 30;
 ---
 
-<header class="flex portrait:flex-col portrait:gap-4 justify-between items-center px-16 py-5 fixed w-full backdrop-blur z-50 border-b border-blue-950">
-  <a href="/" class="font-extrabold text-2xl uppercase" title="홈 페이지로 이동">
-   jspark.dev
-  </a>
-  <nav>
+<header class="fixed w-full backdrop-blur z-40 border-b border-blue-950">
+  <nav class="flex portrait:flex-col portrait:gap-4 justify-between items-center px-16 py-5 ">
+    <a href="/" class="font-extrabold text-2xl uppercase" title="홈 페이지로 이동">
+      jspark.dev
+    </a>
     <ul class="flex gap-4">
       <li><a target="_blank" href="https://github.com/jsparkdev" title="Github로 이동"><Icon name="github" size={iconSize} /></a></li>
       <li><a target="_blank" href="https://linkedin.com/in/jsparkdev" title="Linkedin으로 이동"><Icon name="linkedin" size={iconSize} /></a></li>
       <li><a target="_blank" href="https://x.com/jsparkdev" title="Twitter로 이동"><Icon name="twitter" size={iconSize} /></a></li>
     </ul>
   </nav>
+  <ScrollWatcher />
 </header>
