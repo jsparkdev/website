@@ -29,3 +29,29 @@ const canonicalPath = `posts/${entry.slug}/`;
 			<Content />
 		</article>
 </Layout>
+
+<style>
+	.prose {
+    a {
+      @apply text-blue-300 break-all;
+    }
+
+    ::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(12, 97, 255) 0%, rgba(248,89,255,1) 100%);
+      border-radius: 9999px;
+    }
+
+    blockquote {
+      @apply bg-blue-700 px-6 py-0.5 rounded-xl not-italic border-s-0
+    }
+
+    :not(pre) > code {
+      @apply bg-blue-100 text-blue-800 px-1.5 mx-1 rounded-md before:content-[''] after:content-[''] inline-block
+    }
+  }
+</style>

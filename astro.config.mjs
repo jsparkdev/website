@@ -7,7 +7,6 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from "@shikijs/transformers";
-
 import icon from "astro-icon";
 
 // https://astro.build/config
@@ -24,12 +23,5 @@ export default defineConfig({
       ],
     },
   },
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    sitemap(),
-    mdx(),
-    icon(),
-  ],
+  integrations: [tailwind(), sitemap(), mdx(), icon()],
 });

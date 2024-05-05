@@ -54,3 +54,27 @@ const username = "@jsparkdev";
 		</main>
 	</body>
 </html>
+
+<style>
+	:root {
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgb(2,0,36);
+      background: linear-gradient(rgba(2,0,36,1) 0%, rgb(12, 97, 255) 0%, rgba(248,89,255,1) 100%);
+    }
+  }
+
+  body {
+    background-image: radial-gradient(
+      farthest-corner circle at 100% 0% in oklab,
+      oklch(50% .4 222) 0%, oklch(35% .5 313) 100%
+    );   
+  }
+
+  a {
+    @apply hover:opacity-50 duration-500;
+  }
+</style>
