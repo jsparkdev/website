@@ -1,21 +1,31 @@
 ---
 import { getCollection } from "astro:content";
-import Card from "~/components/PostLink.astro";
+import PostLink from "~/components/PostLink.astro";
 import Layout from "~/layouts/Layout.astro";
+import type { Meta } from "~/types";
 
-const postsCollection = await getCollection("posts");
+const postsCollection = (await getCollection("posts")).toSorted(
+  (front, back) => +back.data.updatedAt - +front.data.updatedAt,
+);
+
+const meta: Meta = {
+  title: "Home",
+  description:
+    "이 웹사이트는 TypeScript, React, Remix 등 풀 스택 웹 애플리케이션을 구축하기 위해 사용되는 다양한 기술에 대한 지식과 경험을 공유합니다.",
+  path: "",
+};
 ---
 
-<Layout>
-	<ul class="flex flex-col gap-8 max-w-[600px] mx-auto">
-		{
-			postsCollection.map(post => (
-				<li>
-					<a href={'/posts/' + post.slug} title={`${post.data.title}`}>
-						<Card title={post.data.title} description={post.data.description} /> 
-					</a>	
-				</li>
-			))
-		}
-	</ul>
+<Layout {...meta} >
+  <ul class="flex flex-col gap-8 max-w-[600px] mx-auto">
+    {
+      postsCollection.map(post => (
+        <li>
+          <a href={`/posts/${post.slug}`} title={post.data.title}>
+            <PostLink {...post.data} /> 
+          </a>  
+        </li>
+      ))
+    }
+  </ul>
 </Layout>

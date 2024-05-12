@@ -4,17 +4,12 @@ import Header from "~/components/Header.astro";
 import "~/styles/tailwind.css";
 
 interface Props {
-  title?: string;
-  description?: string;
-  canonicalPath?: string;
+	title: string;
+	description: string;
+	path: string;
 }
 
-const { title, description, canonicalPath } = Astro.props;
-const baseDescription =
-  "이 웹사이트는 TypeScript, React, Remix, Astro, Cloudflare 등 웹 애플리케이션을 구축하기 위해 사용되는 다양한 기술에 대한 지식과 경험을 공유합니다.";
-const descriptionResult = `${baseDescription} ${
-  description ? description : ""
-}`.trim();
+const { title, description, path } = Astro.props;
 
 const name = "Junseong Park";
 const username = "@jsparkdev";
@@ -23,58 +18,38 @@ const username = "@jsparkdev";
 <!doctype html>
 <html lang="ko-KR">
 	<head>
+		<!-- 기본 SEO -->
+		<title>{title}</title>
 		<meta charset="UTF-8" />
-		<meta name="description" content={descriptionResult} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
 		<meta name="viewport" content="width=device-width" />
+		<link rel="canonical" href=`${Astro.site}${path}` />
+		<!-- 파비콘 -->
 		<link rel="icon" href="/favicon.ico" sizes="32x32">
 		<link rel="icon" href="/icon.svg" type="image/svg+xml">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-		<meta name="generator" content={Astro.generator} />
-		<link rel="sitemap" href="/sitemap-index.xml" />
-		<link rel="canonical" href=`${Astro.site}${canonicalPath ? canonicalPath : ""}` />
+		<!-- 트위터 카드 -->
+		<meta name="twitter:title" content={name}>
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content={username}>
-		<meta name="twitter:creator" content={username}>
-		<meta name="twitter:title" content={name}>
-		<meta name="twitter:image" content='/favicon-96x96.png'>
 		<meta name="twitter:image:alt" content={name}>
-		<meta name="twitter:description" content={descriptionResult}>
+		<meta name="twitter:creator" content={username}>
+		<meta name="twitter:description" content={description}>
+		<meta name="twitter:image" content='/favicon-96x96.png'>
+		<!-- 오픈 그래프 -->
 		<meta property="og:title" content={name} />
-		<meta property="og:description" content={descriptionResult} />
-		<meta property="og:url" content={`${Astro.site}${canonicalPath ? canonicalPath : ""}`} />
-		<meta property="og:image" content="/favicon-96x96.png" />
 		<meta property="og:type" content="website" />
-		<title>{title ? `${title} | ${name}` : `Home | ${name}`}</title>
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/favicon-96x96.png" />
+		<meta property="og:url" content=`${Astro.site}${path}` />
 		<ViewTransitions />
 	</head>
-	<body class="text-white">
+	<body class="text-white bg-slate-800 antialiased">
 		<Header />
 		<main class="pt-40 pb-20 px-3 landscape:pt-32 landscape:px-16">
 			<slot />
 		</main>
 	</body>
 </html>
-
-<style>
-	:root {
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgb(2,0,36);
-      background: linear-gradient(rgba(2,0,36,1) 0%, rgb(12, 97, 255) 0%, rgba(248,89,255,1) 100%);
-    }
-  }
-
-  body {
-    background-image: radial-gradient(
-      farthest-corner circle at 100% 0% in oklab,
-      oklch(50% .4 222) 0%, oklch(35% .5 313) 100%
-    );   
-  }
-
-  a {
-    @apply hover:opacity-50 duration-500;
-  }
-</style>

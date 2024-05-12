@@ -1,3 +1,105 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* variables */
+
+& {
+  --color-rainbow-x: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,158,6,1) 20%, rgba(224,255,18,1) 40%, rgba(0,255,6,1) 60%, rgba(26,29,255,1) 80%, rgba(194,0,255,1) 100%);
+  --color-rainbow-y: linear-gradient(rgba(255,0,0,1) 0%, rgba(255,158,6,1) 20%, rgba(224,255,18,1) 40%, rgba(0,255,6,1) 60%, rgba(26,29,255,1) 80%, rgba(194,0,255,1) 100%);
+
+  --scrollbar-size: 4px;
+}
+
+/* scrollbar */
+
+& {
+  ::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: white;
+    background: var(--color-rainbow-y);
+  }
+}
+
+/* links */
+
+a {
+  word-break: break-all;
+  &:hover {
+    opacity: 0.5;
+    transition-duration: 500ms;
+  }
+}
+
+/* prose */
+
+.prose {
+  * {
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    height: var(--scrollbar-size);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: white;
+    background: var(--color-rainbow-x);
+  }
+}
+
+/* scroll watcher */
+
+.scroll-watcher {
+  scale: 0 1;
+  animation: scroll linear;
+  animation-timeline: scroll(y);
+  background: rgb(2,0,36);
+  background: var(--color-rainbow-x);
+}
+
+@keyframes scroll {
+  to {
+    scale: 1;
+  }
+}
+
+/* code block */
+
+[class*="line"]:not([class="line"]) {
+  transition: background-color .5s;
+  margin: 0 -24px;
+  padding: 0 12px;
+  width: calc(100% + 40px);
+  display: inline-block;
+}
+
+.diff.add {
+  background-color: rgba(0, 77, 10, 0.928);
+  &::before {
+    content: "+";
+    color: #2effa1;
+    padding-right: 4px;
+  }
+}
+
+.diff.remove {
+  background-color: rgba(119, 0, 0, 0.928);
+  &::before {
+    content: "-";
+    color: #ff6f6f;
+    padding-right: 4px;
+  }
+}
+
+.line.highlighted {
+  padding-left: 24px;
+  background-color: rgba(50, 50, 50, 0.928);
+}
+
+.line.highlighted.error {
+  background-color: rgba(80, 71, 0, 0.928);
+}

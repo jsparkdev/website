@@ -1,13 +1,18 @@
 ---
+import { formatDate } from "~/utils";
+
 interface Props {
   title: string;
   description: string;
+  updatedAt: Date;
 }
 
-const { title, description } = Astro.props;
+const { title, description, updatedAt } = Astro.props;
+const date = formatDate(updatedAt);
 ---
 
-<div class="border-2 hover:border-dashed rounded-3xl py-8 px-10">
-  <h1 class="font-extrabold text-2xl pb-2">{title}</h1>
+<div class="flex flex-col gap-3 border-2 hover:scale-95 transition-transform duration-300 rounded-3xl py-8 px-10">
+  <h1 class="font-extrabold text-2xl">{title}</h1>
   <p class="text-md">{description}</p>
+  <p>업데이트: <time datetime={date}>{date}</time></p>
 </div>

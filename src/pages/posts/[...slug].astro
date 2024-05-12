@@ -1,57 +1,42 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
-import "~/styles/code-highlight.css";
+import type { Meta } from "~/types";
+import { formatDate } from "~/utils";
 
 export async function getStaticPaths() {
-  const postsCollection = await getCollection("posts");
+	const postsCollection = await getCollection("posts");
 
-  return postsCollection.map(entry => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+	return postsCollection.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
-const date = entry.data.updatedAt.toISOString();
-const canonicalPath = `posts/${entry.slug}/`;
+const {
+	entry: {
+		render,
+		slug,
+		data: { title, description, updatedAt },
+	},
+} = Astro.props;
+
+const { Content } = await render();
+const date = formatDate(updatedAt);
+
+const meta: Meta = {
+	title,
+	description,
+	path: `posts/${slug}/`,
+};
 ---
 
-<Layout title={entry.data.title} description={`이 게시물에서는 ${entry.data.description}`} canonicalPath={canonicalPath}>
-		<article class="mx-auto prose prose-headings:text-white prose-p:text-white prose-li:text-white prose-strong:text-white prose-pre:border prose-li:marker:text-white">
-			<section class="border-b pb-6">
-				<h1 class="mb-0 leading-[50px]">{entry.data.title}</h1>
-				<p class="py-0 my-0">
-					<span class="text-sm">업데이트: <time datetime={date}>{date.slice(0, 10)}</time></span>
-				</p>
-			</section>
-			<Content />
-		</article>
+<Layout {...meta}>
+  <article class="mx-auto prose prose-pre:border">
+    <section class="border-b pb-6">
+      <h1 class="mb-0 leading-[50px]">{title}</h1>
+      <span class="text-sm">업데이트: <time datetime={date}>{date}</time></span>
+    </section>
+    <Content />
+  </article>
 </Layout>
-
-<style>
-	.prose {
-    a {
-      @apply text-blue-300 break-all;
-    }
-
-    ::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgb(2,0,36);
-      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(12, 97, 255) 0%, rgba(248,89,255,1) 100%);
-      border-radius: 9999px;
-    }
-
-    blockquote {
-      @apply bg-blue-700 px-6 py-0.5 rounded-xl not-italic border-s-0
-    }
-
-    :not(pre) > code {
-      @apply bg-blue-100 text-blue-800 px-1.5 mx-1 rounded-md before:content-[''] after:content-[''] inline-block
-    }
-  }
-</style>
