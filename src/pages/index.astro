@@ -4,7 +4,7 @@ import PostLink from "~/components/PostLink.astro";
 import Layout from "~/layouts/Layout.astro";
 import type { Meta } from "~/types";
 
-const postsCollection = (await getCollection("posts")).toSorted(
+const postsCollection = (await getCollection("posts")).sort(
   (front, back) => +back.data.updatedAt - +front.data.updatedAt,
 );
 
