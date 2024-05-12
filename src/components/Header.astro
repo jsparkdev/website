@@ -3,27 +3,27 @@ import ScrollWatcher from "./ScrollWatcher.astro";
 import SocialLink from "./SocialLink.astro";
 
 const socialList = [
-  {
-    name: "Github",
-    href: "https://github.com/jsparkdev",
-  },
-  {
-    name: "Linkedin",
-    href: "https://linkedin.com/in/jsparkdev",
-  },
-  {
-    name: "Twitter",
-    href: "https://x.com/jsparkdev",
-  },
+	{
+		name: "Github",
+		href: "https://github.com/jsparkdev",
+	},
+	{
+		name: "Linkedin",
+		href: "https://linkedin.com/in/jsparkdev",
+	},
+	{
+		name: "Twitter",
+		href: "https://x.com/jsparkdev",
+	},
 ];
 ---
 
 <header class="fixed w-full backdrop-blur z-40">
-  <nav class="flex portrait:flex-col portrait:gap-4 justify-between items-center px-16 py-5 ">
+  <nav class="flex portrait:flex-col portrait:gap-4 justify-between items-center px-16 py-3 ">
     <a href="/" class="font-extrabold text-2xl uppercase" title="홈 페이지로 이동">
       jspark.dev
     </a>
-    <ul class="flex gap-4">
+    <ul class="hidden gap-4 landscape:flex">
       {
         socialList.map(social => (
           <li>
