@@ -3,6 +3,11 @@
     .circle {
       fill: white;
     }
+    @media (prefers-color-scheme: dark) {
+      .circle {
+        fill: white;
+      }
+    }
   </style>
   <circle cx="50" cy="50" r="40" class="circle" />
 </svg>
