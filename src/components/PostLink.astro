@@ -1,5 +1,5 @@
 ---
-import { formatDate } from "~/utils";
+import ShowDate from './ShowDate.astro';
 
 interface Props {
   title: string;
@@ -8,11 +8,10 @@ interface Props {
 }
 
 const { title, description, updatedAt } = Astro.props;
-const date = formatDate(updatedAt);
 ---
 
 <div class="flex flex-col gap-3 border-2 hover:scale-95 transition-transform duration-300 rounded-3xl py-8 px-10">
   <h1 class="font-extrabold text-2xl">{title}</h1>
   <p class="text-md">{description}</p>
-  <p>업데이트: <time datetime={date}>{date}</time></p>
+  <p>업데이트: <ShowDate date={updatedAt} /></p>
 </div>

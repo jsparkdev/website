@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
+import ShowDate from '~/components/ShowDate.astro';
 import Layout from "~/layouts/Layout.astro";
 import type { Meta } from "~/types";
-import { formatDate } from "~/utils";
 
 export async function getStaticPaths() {
 	const postsCollection = await getCollection("posts");
@@ -22,7 +22,6 @@ const {
 } = Astro.props;
 
 const { Content } = await render();
-const date = formatDate(updatedAt);
 
 const meta: Meta = {
 	title,
@@ -35,7 +34,7 @@ const meta: Meta = {
   <article class="mx-auto prose prose-pre:border">
     <section class="border-b pb-6">
       <h1 class="mb-0 leading-[50px]">{title}</h1>
-      <span class="text-sm">업데이트: <time datetime={date}>{date}</time></span>
+      <span class="text-sm">업데이트: <ShowDate date={updatedAt} /></span>
     </section>
     <Content />
   </article>
