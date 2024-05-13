@@ -8,8 +8,8 @@ const postsCollection = (await getCollection("posts"))
 ---
 
 <section>
-  <h2 class="text-3xl font-extrabold border-b pb-6 mb-6">최신 게시물</h2>
-  <ul class="flex flex-col gap-1 mb-4">
+  <h2 class="text-3xl font-extrabold border-b pb-6 mb-6" transition:name="post-list-heading">최신 게시물</h2>
+  <ul class="flex flex-col gap-1 mb-4" transition:name="post-list">
     {
       postsCollection.map(post => (
         <li>

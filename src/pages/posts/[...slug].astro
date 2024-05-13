@@ -33,8 +33,8 @@ const meta: Meta = {
 <Layout {...meta}>
   <article class="mx-auto prose prose-pre:border">
     <section class="border-b pb-6">
-      <h1 class="mb-0 leading-[50px]">{title}</h1>
-      <span class="text-sm">업데이트: <ShowDate date={updatedAt} /></span>
+      <h1 class="mb-0 leading-[50px]" transition:name={title}>{title}</h1>
+      <span class="text-sm" transition:name=`${title}${updatedAt}`>업데이트: <ShowDate date={updatedAt}/></span>
     </section>
     <Content />
   </article>
