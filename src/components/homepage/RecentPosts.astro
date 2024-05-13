@@ -1,0 +1,26 @@
+---
+import PostLink from "~/components/PostLink.astro";
+import { getCollection } from "astro:content";
+
+const postsCollection = (await getCollection("posts"))
+	.sort((front, back) => +back.data.updatedAt - +front.data.updatedAt)
+	.slice(0, 3);
+---
+
+<section>
+  <h2 class="text-3xl font-extrabold border-b pb-6 mb-6">최신 게시물</h2>
+  <ul class="flex flex-col gap-1 mb-4">
+    {
+      postsCollection.map(post => (
+        <li>
+          <a href={`/posts/${post.slug}`} title={post.data.description}>
+            <PostLink title={post.data.title} updatedAt={post.data.updatedAt} /> 
+          </a>  
+        </li>
+      ))
+    }
+  </ul>
+  <div class="text-right">
+    <a href="/posts" class="font-extrabold">더 보기</a>
+  </div>
+</section>

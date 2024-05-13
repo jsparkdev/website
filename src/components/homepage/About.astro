@@ -1,0 +1,35 @@
+---
+import SkillCard from "~/components/SkillCard.astro";
+
+const skillList = [
+	{ icon: "devicon:html5", name: "HTML5" },
+	{ icon: "devicon:css3", name: "CSS3" },
+	{ icon: "logos:javascript", name: "JavaScript" },
+	{ icon: "devicon:typescript", name: "TypeScript" },
+	{ icon: "logos:react", name: "React" },
+	{ icon: "logos:vitejs", name: "Vite" },
+	{ icon: "logos:nextjs-icon", name: "Next.js" },
+	{ icon: "skill-icons:remix-dark", name: "Remix" },
+	{ icon: "vscode-icons:file-type-astro", name: "Astro" },
+	{ icon: "skill-icons:github-dark", name: "GitHub" },
+	{ icon: "logos:hono", name: "Hono" },
+	{ icon: "logos:cloudflare-icon", name: "Cloudflare" },
+	{ icon: "logos:cloudflare-workers-icon", name: "Cloudflare Workers" },
+	{ icon: "skill-icons:vercel-dark", name: "Vercel" },
+	{ icon: "devicon:tailwindcss", name: "Tailwind CSS" },
+];
+---
+
+<section class="flex flex-col gap-4">
+  <p>다음 기술들을 사용하여 웹 애플리케이션을 빌드하고 배포합니다.</p>
+  <div class="flex gap-2 flex-wrap">
+    {
+      skillList.map(skill => (
+        <SkillCard icon={skill.icon} name={skill.name} />
+      ))
+    }
+  </div>
+  <p>
+    현재 가장 관심이 많은 분야는 웹 표준, CSS3, Remix 프레임워크입니다.
+  </p>
+</section>

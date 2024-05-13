@@ -2,9 +2,9 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-  href: string;
-  title: string;
-  name: string;
+	href: string;
+	title: string;
+	name: string;
 }
 
 const { href, title, name } = Astro.props;
@@ -12,5 +12,5 @@ const size = 30;
 ---
 
 <a target="_blank" href={href} title={title}>
-  <Icon name={name.toLowerCase()} size={size} />
+  <Icon name={name} size={size} />
 </a>

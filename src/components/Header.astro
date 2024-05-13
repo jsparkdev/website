@@ -4,30 +4,28 @@ import SocialLink from "./SocialLink.astro";
 
 const socialList = [
 	{
-		name: "Github",
+		name: "ri:github-line",
 		href: "https://github.com/jsparkdev",
+    title: "Github로 이동합니다."
 	},
 	{
-		name: "Linkedin",
-		href: "https://linkedin.com/in/jsparkdev",
-	},
-	{
-		name: "Twitter",
+		name: "ri:twitter-x-line",
 		href: "https://x.com/jsparkdev",
+    title: "X로 이동합니다."
 	},
 ];
 ---
 
 <header class="fixed w-full backdrop-blur z-40">
   <nav class="flex portrait:flex-col portrait:gap-4 justify-between items-center px-16 py-3 ">
-    <a href="/" class="font-extrabold text-2xl uppercase" title="홈 페이지로 이동">
+    <a href="/" class="font-extrabold text-2xl uppercase" title="홈 페이지로 이동합니다.">
       jspark.dev
     </a>
-    <ul class="hidden gap-4 landscape:flex">
+    <ul class="hidden gap-3 landscape:flex">
       {
         socialList.map(social => (
           <li>
-            <SocialLink {...social} title={`이동 : ${social.name}`} />
+            <SocialLink {...social} />
           </li>
         ))
       }

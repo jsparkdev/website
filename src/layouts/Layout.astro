@@ -6,13 +6,15 @@ import "~/styles/tailwind.css";
 interface Props {
 	title: string;
 	description: string;
-	path: string;
+	path?: string;
 }
 
 const { title, description, path } = Astro.props;
 
 const name = "Junseong Park";
 const username = "@jsparkdev";
+
+const canonicalURL = path ? `${Astro.site}${path}/` : Astro.site;
 ---
 
 <!doctype html>
@@ -25,7 +27,7 @@ const username = "@jsparkdev";
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="canonical" href=`${Astro.site}${path}` />
+		<link rel="canonical" href={canonicalURL} />
 		<!-- 파비콘 -->
 		<link rel="icon" href="/favicon.ico" sizes="32x32">
 		<link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -43,10 +45,10 @@ const username = "@jsparkdev";
 		<meta property="og:type" content="website" />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content="/favicon-96x96.png" />
-		<meta property="og:url" content=`${Astro.site}${path}` />
+		<meta property="og:url" content={canonicalURL} />
 		<ViewTransitions />
 	</head>
-	<body class="text-white bg-slate-800 antialiased">
+	<body class="text-white bg-slate-900 antialiased">
 		<Header />
 		<main class="pt-40 pb-20 px-3 landscape:pt-32 landscape:px-16">
 			<slot />

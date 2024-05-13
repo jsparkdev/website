@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 /* variables */
-
 & {
   --color-rainbow-x: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,158,6,1) 20%, rgba(224,255,18,1) 40%, rgba(0,255,6,1) 60%, rgba(26,29,255,1) 80%, rgba(194,0,255,1) 100%);
   --color-rainbow-y: linear-gradient(rgba(255,0,0,1) 0%, rgba(255,158,6,1) 20%, rgba(224,255,18,1) 40%, rgba(0,255,6,1) 60%, rgba(26,29,255,1) 80%, rgba(194,0,255,1) 100%);
@@ -12,7 +11,6 @@
 }
 
 /* scrollbar */
-
 & {
   ::-webkit-scrollbar {
     width: var(--scrollbar-size);
@@ -25,7 +23,6 @@
 }
 
 /* links */
-
 a {
   word-break: break-all;
   &:hover {
@@ -35,7 +32,6 @@ a {
 }
 
 /* prose */
-
 .prose {
   * {
     color: white;
@@ -52,7 +48,6 @@ a {
 }
 
 /* scroll watcher */
-
 .scroll-watcher {
   scale: 0 1;
   animation: scroll linear;
@@ -68,7 +63,6 @@ a {
 }
 
 /* code block */
-
 [class*="line"]:not([class="line"]) {
   transition: background-color .5s;
   margin: 0 -24px;
