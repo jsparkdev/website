@@ -6,6 +6,7 @@
 & {
   --color-rainbow-x: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,158,6,1) 20%, rgba(224,255,18,1) 40%, rgba(0,255,6,1) 60%, rgba(26,29,255,1) 80%, rgba(194,0,255,1) 100%);
   --color-rainbow-y: linear-gradient(rgba(255,0,0,1) 0%, rgba(255,158,6,1) 20%, rgba(224,255,18,1) 40%, rgba(0,255,6,1) 60%, rgba(26,29,255,1) 80%, rgba(194,0,255,1) 100%);
+  --color-inline-code: #333333;
 
   --scrollbar-size: 4px;
 }
@@ -44,6 +45,14 @@ a {
   ::-webkit-scrollbar-thumb {
     background: white;
     background: var(--color-rainbow-x);
+  }
+
+  :not(pre) > code {
+    background-color: var(--color-inline-code);
+    padding: 1px 5px;
+    &::before, &::after {
+      content: "";
+    }
   }
 }
 
