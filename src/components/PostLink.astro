@@ -9,7 +9,7 @@ interface Props {
 const { title, updatedAt } = Astro.props;
 ---
 
-<div class="flex justify-between">
-  <h2>{title}</h2>
-  <span class="hidden landscape:block"><ShowDate date={updatedAt} /></span>
+<div class="flex landscape:justify-between justify-end">
+  <h2 class="text-right landscape:text-left" transition:name={title}>{title}</h2>
+  <span class="hidden landscape:block" transition:name=`${title}${updatedAt}`><ShowDate date={updatedAt} /></span>
 </div>
