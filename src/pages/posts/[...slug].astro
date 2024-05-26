@@ -1,32 +1,32 @@
 ---
 import { getCollection } from "astro:content";
-import ShowDate from '~/components/ShowDate.astro';
+import ShowDate from "~/components/ShowDate.astro";
 import Layout from "~/layouts/Layout.astro";
 import type { Meta } from "~/types";
 
 export async function getStaticPaths() {
-	const postsCollection = await getCollection("posts");
+  const postsCollection = await getCollection("posts");
 
-	return postsCollection.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+  return postsCollection.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
 const {
-	entry: {
-		render,
-		slug,
-		data: { title, description, updatedAt },
-	},
+  entry: {
+    render,
+    slug,
+    data: { title, description, updatedAt },
+  },
 } = Astro.props;
 
 const { Content } = await render();
 
 const meta: Meta = {
-	title,
-	description,
-	path: `posts/${slug}`,
+  title,
+  description,
+  path: `posts/${slug}`,
 };
 ---
 

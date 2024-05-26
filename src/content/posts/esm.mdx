@@ -1,0 +1,378 @@
+---
+title: ES 모듈 알아보기
+description: 최신 JavaScript에서 ES 모듈을 사용하는 이유와 기본 동작 및 제공하는 기능 등에 대해 알아봅니다.
+updatedAt: 2024-05-26
+---
+
+## 정의하기
+
+다음 방법들을 사용하여 ES 모듈을 정의할 수 있습니다.
+
+### `<script type="module">`
+
+HTML 파일에서 ES 모듈을 정의하는 방법입니다.
+
+```js
+<script type="module">
+  import { myFunction } from './myModule.js';
+  myFunction();
+</script>
+```
+### `package.json` 파일의 `"type": "module"`
+
+Node.js 환경에서 프로젝트의 모든 JavaScript 파일을 ES 모듈로 처리하는 방법입니다.
+
+```json
+{
+  "type": "module"
+}
+```
+
+### `mjs` 확장자
+
+특정 JavaScript 파일을 ES 모듈로 처리하는 방법입니다.
+
+```js
+// myModule.mjs
+export function myFunction() {
+  console.log('Hello from ES Module');
+}
+```
+
+## 기본 동작
+
+### `__filename` 및 `__dirname` 사용 불가능
+
+ES 모듈에서는 현재 파일의 경로를 얻을 수 있는 `__filename` 및 현재 파일이 위치한 디렉터리의 경로를 얻을 수 있는 `__dirname`을 사용할 수 없습니다.
+
+대신, 다음과 같이 현재 모듈의 메타데이터를 포함하는 `import.meta`를 사용하여 이 작업을 수행할 수 있습니다.
+
+Node v20.11.0 이상에서는 `import.meta` 객체를 사용하여 현재 모듈의 메타데이터를 바로 가져올 수 있습니다.
+```js
+console.log(import.meta.dirname); // 'my-path'
+console.log(import.meta.filename); // 'my-path/a.mjs'
+```
+
+해당 버전 아래의 Node를 사용하고 있다면 다음과 같은 방법으로 현재 모듈의 경로 메타데이터를 가져올 수 있습니다.
+
+```js
+import { dirname } from "node:path";
+import { fileUrlToPath } from "node:url";
+
+const __filename = fileUrlToPath(import.meta.url);
+const __dirname = dirname(__filename);
+```
+
+### 스크립트 지연 실행
+
+ES 모듈은 HTML을 모두 파싱한 후 실행됩니다. 이는 기존 스크립트의 `defer` 속성과 유사하게 동작합니다.
+
+아래 코드에서는 스크립트가 실행되는 시점에 `div` 요소가 아직 존재하지 않기 때문에 오류가 발생합니다.
+
+```html
+<head>
+  <script>
+    const text = document.querySelector("div");
+    console.log(text.innerText) // Uncaught TypeError: Cannot read properties of null (reading 'innerText') // [!code error]
+  </script>
+</head>
+<body>
+  <div>Hello World!!</div>
+</body>
+```
+
+하지만, ES 모듈은 HTML을 모두 파싱한 후 실행되기 때문에 아래 코드는 정상적으로 동작합니다.
+
+```html
+<head>
+  <script type="module"> // [!code highlight]
+    const text = document.querySelector("div");
+    console.log(text.innerText) // "Hello World!!" // [!code highlight]
+  </script>
+</head>
+<body>
+  <div>Hello World!!</div>
+</body>
+```
+
+### 내부 모듈 스코프
+
+ES 모듈의 데이터는 내부 모듈 스코프를 가지므로, 모듈에서 선언된 데이터는 전역 스코프에 노출되지 않아 다른 모듈에서 접근할 수 없습니다.
+
+```html
+<script type="module"> 
+  const num = 100; 
+</script>
+<script>
+  console.log(num); // [!code error] // Uncaught ReferenceError: num is not defined
+</script>
+```
+
+하지만, 기존 스크립트에서는 다음과 같이 상위 스코프에 선언된 데이터에 접근할 수 있습니다.
+
+```html
+<script> // [!code highlight]
+  const num = 100;
+</script>
+<script>
+  console.log(num); // 100 // [!code highlight]
+</script>
+```
+
+### 안전한 순환 참조
+
+common.js는 순환 참조가 발생할 경우, 모듈을 빈 객체로 초기화합니다. 이는 순환 참조로 인한 무한 루프를 방지하기 위한 방법입니다.
+
+```js
+// a.js
+const bModule = require('./b')
+
+function aFunction() {
+  console.log('afunction is called!')
+  bModule.bFunction();
+}
+
+module.exports = {
+  aFunction
+}
+```
+```js
+// b.js
+const aModule = require('./a')
+
+function bFunction() {
+  console.log('bfunction is called!')
+  aModule.aFunction();
+}
+
+module.exports = {
+  bFunction
+}
+```
+```js
+// index.js
+const aModule = require('./a')
+
+console.log('index start')
+aModule.aFunction();
+```
+
+Node.js를 이용해 `index.js` 파일을 실행하면 다음 결과가 콘솔에 출력됩니다.
+
+```
+index start
+afunction is called!
+bfunction is called!
+TypeError: aModule.aFunction is not a function
+```
+
+이는 `b.js`에서 참조하는 `aModule`이 빈 객체로 초기화되어 `aFunction`이 존재하지 않기 때문에 발생하는 오류입니다.
+
+`a.js`가 `b.js`를 참조하고, `b.js`가 `a.js`를 참조하는 순환 참조를 감지하였기 때문에 발생한 의도적 동작입니다.
+
+하지만, ES 모듈은 우리의 의도대로 안전하게 순환 참조를 처리합니다.
+
+```js
+// a.js
+import { bFunction } from './b.js';
+
+function aFunction() {
+  console.log('afunction is called!');
+  bFunction();
+}
+
+export { aFunction };
+```
+```js
+// b.js
+import { aFunction } from './a.js';
+
+function bFunction() {
+  console.log('bfunction is called!');
+  aFunction();
+}
+
+export { bFunction };
+```
+```js
+// index.js
+import { aFunction } from './a.js';
+
+console.log('index start');
+aFunction();
+```
+
+위 `index.js`를 실행하면 다음과 같이 순환 참조가 정상적으로 동작합니다.
+
+```
+index start
+afunction is called!
+bfunction is called!
+afunction is called!
+bfunction is called!
+...
+afunction is called!
+Error: Maximum call stack size exceeded
+```
+
+### CORS 정책 준수
+
+ES 모듈을 사용하여 외부 모듈을 가져올 때, 브라우저는 자동으로 CORS 정책을 적용합니다. 즉, `script` 태그에 `crossorigin` 속성을 직접 추가하지 않아도 `anonymous`로 설정됨을 의미합니다.
+
+```html
+<!-- CORS 요청 없음 -->
+<script src="https://example.com/some-script.js"></script>
+
+<!-- CORS 정책 준수 -->
+<script src="https://example.com/some-script.js" crossorigin="anonymous"></script>
+
+<!-- CORS 정책 준수, 다음 두 코드는 동일합니다. -->
+<script type="module" src="https://example.com/some-module.js"></script>
+<script type="module" src="https://example.com/some-module.js" crossorigin="anonymous" ></script>
+```
+
+## 제공하는 기능
+
+### `import` 및 `export`
+
+모듈을 가져오고 내보내기 위해 `import` 및 `export` 키워드를 사용할 수 있습니다. 특히, 번들러의 설정이 없다면 모듈을 가져올 때 확장자를 반드시 명시해야 합니다.
+
+다음은 모듈을 정의하고 내보내는 예시 코드입니다.
+
+```js
+// myModule.js
+
+// Named export
+export const namedExport1 = () => {
+  console.log('This is named export 1');
+};
+
+export const namedExport2 = () => {
+  console.log('This is named export 2');
+};
+
+// Default export
+const defaultExport = () => {
+  console.log('This is the default export');
+};
+
+export default defaultExport;
+```
+
+이렇게 내보낸 모듈은 다음과 같이 가져와 사용할 수 있습니다.
+
+```js
+// main.js
+
+// Import default export, named exports
+import defaultExport, { namedExport1, namedExport2 } from './myModule.js';
+
+defaultExport(); 
+namedExport1();  
+namedExport2();
+```
+
+#### Re-export
+
+하나의 모듈에서 다른 여러 모듈을 가져와 다시 내보내는 것을 Re-export라고 합니다.
+
+예를 들어, 다음과 같은 두 모듈이 있다고 가정해봅시다.
+```js
+// moduleA.js
+export const functionA = () => {
+  console.log('Function A from Module A');
+};
+
+export const variableA = 'Variable A';
+```
+```js
+// moduleB.js
+export const functionB = () => {
+  console.log('Function B from Module B');
+};
+
+export const variableB = 'Variable B';
+```
+
+두 모듈을 모두 가져와 다시 내보내는 `index.js` 모듈을 사용해봅시다.
+```js
+// index.js
+import { functionA, variableA } from './moduleA.js';
+import { functionB, variableB } from './moduleB.js';
+
+export { functionA, variableA, functionB, variableB };
+```
+
+위 모듈을 re-export 모듈로 변경하면 더 간결하게 사용할 수 있습니다.
+```js
+// index.js
+export * from './moduleA.js';
+export * from './moduleB.js';
+```
+
+이렇게 내보낸 모듈은 다음과 같이 사용할 수 있습니다.
+```js
+// main.js
+import { functionA, functionB, variableA, variableB } from './index.js';
+
+functionA(); // Function A from Module A
+functionB(); // Function B from Module B
+console.log(variableA); // Variable A
+console.log(variableB); // Variable B
+```
+
+### 최상위 await
+
+ES 모듈에서는 `async function`을 사용하지 않고 최상위 수준에서 `await` 키워드를 사용할 수 있습니다.
+
+```js
+// main.js
+import { fetchData } from './fetchData.js';
+
+const url = 'https://example.com/users/...';
+
+try {
+  const data = await fetchData(url);
+  console.log('Fetched data:', data);
+} catch (error) {
+  console.error('Error fetching data:', error);
+}
+
+// 다른 동기 코드들
+console.log('This runs after the data is fetched');
+```
+
+### `import.meta`
+
+모듈의 메타데이터를 저장하고 있는 `import.meta` 객체이며, 다음과 같은 정보를 저장하고 있습니다.
+```js
+{
+  dirname: '/my-path',
+  filename: '/my-path/a.mjs',
+  resolve: [Function: resolve],
+  url: 'file:///my-path/a.mjs'
+}
+```
+
+### 다이나믹 import
+
+다이나믹 import를 사용하면 조건에 따라 모듈을 비동기적으로 가져올 수 있습니다. `import`를 함수처럼 호출하며, 이를 통해 성능 최적화 및 코드 분할을 달성할 수 있습니다.
+
+```js
+async function loadModule(condition) {
+  if (condition) {
+    try {
+      const module = await import('./dynamicModule.js');
+      module.dynamicFunction();
+    } catch (error) {
+      console.error('Error loading module:', error);
+    }
+  } else {
+    console.log('Condition not met, module not loaded');
+  }
+}
+
+// 조건에 따라 모듈을 로드합니다.
+const condition = process.env.NODE_ENV === 'production';
+loadModule(condition);
+```

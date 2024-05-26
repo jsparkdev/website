@@ -3,8 +3,8 @@ import PostLink from "~/components/PostLink.astro";
 import { getCollection } from "astro:content";
 
 const postsCollection = (await getCollection("posts"))
-	.sort((front, back) => +back.data.updatedAt - +front.data.updatedAt)
-	.slice(0, 3);
+  .sort((front, back) => +back.data.updatedAt - +front.data.updatedAt)
+  .slice(0, 3);
 ---
 
 <section>

@@ -1,7 +1,13 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
   "files": {
-    "include": ["src/**/*.astro", "src/content/**/*.json"]
+    "include": [
+      "*.mjs",
+      "*.json",
+      "./src/**/*.ts",
+      "./src/**/*.json",
+      "./src/**/*.astro"
+    ]
   },
   "organizeImports": {
     "enabled": true
