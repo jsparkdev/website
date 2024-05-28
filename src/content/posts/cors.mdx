@@ -1,0 +1,258 @@
+---
+title: SOP와 CORS 정책
+description: SOP (Same-Origin Policy)와 CORS (Cross-Origin Resource Sharing) 정책에 대해 알아봅니다.
+updatedAt: 2024-05-28
+---
+
+## SOP
+
+동일 출처 정책 (Same-Origin Policy)이라고도 하며, 동일 출처 간 리소스 접근 요청만 허용하고 외부 출처의 요청을 차단하는 브라우저의 기본 보안 정책입니다.
+
+여기서 출처 (Origin)란, 프로토콜, 호스트, 포트를 의미합니다. 예를 들어, `https://example.com:8080`와 `https://example.com:8081`은 서로 다른 출처입니다.
+
+자세한 설명은 [MDN 문서](https://developer.mozilla.org/ko/docs/Glossary/Origin)를 확인하세요.
+
+## CORS
+
+웹 애플리케이션을 빌드하다 보면 다른 출처의 리소스를 요청해야 하는 경우가 있습니다. 이때, CORS (Cross-Origin Resource Sharing) 정책을 이용하여 다른 출처의 리소스 요청을 허용할 수 있습니다.
+
+### HTTP 헤더로 CORS 설정
+
+CORS를 설정하기 위해서는 서버에서 응답 헤더에 [`Access-Control-Allow-Origin`](https://developer.mozilla.org/ko/docs/Web/HTTP/CORS#access-control-allow-origin) 헤더를 추가해야 합니다.
+
+다음 헤더가 응답에 포함되면 서버는 `https://example.com` 출처에서 온 요청만 허용합니다.
+
+```http
+Access-Control-Allow-Origin: https://example.com
+```
+
+모든 요청을 허용하기 위해 다음 헤더를 사용할 수도 있습니다.
+
+```http
+Access-Control-Allow-Origin: *
+```
+
+## 단순 요청과 사전 요청
+
+클라이언트가 보내는 요청은 [단순 요청](https://developer.mozilla.org/ko/docs/Web/HTTP/CORS#%EB%8B%A8%EC%88%9C_%EC%9A%94%EC%B2%ADsimple_requests)과 [사전 요청](https://developer.mozilla.org/ko/docs/Web/HTTP/CORS#%ED%94%84%EB%A6%AC%ED%94%8C%EB%9D%BC%EC%9D%B4%ED%8A%B8_%EC%9A%94%EC%B2%AD)으로 나뉩니다.
+
+### 단순 요청
+
+단순 요청은 다음 조건을 모두 만족할 때 해당됩니다.
+
+- 요청 메서드가 `GET`, `HEAD`, `POST` 중 하나입니다.
+- 커스텀 헤더가 없습니다.
+- `Content-Type` 헤더가 `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain` 중 하나입니다.
+
+단순 요청이 발생한 경우, 다음과 같은 순서로 요청이 처리됩니다.
+
+```tsx
+fetch('https://api.otherdomain.com/data', {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json'
+  },
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('CORS Error:', error));
+```
+
+```tsx
+import express from 'express';
+
+const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://anotherdomain.com');
+  next();
+});
+
+app.get('/data', (req, res) => {
+  res.json({ message: 'Hello, world!' });
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+
+1. 브라우저는 요청이 단순 요청인지 확인하고, 맞다면 `Origin` 헤더가 포함된 해당 요청을 서버로 보냅니다.
+2. 서버는 요청을 수신하고 `Access-Control-Allow-Origin` 헤더가 포함된 응답을 생성합니다.
+2. 브라우저는 응답을 수신하여 응답의 `Access-Control-Allow-Origin` 헤더를 확인하여 CORS 정책 위반 여부를 판단합니다.
+4. 정책 위반이 없다면 브라우저는 응답을 클라이언트에게 전달하고, 위반한 경우 오류를 발생시킵니다.
+
+### 사전 요청
+
+사전 요청은 단순 요청 조건을 만족하지 않을 때 발생합니다. 사전 요청이 발생한 경우, 다음과 같은 순서로 요청이 처리됩니다.
+
+```tsx
+fetch('https://api.otherdomain.com/data', {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Custom-Header': 'value'
+  },
+  body: JSON.stringify({ key: 'value' }),
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('CORS Error:', error));
+```
+
+1. 브라우저는 요청이 단순 요청의 조건을 만족하는지 확인하고, 만족하지 않는 경우 서버로 사전 요청을 전송합니다.
+2. 즉, 브라우저는 자동으로  `Origin`, `Access-Control-Request-Method`, `Access-Control-Request-Headers` 헤더를 포함한 요청을 `OPTIONS` 메서드로 서버에 전송합니다.
+
+```http
+OPTIONS /data HTTP/1.1
+Host: api.otherdomain.com
+Origin: https://example.com
+Access-Control-Request-Method: PUT
+Access-Control-Request-Headers: Content-Type, X-Custom-Header
+```
+```tsx
+import express from 'express';
+
+const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://example.com');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS'); // 허용할 HTTP 메서드
+  res.header('Access-Control-Allow-Headers', 'Content-Type, X-Custom-Header'); // 허용할 HTTP 헤더
+  res.header('Access-Control-Max-Age', '3600'); // 사전 요청 캐시 시간 (1시간)
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200); // 사전 요청에 대한 응답
+  }
+
+  next();
+});
+
+app.put('/data', (req, res) => {
+  res.json({ message: 'Data received' });
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+
+3. 서버는 사전 요청을 받아 브라우저로 응답을 전송합니다.
+
+```http
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://example.com
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+Access-Control-Allow-Headers: Content-Type, X-Custom-Header
+Access-Control-Max-Age: 3600
+```
+
+4. 브라우저는 이 응답을 확인하고 헤더의 모든 조건이 일치한다면 클라이언트에서 작성된 실제 요청을 서버로 전송합니다.
+
+```http
+PUT /data HTTP/1.1
+Host: api.otherdomain.com
+Origin: https://example.com
+Content-Type: application/json
+X-Custom-Header: value
+```
+
+5. 서버는 이 요청을 받아 처리하고 응답을 생성하여 브라우저로 전송합니다.
+
+```json
+{
+  "message": "Data received"
+}
+```
+
+### 자격 증명이 필요한 요청
+
+자격 증명이 필요한 요청은 단순 요청으로 처리될 수도 있지만, 보안을 위해 사전 요청으로 처리하는 것이 좋습니다.
+
+1. `credentials: 'include'` 옵션을 사용하여 요청에 쿠키 또는 인증 헤더를 포함합니다.
+
+```tsx
+fetch('https://api.otherdomain.com/data', {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json'
+  },
+  credentials: 'include' // 자격 증명을 포함 // [!code highlight]
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('CORS Error:', error));
+```
+
+2. 브라우저는 CORS 규칙을 확인하여 단순 요청인지, 사전 요청인지 판단합니다. 단순 요청이라면 요청을 서버로 그대로 보냅니다.
+3. 사전 요청인 경우  `Origin`, `Access-Control-Request-Method`, `Access-Control-Request-Headers` 헤더와 함께 자격 증명을 포함해야 함을 알리는 `Access-Control-Allow-Credentials` 헤더가 포함됩니다.
+
+```http
+OPTIONS /data HTTP/1.1
+Host: api.otherdomain.com
+Origin: https://example.com
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: Accept
+```
+```tsx
+import express from 'express';
+
+const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://example.com');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS'); // 허용할 HTTP 메서드
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // 허용할 HTTP 헤더
+  res.header('Access-Control-Allow-Credentials', 'true'); // 자격 증명 허용 // [!code highlight]
+  res.header('Access-Control-Max-Age', '3600'); // 사전 요청 캐시 시간 (1시간)
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200); // 사전 요청에 대한 응답
+  }
+
+  next();
+});
+
+app.get('/data', (req, res) => {
+  res.json({ message: 'Data received' });
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+
+4. 서버는 이 요청을 수신하고, 다음과 같은 응답을 전송합니다.
+
+```http
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://example.com
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+Access-Control-Allow-Headers: Content-Type, Authorization
+Access-Control-Allow-Credentials: true
+Access-Control-Max-Age: 3600
+```
+
+5. 브라우저는 응답의 모든 헤더를 분석한 후, 요청을 서버로 전송합니다.
+
+```http
+GET /data HTTP/1.1
+Host: api.otherdomain.com
+Origin: https://example.com
+Accept: application/json
+Cookie: sessionId=abc123
+```
+
+6. 서버는 위 요청을 받아 다음 응답을 브라우저로 전송합니다.
+
+```json
+{
+  "message": "Data received"
+}
+```
+
+즉 정리하면 다음과 같습니다.
+
+- 요청에 쿠키나 자격 증명을 포함하기 위해 `credentials: 'include'` 옵션을 사용합니다.
+- 서버에서는 `Access-Control-Allow-Credentials: true` 헤더를 포함하여 자격 증명을 허용합니다.
+- 요청에 자격 증명이 포함되었지만, `Access-Control-Allow-Credentials: true` 헤더가 없는 경우 CORS 오류가 발생합니다.
