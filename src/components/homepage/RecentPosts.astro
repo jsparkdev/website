@@ -1,10 +1,10 @@
 ---
-import PostLink from "~/components/PostLink.astro";
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content'
+import PostLink from '~/components/PostLink.astro'
 
-const postsCollection = (await getCollection("posts"))
-  .sort((front, back) => +back.data.updatedAt - +front.data.updatedAt)
-  .slice(0, 3);
+const postsCollection = (await getCollection('posts'))
+	.sort((front, back) => +back.data.updatedAt - +front.data.updatedAt)
+	.slice(0, 3)
 ---
 
 <section>

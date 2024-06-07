@@ -1,45 +1,15 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
-  "files": {
-    "include": [
-      "*.mjs",
-      "*.json",
-      "./src/**/*.ts",
-      "./src/**/*.json",
-      "./src/**/*.astro"
-    ]
-  },
-  "organizeImports": {
-    "enabled": true
-  },
-  "javascript": {
-    "formatter": {
-      "enabled": true,
-      "arrowParentheses": "asNeeded",
-      "indentStyle": "space"
-    }
-  },
-  "json": {
-    "formatter": {
-      "enabled": true,
-      "indentStyle": "space"
-    },
-    "parser": {
-      "allowTrailingCommas": true
-    }
-  },
-  "vcs": {
-    "useIgnoreFile": true,
-    "defaultBranch": "main"
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space"
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true
-    }
-  }
+	"$schema": "https://biomejs.dev/schemas/1.8.0/schema.json",
+	"files": {
+		"include": ["**/*.mjs", "**/*.json", "src/**/*"],
+		"ignore": ["node_modules"]
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"jsxQuoteStyle": "single",
+			"semicolons": "asNeeded",
+			"arrowParentheses": "asNeeded"
+		}
+	}
 }

@@ -1,20 +1,20 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import Header from "~/components/Header.astro";
-import "~/styles/tailwind.css";
+import { ViewTransitions } from 'astro:transitions'
+import Header from '~/components/Header.astro'
+import '~/styles/tailwind.css'
 
 interface Props {
-  title: string;
-  description: string;
-  path?: string;
+	title: string
+	description: string
+	path?: string
 }
 
-const { title, description, path } = Astro.props;
+const { title, description, path } = Astro.props
 
-const name = "Junseong Park";
-const username = "@jsparkdev";
+const name = 'Junseong Park'
+const username = '@jsparkdev'
 
-const canonicalURL = path ? `${Astro.site}${path}/` : Astro.site;
+const canonicalURL = path ? `${Astro.site}${path}/` : Astro.site
 ---
 
 <!doctype html>
