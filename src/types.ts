@@ -1,4 +1,4 @@
-export interface Meta {
+export type Meta = {
 	title: string
 	description: string
 	path?: string
