@@ -1,35 +1,23 @@
 ---
-import ScrollWatcher from './ScrollWatcher.astro'
-import SocialLink from './SocialLink.astro'
-
-const socialList = [
-	{
-		name: 'ri:github-line',
-		href: 'https://github.com/jsparkdev',
-		title: 'Github로 이동합니다.',
-	},
-	{
-		name: 'ri:twitter-x-line',
-		href: 'https://x.com/jsparkdev',
-		title: 'X로 이동합니다.',
-	},
-]
+import Default from '@astrojs/starlight/components/Header.astro'
+import type { Props } from '@astrojs/starlight/props'
 ---
 
-<header class="fixed w-full backdrop-blur z-40">
-  <nav class="flex justify-between items-center px-6 landscape:px-16 py-3">
-    <a href="/" class="font-extrabold text-2xl uppercase" title="홈 페이지로 이동합니다.">
-      jspark.dev
-    </a>
-    <ul class="gap-3 flex">
-      {
-        socialList.map(social => (
-          <li>
-            <SocialLink {...social} />
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-  <ScrollWatcher />
-</header>
+<Default {...Astro.props}><slot /></Default>
+<div class="scroll-watcher min-h-1 w-full z-50 fixed origin-left landscape:hidden" />
+
+<style>
+  .scroll-watcher {
+    scale: 0 1;
+    animation: scroll linear;
+    animation-timeline: scroll(y);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,158,6,1) 20%, rgba(224,255,18,1) 40%, rgba(0,255,6,1) 60%, rgba(26,29,255,1) 80%, rgba(194,0,255,1) 100%);
+  }
+
+  @keyframes scroll {
+    to {
+      scale: 1;
+    }
+  }
+</style>

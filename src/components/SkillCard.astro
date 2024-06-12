@@ -7,10 +7,10 @@ interface Props {
 }
 
 const { icon, name } = Astro.props
-const size = 20
+const size = 30
 ---
 
-<div class="flex items-center gap-1 bg-slate-600 py-1 px-3 rounded-xl">
+<div class="flex items-center gap-3 bg-slate-600 text-white py-3 px-5 rounded-xl mt-4">
   <Icon name={icon} size={size} />
-  {name}
+  <span class="antialiased">{name}</span>
 </div>

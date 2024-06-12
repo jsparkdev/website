@@ -1,0 +1,41 @@
+---
+import SkillCard from '~/components/SkillCard.astro'
+
+type SkillType = 'language' | 'framework' | 'tool'
+
+type Skill = {
+	icon: string
+	name: string
+	type: SkillType
+}
+
+interface Props {
+	type: SkillType
+}
+
+const { type } = Astro.props
+
+const skillList: Skill[] = [
+	{ icon: 'devicon:html5', name: 'HTML5', type: 'language' },
+	{ icon: 'devicon:css3', name: 'CSS3', type: 'language' },
+	{ icon: 'logos:javascript', name: 'JavaScript', type: 'language' },
+	{ icon: 'devicon:typescript', name: 'TypeScript', type: 'language' },
+	{ icon: 'logos:vitejs', name: 'Vite', type: 'framework' },
+	{ icon: 'logos:react', name: 'React', type: 'framework' },
+	{ icon: 'devicon:nextjs', name: 'Next.js', type: 'framework' },
+	{ icon: 'skill-icons:remix-dark', name: 'Remix', type: 'framework' },
+	{ icon: 'vscode-icons:file-type-astro', name: 'Astro', type: 'framework' },
+	{ icon: 'devicon:tailwindcss', name: 'Tailwind CSS', type: 'framework' },
+	{ icon: 'devicon:vercel', name: 'Vercel', type: 'tool' },
+	{ icon: 'logos:cloudflare-icon', name: 'Cloudflare', type: 'tool' },
+	{ icon: 'logos:github-icon', name: 'Github', type: 'tool' },
+]
+---
+
+<div class="flex gap-2 flex-wrap">
+	{
+		skillList.filter(skill => skill.type === type).map(skill => (
+			<SkillCard icon={skill.icon} name={skill.name} />
+		))
+	}
+</div>

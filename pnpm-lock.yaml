@@ -11,18 +11,12 @@ importers:
       '@astrojs/check':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.4.5)
-      '@astrojs/mdx':
-        specifier: ^3.1.0
-        version: 3.1.0(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))
       '@astrojs/sitemap':
         specifier: ^3.1.5
         version: 3.1.5
       '@astrojs/starlight':
         specifier: ^0.24.1
         version: 0.24.1(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))
-      '@astrojs/starlight-tailwind':
-        specifier: ^2.0.3
-        version: 2.0.3(@astrojs/starlight@0.24.1(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5)))(@astrojs/tailwind@5.1.0(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))(tailwindcss@3.4.4))(tailwindcss@3.4.4)
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.0(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))(tailwindcss@3.4.4)
@@ -32,9 +26,6 @@ importers:
       '@iconify-json/logos':
         specifier: ^1.1.43
         version: 1.1.43
-      '@iconify-json/ri':
-        specifier: ^1.1.20
-        version: 1.1.20
       '@iconify-json/skill-icons':
         specifier: ^1.1.8
         version: 1.1.8
@@ -113,13 +104,6 @@ packages:
 
   '@astrojs/sitemap@3.1.5':
     resolution: {integrity: sha512-GLdzJ01387Uzb8RKYpsYLlg/GzoPnGbmDeQNkarSE11i2+l9Qp8Nj/WoTEy9nkTS25fxxy0kxDfJmreeVleCqg==}
-
-  '@astrojs/starlight-tailwind@2.0.3':
-    resolution: {integrity: sha512-ZwbdXS/9rxYlo3tKZoTZoBPUnaaqek02b341dHwOkmMT0lIR2w+8k0mRUGxnRaYtPdMcaL+nYFd8RUa8sjdyRg==}
-    peerDependencies:
-      '@astrojs/starlight': '>=0.9.0'
-      '@astrojs/tailwind': ^5.0.0
-      tailwindcss: ^3.3.3
 
   '@astrojs/starlight@0.24.1':
     resolution: {integrity: sha512-5wuIdF8PfDpzEEjfNcmffDDLbi2GWT0XCJH9pk+Pw5+yftwC9QdGzYrY9Ui9kIaXcODlwvL62L04kHB50j4lhw==}
@@ -617,9 +601,6 @@ packages:
 
   '@iconify-json/logos@1.1.43':
     resolution: {integrity: sha512-UtvL1yDHUr9dl1Tqihh6K9m5dmbYKOYyLf3i9aKhymSW76QjOCGjpgQc0PQ4GJCAdU1cAMu+WO61TgPxdonrlg==}
-
-  '@iconify-json/ri@1.1.20':
-    resolution: {integrity: sha512-yScIGjLFBCJKWKskQTWRjNI2Awoq+VRDkRxEsCQvSfdz41n+xkRtFG2K6J1OVI90ClRHfjFC8VJ2+WzxxyFjTQ==}
 
   '@iconify-json/skill-icons@1.1.8':
     resolution: {integrity: sha512-pzgiS7bVDyyff9HNXQkkwZSaSc36TVQYhXMr6tBu/XmAreXdj4xdkTRpPcnwtHlhHwsI4NDCe/l3QiWavqsbkw==}
@@ -2990,12 +2971,6 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/starlight-tailwind@2.0.3(@astrojs/starlight@0.24.1(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5)))(@astrojs/tailwind@5.1.0(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))(tailwindcss@3.4.4))(tailwindcss@3.4.4)':
-    dependencies:
-      '@astrojs/starlight': 0.24.1(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))
-      '@astrojs/tailwind': 5.1.0(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))(tailwindcss@3.4.4)
-      tailwindcss: 3.4.4
-
   '@astrojs/starlight@0.24.1(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))':
     dependencies:
       '@astrojs/mdx': 3.1.0(astro@4.10.2(@types/node@20.14.2)(typescript@5.4.5))
@@ -3432,10 +3407,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/logos@1.1.43':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/ri@1.1.20':
     dependencies:
       '@iconify/types': 2.0.0
 
