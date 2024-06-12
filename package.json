@@ -24,6 +24,7 @@
 		"typescript": "^5.4.5"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.8.1"
+		"@biomejs/biome": "1.8.1",
+		"astro-vtbot": "^1.7.23"
 	}
 }
