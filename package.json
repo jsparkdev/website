@@ -19,6 +19,7 @@
 		"@iconify-json/vscode-icons": "^1.1.35",
 		"astro": "^4.10.2",
 		"astro-icon": "^1.1.0",
+		"sharp": "^0.33.4",
 		"tailwindcss": "^3.4.4",
 		"typescript": "^5.4.5"
 	},
