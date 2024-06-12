@@ -1,8 +1,12 @@
 ---
 import About from '~/components/homepage/About.astro'
-import RecentPosts from '~/components/homepage/RecentPosts.astro'
 import Layout from '~/layouts/Layout.astro'
-import type { Meta } from '~/types'
+
+export type Meta = {
+	title: string
+	description: string
+	path?: string
+}
 
 const meta: Meta = {
 	title: 'Junseong Park',
@@ -14,6 +18,8 @@ const meta: Meta = {
 <Layout {...meta} >
   <section class="max-w-[600px] mx-auto flex flex-col gap-10">
     <About />
-    <RecentPosts />
+    <article class='text-4xl'>
+      블로그 공사중입니다...
+    </article>
   </section>
 </Layout>

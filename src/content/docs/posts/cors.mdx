@@ -177,7 +177,7 @@ fetch('https://api.otherdomain.com/data', {
   headers: {
     'Accept': 'application/json'
   },
-  credentials: 'include' // 자격 증명을 포함 // [!code highlight]
+  credentials: 'include' // 자격 증명을 포함
 })
 .then(response => response.json())
 .then(data => console.log(data))
@@ -203,7 +203,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://example.com');
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS'); // 허용할 HTTP 메서드
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // 허용할 HTTP 헤더
-  res.header('Access-Control-Allow-Credentials', 'true'); // 자격 증명 허용 // [!code highlight]
+  res.header('Access-Control-Allow-Credentials', 'true'); // 자격 증명 허용 
   res.header('Access-Control-Max-Age', '3600'); // 사전 요청 캐시 시간 (1시간)
 
   if (req.method === 'OPTIONS') {
