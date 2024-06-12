@@ -36,7 +36,7 @@ export const userPrefs = createCookie("user-prefs", {
 ```tsx
 export async function loader({ request }: LoaderFunctionArgs) {
   const cookieHeader = request.headers.get("cookie");
-  const cookie = (await userPrefs.parse(cookieHeader)) || {}; // [!code highlight]
+  const cookie = (await userPrefs.parse(cookieHeader)) || {};
 
   return json({ cookieValue: cookie.myValue });
 }
@@ -56,7 +56,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
   return redirect("/", {
     headers: {
-      "set-cookie": await userPrefs.serialize(cookie), // [!code highlight]
+      "set-cookie": await userPrefs.serialize(cookie),
     },
   });
 }
@@ -106,7 +106,7 @@ export { getSession, commitSession, destroySession };
 
 ```tsx
 export async function loader({ request }: LoaderFunctionArgs) {
-  const session = await getSession(request.headers.get("cookie")); // [!code highlight]
+  const session = await getSession(request.headers.get("cookie"));
 
   return json({ userId: session.get("userId") });
 }
@@ -120,17 +120,17 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 ```tsx
 export async function action({ request }: ActionFunctionArgs) {
-  const session = await getSession(request.headers.get("cookie")); // [!code highlight]
+  const session = await getSession(request.headers.get("cookie"));
 
   const formData = await request.formData();
   const indent = formData.get("indent");
 
     // 로그인
   if (indent === "login") {
-    session.set("userId", "jsparkdev"); // [!code highlight]
+    session.set("userId", "jsparkdev");
     return redirect("/", {
       headers: {
-        "set-cookie": await commitSession(session), // [!code highlight]
+        "set-cookie": await commitSession(session),
       },
     });
   }
@@ -139,7 +139,7 @@ export async function action({ request }: ActionFunctionArgs) {
   if (indent === "logout") {
     return redirect("/", {
       headers: {
-        "set-cookie": await destroySession(session), // [!code highlight]
+        "set-cookie": await destroySession(session),
       },
     });
   }

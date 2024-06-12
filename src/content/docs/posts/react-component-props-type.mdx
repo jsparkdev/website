@@ -45,7 +45,7 @@ function App() {
 ```tsx
 export default function Button({
 	children,
-	className,   // [!code ++]
+	className,   // 
 }: { children: React.ReactNode; className?: string }) {
 	return <button className={className}>{children}</button>
 }
@@ -58,9 +58,9 @@ export default function Button({
 React의 `ComponentProps` 타입을 사용합니다.
 
 ```tsx
-import type { ComponentProps } from 'react'   // [!code ++]
+import type { ComponentProps } from 'react'
 
-type ButtonProps = ComponentProps<'button'>   // [!code ++]
+type ButtonProps = ComponentProps<'button'>
 
 export default function Button(props: ButtonProps) {
 	return <button {...props} />

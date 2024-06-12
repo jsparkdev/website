@@ -20,18 +20,18 @@ AValue satisfies BType
 const palette = {
   red: [255, 0, 0],
   green: '#00FF00',
-  bule: [0, 0, 255] // [!code error]
+  bule: [0, 0, 255]
 }
 ```
 
 객체에서 오타가 발견되었고, 이런 실수를 방지하기 위해 타입을 정의하였습니다.
 
 ```ts
-type ColorName = 'red' | 'green' | 'blue'; // [!code ++]
-type RGB = [red: number, green: number, blue: number]; // [!code ++]
-type ColorValue = RGB | string; // [!code ++]
+type ColorName = 'red' | 'green' | 'blue';
+type RGB = [red: number, green: number, blue: number];
+type ColorValue = RGB | string;
 
-const palette: Record<ColorName, ColorValue> = { // [!code ++]
+const palette: Record<ColorName, ColorValue> = {
   red: [255, 0, 0],
   green: '#00FF00',
   bule: [0, 0, 255]
@@ -51,7 +51,7 @@ const palette: Record<ColorName, ColorValue> = {
   blue: [0, 0, 255]
 }
 
-const result = palette.green.toLowerCase() // [!code error]
+const result = palette.green.toLowerCase()
 ```
 
 타입을 설정하여 `palette.green`의 타입이 `ColorValue`가 되었기 때문에 `toLowerCase` 메서드를 사용할 수 없습니다.
@@ -69,7 +69,7 @@ const palette = {
   red: [255, 0, 0],
   green: '#00FF00',
   blue: [0, 0, 255]
-} satisfies Record<ColorName, ColorValue> // [!code ++]
+} satisfies Record<ColorName, ColorValue>
 
 const result = palette.green.toLowerCase();
 ```
