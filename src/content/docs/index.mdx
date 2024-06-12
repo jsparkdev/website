@@ -18,15 +18,26 @@ hero:
       variant: secondary
 ---
 
-import SkillList from '~/components/SkillList.astro'
+import Skill from '~/components/Skill.astro'
+import Social from '~/components/Social.astro'
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-  <Card title="언어" icon="star">
-    <SkillList type='language'  />
+<Tabs>
+  <TabItem label="SNS" icon="twitter">
+    <Social />
+  </TabItem>
+  <TabItem label="사용하는 기술" icon="seti:typescript">
+    <Card title="언어" icon="seti:typescript">
+    <Skill type='language'  />
   </Card>
-  <Card title="라이브러리 및 프레임워크" icon="moon">
-    <SkillList type='framework' />
+  <Card title="라이브러리 및 프레임워크" icon="seti:react">
+    <Skill type='framework' />
   </Card>
-  <Card title="배포" icon="moon">
-    <SkillList type='tool' />
+  <Card title="배포" icon="seti:github">
+    <Skill type='tool' />
   </Card>
+  </TabItem>
+</Tabs>
+
+  

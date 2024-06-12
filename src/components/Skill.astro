@@ -1,5 +1,5 @@
 ---
-import SkillCard from '~/components/SkillCard.astro'
+import Card from '~/components/Card.astro'
 
 type SkillType = 'language' | 'framework' | 'tool'
 
@@ -35,7 +35,7 @@ const skillList: Skill[] = [
 <div class="flex gap-2 flex-wrap">
 	{
 		skillList.filter(skill => skill.type === type).map(skill => (
-			<SkillCard icon={skill.icon} name={skill.name} />
+			<Card icon={skill.icon} name={skill.name} />
 		))
 	}
 </div>

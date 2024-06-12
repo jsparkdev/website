@@ -1,0 +1,31 @@
+---
+import Card from '~/components/Card.astro'
+
+type Social = {
+	icon: string
+	name: string
+	href: string
+}
+
+const socialList: Social[] = [
+	{ icon: 'logos:twitter', name: 'Twitter', href: 'https://x.com/jsparkdev' },
+	{
+		icon: 'skill-icons:linkedin',
+		name: 'Linkedin',
+		href: 'https://linkedin.com/in/jsparkdev',
+	},
+	{
+		icon: 'logos:github-icon',
+		name: 'Github',
+		href: 'https://github.com/jsparkdev',
+	},
+]
+---
+
+<div class="flex gap-2 flex-wrap">
+	{
+		socialList.map(social => (
+			<a href={social.href} target="_blank"><Card icon={social.icon} name={social.name} /></a>
+		))
+	}
+</div>
