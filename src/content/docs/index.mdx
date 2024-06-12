@@ -8,6 +8,9 @@ head:
 hero:
   title: Junseong Park
   tagline: 프런트엔드 개발자 박준성의 웹 사이트입니다.
+  image:
+    file: ../../assets/icon.svg
+    alt: 웹사이트 로고
   actions:
     - text: 게시물 더 보기
       link: /posts
@@ -16,16 +19,14 @@ hero:
 ---
 
 import SkillList from '~/components/SkillList.astro'
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Card, CardGrid } from '@astrojs/starlight/components';
 
-<Tabs syncKey="기술 스택">
-  <TabItem label="언어">
+  <Card title="언어" icon="star">
     <SkillList type='language'  />
-  </TabItem>
-  <TabItem label="라이브러리 및 프레임워크">
+  </Card>
+  <Card title="라이브러리 및 프레임워크" icon="moon">
     <SkillList type='framework' />
-  </TabItem>
-  <TabItem label="배포 및 인프라">
+  </Card>
+  <Card title="배포" icon="moon">
     <SkillList type='tool' />
-  </TabItem>
-</Tabs>
+  </Card>
