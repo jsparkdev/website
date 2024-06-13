@@ -1,16 +1,10 @@
 ---
-import Card from '~/components/Card.astro'
+import IconCard, { type IconCardProps } from '~/components/IconCard.astro'
 
-type Social = {
-	icon: string
-	name: string
-	href: string
-}
-
-const socialList: Social[] = [
+const socialList: IconCardProps[] = [
 	{ icon: 'logos:twitter', name: 'Twitter', href: 'https://x.com/jsparkdev' },
 	{
-		icon: 'skill-icons:linkedin',
+		icon: 'logos:linkedin-icon',
 		name: 'Linkedin',
 		href: 'https://linkedin.com/in/jsparkdev',
 	},
@@ -25,7 +19,7 @@ const socialList: Social[] = [
 <div class="flex gap-2 flex-wrap">
 	{
 		socialList.map(social => (
-			<a href={social.href} target="_blank"><Card icon={social.icon} name={social.name} /></a>
+		<IconCard {...social} />
 		))
 	}
 </div>

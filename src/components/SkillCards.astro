@@ -1,0 +1,32 @@
+---
+import IconCard, { type IconCardProps } from '~/components/IconCard.astro'
+
+const skillList: IconCardProps[] = [
+	{
+		icon: 'devicon:css3',
+		name: 'CSS3',
+		href: 'https://developer.mozilla.org/ko/docs/Web/CSS',
+	},
+	{
+		icon: 'devicon:typescript',
+		name: 'TypeScript',
+		href: 'https://www.typescriptlang.org/ko',
+	},
+	{ icon: 'logos:vitejs', name: 'Vite', href: 'https://ko.vitejs.dev' },
+	{ icon: 'logos:react', name: 'React', href: 'https://ko.react.dev' },
+	{ icon: 'skill-icons:remix-dark', name: 'Remix', href: 'https://remix.run' },
+	{
+		icon: 'vscode-icons:file-type-astro',
+		name: 'Astro',
+		href: 'https://astro.build',
+	},
+]
+---
+
+<div class="flex gap-2 flex-wrap">
+	{
+		skillList.map(skill => (
+			<IconCard {...skill} />
+		))
+	}
+</div>
