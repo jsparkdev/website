@@ -39,13 +39,8 @@ export default defineConfig({
 					},
 				},
 			],
-			logo: {
-				src: './src/assets/icon.svg',
-				alt: '웹사이트 로고',
-				replacesTitle: true,
-			},
+			customCss: ['./src/styles/custom.css'],
 			components: {
-				Header: './src/components/Header.astro',
 				Head: './src/components/Head.astro',
 			},
 			tableOfContents: {

@@ -1,0 +1,14 @@
+/* Dark Mode */
+:root,
+::backdrop {
+  --card-color-bg: #ffb4ff;
+  --card-color-text: #000000;
+  --sl-sidebar-width: 27.75rem;
+}
+
+/* Dark Mode */
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+  --card-color-bg: #a3a3a3;
+  --card-color-text: #ffffff;
+}
