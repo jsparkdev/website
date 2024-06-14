@@ -1,0 +1,32 @@
+---
+import Layout from '~/layouts/layout.astro'
+
+const links = [
+	{
+		name: 'Github',
+		href: 'https://github.com/jsparkdev',
+		desc: 'Visit my Github',
+	},
+	{
+		name: 'x.com',
+		href: 'https://x.com/jsparkdev',
+		desc: 'Follow me on Twitter',
+	},
+]
+---
+
+<Layout>
+  <h1 id="page-title">Junseong Park</h1>
+  <p id="description">
+    I'm a software engineer based in South Korea. I'm interested in web development, especially in front-end development.
+  </p>
+  <ul>
+    {
+      links.map(link => 
+        <li>
+          <a href={link.href} title={link.desc} aria-label={link.desc}>{link.name}</a>
+        </li>
+      )
+    }
+  </ul>
+</Layout>

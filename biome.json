@@ -1,14 +1,16 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.0/schema.json",
-	"files": {
-		"include": ["**/*.mjs", "**/*.json", "src/**/*"]
+	"$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true,
+		"defaultBranch": "main"
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
 			"jsxQuoteStyle": "single",
-			"semicolons": "asNeeded",
-			"arrowParentheses": "asNeeded"
+			"semicolons": "asNeeded"
 		}
 	}
 }
