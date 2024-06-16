@@ -1,3 +1,7 @@
+---
+import '~/styles/global.css'
+---
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -5,10 +9,11 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>Junseong Park</title>
 		<meta name="description" content="Junseong Park's personal website" />
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="icon" href="/favicon.ico" sizes="32x32">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/favicons/manifest.webmanifest">
+    <link rel="icon" href="/favicons/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+		<link rel="preload" href="/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 	</head>
 	<body>
 		<slot />
