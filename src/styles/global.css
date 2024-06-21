@@ -1,10 +1,20 @@
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Variable.woff2') format('woff2');
-  font-weight: 500;
-  font-display: swap;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  font-family: 'Inter', sans-serif;
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/Inter-Variable.woff2') format('woff2');
+  }
+
+  a {
+    text-decoration: underline;
+    transition: all 0.2s;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }

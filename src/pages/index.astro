@@ -16,15 +16,15 @@ const links = [
 ---
 
 <Layout>
-  <h1>Junseong Park</h1>
-  <p>
-    I'm a software engineer based in South Korea. I'm interested in web development, especially in front-end development.
+  <h1 class="text-3xl font-extrabold">Junseong Park</h1>
+  <p class="py-4">
+    Hello! I am a web frontend developer in South Korea. I am passionate about the latest technologies like <a href="https://vitejs.dev" title="Vite">Vite</a>, <a href="https://remix.run" title="Remix">Remix</a>, and <a href="https://astro.build" title="Astro">Astro</a>, and I always enjoy embracing new challenges. I look forward to growing and evolving together!
   </p>
-  <ul>
+  <ul class="flex gap-2">
     {
       links.map(link => 
         <li>
-          <a href={link.href} title={link.desc} aria-label={link.desc}>{link.name}</a>
+          <a href={link.href} title={link.desc}>{link.name}</a>
         </li>
       )
     }
