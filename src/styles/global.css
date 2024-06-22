@@ -9,8 +9,4 @@
     font-display: swap;
     src: url('/fonts/Inter.woff2') format('woff2');
   }
-
-  a {
-    @apply text-blue-500 underline transition-opacity duration-200 hover:opacity-50;
-  }
 }
