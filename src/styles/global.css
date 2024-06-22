@@ -5,16 +5,12 @@
 @layer base {
   @font-face {
     font-family: 'Inter';
-    font-weight: 500;
+    font-weight: 500 800;
     font-display: swap;
-    src: url('/fonts/Inter-Variable.woff2') format('woff2');
+    src: url('/fonts/Inter.woff2') format('woff2');
   }
 
   a {
-    text-decoration: underline;
-    transition: all 0.2s;
-    &:hover {
-      opacity: 0.5;
-    }
+    @apply text-blue-500 underline transition-opacity duration-200 hover:opacity-50;
   }
 }
