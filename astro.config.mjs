@@ -1,9 +1,7 @@
 import sitemap from '@astrojs/sitemap'
+import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
 
-import tailwind from '@astrojs/tailwind'
-
-// https://astro.build/config
 export default defineConfig({
 	site: 'https://jspark.dev',
 	integrations: [
