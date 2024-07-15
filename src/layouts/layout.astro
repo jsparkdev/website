@@ -1,18 +1,46 @@
 ---
 import '~/styles/global.css'
+import { SEO } from 'astro-seo'
+
+const title = 'Junseong Park'
+const description = "Junseong Park's personal website"
 ---
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Junseong Park</title>
-		<meta name="description" content="Junseong Park's personal website" />
-    <link rel="manifest" href="/favicons/manifest.webmanifest">
-    <link rel="icon" href="/favicons/favicon.ico" sizes="32x32">
-    <link rel="icon" href="/favicons/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+		<SEO
+			title={title}
+			charset='UTF-8'
+			description={description}
+			openGraph={{
+				basic: {
+					title,
+					type: "website",
+					image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+				}
+			}}
+			twitter={{
+				creator: "@jsparkdev"
+			}}
+			extend={{
+				link: [
+					{ rel: "icon", type:"image/svg+xml", href: "/favicons/icon.svg" }, 
+					{ rel: "icon", href: "/favicons/favicon.ico", sizes: "32x32" }, 
+					{ rel: "apple-touch-icon", href: "/favicons/apple-touch-icon.png" }, 
+					{ rel: "manifest", href: "/favicons/manifest.webmanifest" }
+				],
+				meta: [
+					{
+						name: "twitter:image",
+						content: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+					},
+					{ name: "twitter:title", content: title },
+					{ name: "twitter:description", content: description },
+				],
+			}}
+	/>
 	</head>
 	<body class="antialiased">
 		<main class="py-16 px-4 max-w-800 xl:mx-auto">
