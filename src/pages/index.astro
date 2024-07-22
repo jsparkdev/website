@@ -18,10 +18,19 @@ const links = [
 
 <Layout>
   <h1 class="text-3xl font-extrabold animate-slide-up">Junseong Park</h1>
-  <p class="my-4 animate-slide-up [animation-delay:0.3s]">
-    Hello! I'm a web developer based in South Korea, passionate about building web applications with tools like <Link href='https://vitejs.dev' title='Vite'>Vite</Link> and <Link href='https://react.dev' title='React'>React</Link>. I have a keen interest in the latest technology trends and am dedicated to enhancing both user and developer experiences.
-  </p>
-  <ul class="flex gap-2 animate-slide-up [animation-delay:0.6s]">
+  <ul class="my-4">
+    <li class="animate-slide-up [animation-delay:0.3s]">Frontend Developer based in South Korea</li>
+    <li class="animate-slide-up [animation-delay:0.4s]">Passionate about 
+      <Link href='https://typescriptlang.org' title='TypeScript'>TypeScript</Link>,
+      <Link href='https://vitejs.dev' title='Vite'>Vite</Link>,
+      <Link href='https://react.dev' title='React'>React</Link>,
+      <Link href='https://astro.build' title='Astro'>Astro</Link>,
+      <Link href='https://remix.run' title='Remix'>Remix</Link>
+    </li>
+    <li class="animate-slide-up [animation-delay:0.5s]">Focused on improving user experiences</li>
+    <li class="animate-slide-up [animation-delay:0.6s]">Prefers simple and fast things</li>
+  </ul>
+  <ul class="flex gap-2 animate-slide-up [animation-delay:0.7s]">
     {
       links.map(link => 
         <li>
