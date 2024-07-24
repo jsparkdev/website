@@ -1,42 +1,36 @@
 ---
+import { Icon } from 'astro-icon/components'
+import Card from '~/components/Card.astro'
 import Link from '~/components/Link.astro'
+import { skills, social } from '~/data'
 import Layout from '~/layouts/layout.astro'
-
-const links = [
-	{
-		name: 'Github',
-		href: 'https://github.com/jsparkdev',
-		desc: 'Visit my Github',
-	},
-	{
-		name: 'Twitter',
-		href: 'https://x.com/jsparkdev',
-		desc: 'Follow me on Twitter',
-	},
-]
 ---
 
 <Layout>
-  <h1 class="text-3xl font-extrabold animate-slide-up">Junseong Park</h1>
-  <ul class="my-4">
-    <li class="animate-slide-up [animation-delay:0.3s]">Frontend Developer based in South Korea</li>
-    <li class="animate-slide-up [animation-delay:0.4s]">Passionate about 
-      <Link href='https://typescriptlang.org' title='TypeScript'>TypeScript</Link>,
-      <Link href='https://vitejs.dev' title='Vite'>Vite</Link>,
-      <Link href='https://react.dev' title='React'>React</Link>,
-      <Link href='https://astro.build' title='Astro'>Astro</Link>,
-      <Link href='https://remix.run' title='Remix'>Remix</Link>
-    </li>
-    <li class="animate-slide-up [animation-delay:0.5s]">Focused on improving user experiences</li>
-    <li class="animate-slide-up [animation-delay:0.6s]">Prefers simple and fast things</li>
-  </ul>
-  <ul class="flex gap-2 animate-slide-up [animation-delay:0.7s]">
-    {
-      links.map(link => 
-        <li>
-          <Link href={link.href} title={link.desc}>{link.name}</Link>
-        </li>
-      )
-    }
-  </ul>
+  <h1 class="text-3xl font-extrabold animate-slide-up mb-10">Junseong Park</h1>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Tech Stack</h2>
+    <div class="flex flex-wrap gap-4">
+      {
+        skills.map(({ name, icon }) => (
+          <Card>
+            <Icon size={50} name={icon} />
+            <p>{name}</p>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+  <section>
+    <h2 class="text-2xl font-bold mb-4">Social</h2>
+    <div class="flex gap-4">
+      {
+        social.map(({ name, url, icon }) => (
+          <Link href={url} title={name}>
+            <Icon size={40} name={icon} />
+          </Link>
+        ))
+      }
+    </div>
+  </section>
 </Layout>
