@@ -32,17 +32,14 @@ const description = "Junseong Park's personal website"
 					{ rel: "manifest", href: "/favicons/manifest.webmanifest" }
 				],
 				meta: [
-					{
-						name: "twitter:image",
-						content: "/favicons/icon-512.png",
-					},
 					{ name: "twitter:title", content: title },
 					{ name: "twitter:description", content: description },
+					{ name: "twitter:image", content: "/favicons/icon-512.png"},
 				],
 			}}
 	/>
 	</head>
-	<body class="antialiased">
+	<body class="antialiased cursor-default">
 		<main class="py-16 px-4 max-w-800 xl:mx-auto">
 			<slot />
 		</main>
