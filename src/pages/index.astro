@@ -7,14 +7,20 @@ import Layout from '~/layouts/layout.astro'
 ---
 
 <Layout>
-  <h1 class="text-3xl font-extrabold mb-10">Junseong Park</h1>
+  <section class="mb-10" >
+    <h1 class="text-3xl font-extrabold">Junseong Park</h1>
+    <a class="hover:opacity-50 duration-200" href="mailto:x@jspark.dev" title="mail">
+      x@jspark.dev
+    </a>
+  </section>
   <section class="mb-10">
-    <h2 class="text-2xl font-bold mb-4">Tech Stack</h2>
-    <div class="flex flex-wrap gap-4">
+    <h2 class="text-xl font-bold">Tech Stack</h2>
+    <p class="mb-6">The building blocks of my development projects</p>
+    <div class="flex flex-wrap gap-5">
       {
         skills.map(({ name, icon }) => (
           <Card>
-            <Icon size={50} name={icon} />
+            <Icon size={40} name={icon} />
             <p>{name}</p>
           </Card>
         ))
@@ -22,12 +28,16 @@ import Layout from '~/layouts/layout.astro'
     </div>
   </section>
   <section>
-    <h2 class="text-2xl font-bold mb-4">Social</h2>
-    <div class="flex gap-4">
+    <h2 class="text-xl font-bold">Social</h2>
+    <p class="mb-6">Discover my recent updates and projects here.</p>
+    <div class="flex flex-wrap gap-5">
       {
         social.map(({ name, url, icon }) => (
           <Link href={url} title={name}>
-            <Icon size={40} name={icon} />
+            <Card>
+              <Icon size={30} name={icon} />
+              <p>{name}</p>
+            </Card>
           </Link>
         ))
       }

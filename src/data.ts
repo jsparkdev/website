@@ -32,8 +32,13 @@ export const social = [
 		icon: 'devicon:github',
 	},
 	{
-		name: 'x.com',
+		name: 'Twitter',
 		url: 'https://x.com/jsparkdev',
 		icon: 'devicon:twitter',
+	},
+	{
+		name: 'Linkedin',
+		url: 'https://www.linkedin.com/in/jsparkdev/?locale=en_US',
+		icon: 'devicon:linkedin',
 	},
 ]
