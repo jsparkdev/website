@@ -27,6 +27,10 @@ export const skills = [
 		name: 'Cloudflare',
 		icon: 'devicon:cloudflare',
 	},
+	{
+		name: 'Cloudflare Workers',
+		icon: 'devicon:cloudflareworkers',
+	},
 ]
 
 export const social = [
