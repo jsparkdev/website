@@ -16,6 +16,10 @@ export const skills = [
 		icon: 'devicon:astro',
 	},
 	{
+		name: 'Next.js',
+		icon: 'devicon:nextjs',
+	},
+	{
 		name: 'Remix',
 		icon: 'devicon:remix',
 	},
