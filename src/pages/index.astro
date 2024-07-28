@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components'
 import Card from '~/components/Card.astro'
 import Link from '~/components/Link.astro'
-import { skills, social } from '~/data'
+import { projects, skills, social } from '~/data'
 import Layout from '~/layouts/layout.astro'
 ---
 
@@ -27,7 +27,7 @@ import Layout from '~/layouts/layout.astro'
       }
     </div>
   </section>
-  <section>
+  <section class="mb-10">
     <h2 class="text-xl font-bold">Social</h2>
     <p class="mb-6">Discover my recent updates and projects here.</p>
     <div class="flex flex-wrap gap-3">
@@ -39,6 +39,33 @@ import Layout from '~/layouts/layout.astro'
               <p>{name}</p>
             </Card>
           </Link>
+        ))
+      }
+    </div>
+  </section>
+  <section>
+    <h2 class="text-xl font-bold">Projects</h2>
+    <p class="mb-6">
+      Here are some of the projects I've worked on recently.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      {
+        projects.map(({ name, url, description, icons }) => (
+        <Link href={url} title={name}>
+          <Card>
+            <div>
+              <p class="text-xl font-semibold">{name}</p>
+              <p>{description}</p>
+              <div class="flex gap-2 mt-2">
+                {
+                  icons.map(icon => (
+                    <Icon size={30} name={icon} />
+                  ))
+                }
+              </div>
+            </div>
+          </Card>
+        </Link>
         ))
       }
     </div>

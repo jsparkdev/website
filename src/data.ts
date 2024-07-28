@@ -50,3 +50,17 @@ export const social = [
 		icon: 'devicon:linkedin',
 	},
 ]
+
+export const projects = [
+	{
+		name: 'LLaMA 3.1 Chatbot',
+		description: 'A simple chatbot using the LLaMA 3.1',
+		url: 'https://github.com/jsparkdev/chatbot',
+		icons: [
+			'devicon:typescript',
+			'devicon:remix',
+			'devicon:cloudflare',
+			'devicon:cloudflareworkers',
+		],
+	},
+]
