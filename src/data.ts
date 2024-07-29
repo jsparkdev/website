@@ -31,6 +31,10 @@ export const skills = [
 		name: 'Cloudflare Workers',
 		icon: 'devicon:cloudflareworkers',
 	},
+	{
+		name: 'Vercel',
+		icon: 'devicon:vercel',
+	},
 ]
 
 export const social = [
