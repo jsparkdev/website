@@ -24,16 +24,8 @@ export const skills = [
 		icon: 'devicon:remix',
 	},
 	{
-		name: 'Cloudflare',
-		icon: 'devicon:cloudflare',
-	},
-	{
 		name: 'Cloudflare Workers',
 		icon: 'devicon:cloudflareworkers',
-	},
-	{
-		name: 'Vercel',
-		icon: 'devicon:vercel',
 	},
 ]
 
@@ -63,7 +55,6 @@ export const projects = [
 		icons: [
 			'devicon:typescript',
 			'devicon:remix',
-			'devicon:cloudflare',
 			'devicon:cloudflareworkers',
 		],
 	},
