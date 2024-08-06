@@ -49,9 +49,9 @@ export const social = [
 
 export const projects = [
 	{
-		name: 'LLaMA 3.1 Chatbot',
+		name: 'Chatbot',
 		description: 'A simple chatbot using the LLaMA 3.1',
-		url: 'https://github.com/jsparkdev/chatbot',
+		url: 'https://chatbot-7kr.pages.dev',
 		icons: [
 			'devicon:typescript',
 			'devicon:remix',
