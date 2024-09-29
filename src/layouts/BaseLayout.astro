@@ -1,0 +1,52 @@
+---
+const {
+  frontmatter: { title, description },
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbV2o-flEEny0FZhsfKu5WU4xD7OwGtT0rU.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: "JetBrains Mono", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+  body {
+    padding: 1rem;
+    max-width: 80ch;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+  }
+</style>
