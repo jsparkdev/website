@@ -57,7 +57,9 @@ const {
     />
   </head>
   <body>
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 
@@ -69,14 +71,28 @@ const {
     --accent-color: #16a085;
   }
 
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #1a332e;
+      --text-color: #e0f2f1;
+      --link-color: #4ecca3;
+      --accent-color: #45b7a0;
+    }
+  }
+
   body {
     background-color: var(--background-color);
-    color: var(--text-color);
     font-family: "JetBrains Mono Variable", monospace;
-    padding: 0 3.5em;
+    cursor: default;
+    user-select: none;
+  }
+
+  main {
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 3.5em 1em;
     max-width: 80ch;
     margin: auto;
-    line-height: 1.6;
   }
 
   h1 {
@@ -93,14 +109,5 @@ const {
   a:hover {
     color: var(--accent-color);
     text-decoration: underline;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background-color: #1a332e;
-      --text-color: #e0f2f1;
-      --link-color: #4ecca3;
-      --accent-color: #45b7a0;
-    }
   }
 </style>
