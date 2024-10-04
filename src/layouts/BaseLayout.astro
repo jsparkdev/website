@@ -1,6 +1,8 @@
 ---
 import "@fontsource-variable/jetbrains-mono";
 import JetBrainsMonoWoff2 from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
+import { SEO } from "astro-seo";
+
 const {
   frontmatter: { title, description },
 } = Astro.props;
@@ -8,14 +10,12 @@ const {
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link
       rel="preload"
@@ -24,7 +24,37 @@ const {
       href={JetBrainsMonoWoff2}
       crossorigin="anonymous"
     />
-    <title>{title}</title>
+    <SEO
+      title={title}
+      description={description}
+      charset="utf-8"
+      openGraph={{
+        basic: {
+          title,
+          type: "website",
+          image: `${Astro.url.href}og-image.png`,
+          url: Astro.url.href,
+        },
+        optional: {
+          description,
+          locale: "en_US",
+          siteName: "Junseong Park",
+        },
+        image: {
+          type: "image/png",
+          width: 1200,
+          height: 630,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@jsparkdev",
+        creator: "@jsparkdev",
+        title,
+        description,
+        image: `${Astro.url.href}og-image.png`,
+      }}
+    />
   </head>
   <body>
     <slot />
@@ -32,15 +62,45 @@ const {
 </html>
 
 <style is:global>
+  :root {
+    --background-color: #e8f6f3;
+    --text-color: #2c3e50;
+    --link-color: #1abc9c;
+    --accent-color: #16a085;
+  }
+
   body {
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: "JetBrains Mono Variable", monospace;
-    padding: 1rem;
+    padding: 0 3.5em;
     max-width: 80ch;
     margin: auto;
+    line-height: 1.6;
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.5em;
     font-weight: 800;
+  }
+
+  a {
+    color: var(--link-color);
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #1a332e;
+      --text-color: #e0f2f1;
+      --link-color: #4ecca3;
+      --accent-color: #45b7a0;
+    }
   }
 </style>
