@@ -11,7 +11,7 @@
     "format": "prettier src/**/*.astro --write"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.2.0",
     "@fontsource-variable/jetbrains-mono": "^5.1.0",
     "astro": "^4.15.11",

@@ -2,6 +2,7 @@
 import "@fontsource-variable/jetbrains-mono";
 import JetBrainsMonoWoff2 from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
 import { SEO } from "astro-seo";
+import { ViewTransitions } from "astro:transitions";
 
 const {
   frontmatter: { title, description },
@@ -17,6 +18,7 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <ViewTransitions />
     <link
       rel="preload"
       as="font"
@@ -89,7 +91,6 @@ const {
 
   main {
     color: var(--text-color);
-    line-height: 1.6;
     padding: 3.5em 1em;
     max-width: 80ch;
     margin: auto;
@@ -98,6 +99,12 @@ const {
   h1 {
     font-size: 2.5em;
     font-weight: 800;
+  }
+  
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 2em;
+    }
   }
 
   a {
