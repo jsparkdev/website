@@ -4,4 +4,9 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://jspark.dev",
   integrations: [sitemap()],
+  vite: {
+    build: {
+      target: "esnext",
+    },
+  },
 });
