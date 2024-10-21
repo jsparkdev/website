@@ -2,8 +2,9 @@
   "short_name": "Junseong Park",
   "name": "Junseong Park's website",
   "description": "Junseong Park's website",
-  "start_url": ".",
-  "id": ".",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#1a332e",
   "theme_color": "#45b7a0",
@@ -22,7 +23,8 @@
     {
       "src": "/icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ]
 }
