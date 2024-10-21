@@ -10,18 +10,18 @@
   "theme_color": "#45b7a0",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/assets/icons/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/icon-mask.png",
+      "src": "/assets/icons/icon-mask.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/assets/icons/icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
