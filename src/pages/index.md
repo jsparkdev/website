@@ -12,6 +12,7 @@ description: Junseong Park's personal website
 - [React](https://react.dev/)
 - [Astro](https://astro.build/)
 - [Zed](https://zed.dev/)
+- [Brave Browser](https://brave.com/)
 
 ## Social
 
