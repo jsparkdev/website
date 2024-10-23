@@ -27,5 +27,4 @@ A developer passionate about solving problems through web development
 
 - [Github](https://github.com/jsparkdev)
 - [X](https://x.com/jsparkdev)
-- [Mastodon](https://mastodon.social/@jsparkdev)
-- [Mail](mailto:to@jspark.dev)
+- [E-Mail](mailto:to@jspark.dev)
