@@ -12,7 +12,6 @@ A developer passionate about solving problems through web development
 
 ### Web development
 
-- [Vite](https://vite.dev/)
 - [React](https://react.dev/)
 - [Astro](https://astro.build/)
 - [Cloudflare Ecosystem](https://cloudflare.com/)
