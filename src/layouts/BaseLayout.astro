@@ -89,24 +89,32 @@ const {
 
   main {
     color: var(--text-color);
-    padding: 2.5em 1em;
     max-width: 80ch;
-    margin: auto;
+    padding: 0.5em 0.75em;
+    margin: 0 auto;
   }
 
   h1 {
-    font-size: 2.5em;
     font-weight: 800;
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-weight: 800;
+    font-size: 2em;
+  }
+
+  h3 {
+    font-weight: 800;
+    font-size: 1.5em;
   }
 
   p {
     text-wrap: balance;
   }
 
-  @media (max-width: 400px) {
-    h1 {
-      font-size: 2em;
-    }
+  ul {
+    padding-inline-start: 1em;
   }
 
   a {
@@ -119,5 +127,17 @@ const {
   a:focus {
     color: var(--accent-color);
     text-decoration: underline;
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 2em;
+    }
+    h2 {
+      font-size: 1.5em;
+    }
+    h3 {
+      font-size: 1em;
+    }
   }
 </style>
