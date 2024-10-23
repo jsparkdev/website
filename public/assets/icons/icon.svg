@@ -1,17 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
   <style>
-    .background { fill: #ffffff }
     .square-1 { fill: #B5E0C1 }
     .square-2 { fill: #85A6B5 }
     .square-3 { fill: #5F9694 }
     @media (prefers-color-scheme: dark) {
-      .background { fill: #000000 }
       .square-1 { fill: #c6f1d2 }
       .square-2 { fill: #96b7c6 }
       .square-3 { fill: #70a7a5 }
     }
   </style>
-  <rect class="background" x="0" y="0" width="500" height="500" />
   <rect class="square-1" x="250" y="50" width="200" height="200" />
   <rect class="square-2" x="50" y="250" width="200" height="200" />
   <rect class="square-3" x="250" y="250" width="200" height="200" />
