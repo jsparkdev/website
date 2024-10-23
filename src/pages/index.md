@@ -6,15 +6,16 @@ description: Junseong Park's personal website
 
 # Junseong Park
 
-A developer passionate about solving problems through web development
+Web Development & Productivity
 
 ## Tools & Technologies I Use
 
 ### Web development
 
 - [React](https://react.dev/)
+- [Remix](https://remix.run/)
 - [Astro](https://astro.build/)
-- [Cloudflare Ecosystem](https://cloudflare.com/)
+- [Cloudflare Developer Platform](https://www.cloudflare.com/developer-platform/products/)
 
 ### Tools
 
