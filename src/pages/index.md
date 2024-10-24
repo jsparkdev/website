@@ -27,4 +27,4 @@ Web Development & Productivity
 
 - [Github](https://github.com/jsparkdev)
 - [X](https://x.com/jsparkdev)
-- [E-Mail](mailto:to@jspark.dev)
+- [Email](mailto:to@jspark.dev)

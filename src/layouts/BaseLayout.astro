@@ -6,6 +6,8 @@ import { SEO } from "astro-seo";
 const {
   frontmatter: { title, description },
 } = Astro.props;
+
+const ogImage = new URL("/assets/images/og-image.png", Astro.url);
 ---
 
 <html lang="en">
@@ -32,7 +34,7 @@ const {
         basic: {
           title,
           type: "website",
-          image: `${Astro.url.href}assets/images/og-image.png`,
+          image: ogImage.href,
           url: Astro.url.href,
         },
         optional: {
@@ -52,7 +54,7 @@ const {
         creator: "@jsparkdev",
         title,
         description,
-        image: `${Astro.url.href}assets/images/og-image.png`,
+        image: ogImage.href,
       }}
     />
   </head>
