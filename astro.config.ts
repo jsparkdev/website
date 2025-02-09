@@ -12,4 +12,7 @@ export default defineConfig({
       target: "esnext",
     },
   },
+  experimental: {
+    svg: true,
+  },
 });

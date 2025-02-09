@@ -22,7 +22,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         height={400}
         class="w-full h-64 object-cover rounded-lg mb-8"
       />
-      <h1 class="text-3xl font-bold mb-4">{title}</h1>
+      <h1 class="text-3xl font-bold mb-4 text-gray-900">{title}</h1>
       <div class="flex flex-wrap items-center text-sm text-gray-600 mb-8">
         <p class="mr-4">
           Published: <FormattedDate date={pubDate} />
@@ -35,7 +35,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           )
         }
       </div>
-      <div class="prose"><slot /></div>
+      <div class="prose prose-p:text-gray-800"><slot /></div>
     </article>
   </BaseLayout>
 </html>
