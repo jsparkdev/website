@@ -3,10 +3,18 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
+import defaultHeroImage from "../assets/images/blog-placeholder-1.jpg";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage = defaultHeroImage,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -15,11 +23,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   </head>
   <BaseLayout>
     <article class="max-w-2xl mx-auto">
-      <img
+      <Image
         src={heroImage}
-        alt=""
-        width={800}
-        height={400}
+        alt={title}
         class="w-full h-64 object-cover rounded-lg mb-8"
       />
       <h1 class="text-3xl font-bold mb-4 text-gray-900">{title}</h1>
