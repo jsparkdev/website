@@ -29,6 +29,7 @@ const posts = (await getCollection("blog")).sort(
                   <Image
                     src={post.data.heroImage ?? defaultHeroImage}
                     alt={post.data.title}
+                    format="avif"
                     class="object-cover"
                   />
                 </div>

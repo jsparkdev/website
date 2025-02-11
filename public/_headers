@@ -1,7 +1,7 @@
 /_astro/*.jpg
   Cache-Control: public, max-age=31536000
 
-/_astro/*.webp
+/_astro/*.avif
   Cache-Control: public, max-age=31536000
 
 /_astro/*.svg
