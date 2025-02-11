@@ -6,6 +6,9 @@ updatedDate: 'Jun 20 2025'
 heroImage: '/src/assets/images/blog-placeholder-1.jpg'
 ---
 
+import BlogContentImage from "/src/components/BlogContentImage.astro";
+import PlaceholderImage from "/src/assets/images/blog-placeholder-about.jpg"
+
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
 ## Headings
@@ -30,17 +33,7 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
-## Images
-
-### Syntax
-
-```markdown
-![Alt text](./full/or/relative/path/of/image)
-```
-
-### Output
-
-![blog placeholder](/src/assets/images/blog-placeholder-about.jpg)
+<BlogContentImage src={PlaceholderImage} alt="Placeholder Image" />
 
 ## Blockquotes
 
@@ -65,13 +58,13 @@ The blockquote element represents content that is quoted from another source, op
 #### Syntax
 
 ```markdown
-> Don't communicate by sharing memory, share memory by communicating.<br>
+> Don't communicate by sharing memory, share memory by communicating.<br />
 > — <cite>Rob Pike[^1]</cite>
 ```
 
 #### Output
 
-> Don't communicate by sharing memory, share memory by communicating.<br>
+> Don't communicate by sharing memory, share memory by communicating.<br />
 > — <cite>Rob Pike[^1]</cite>
 
 [^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
