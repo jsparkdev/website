@@ -12,6 +12,11 @@ export default defineConfig({
       target: "esnext",
     },
   },
+  markdown: {
+    shikiConfig: {
+      theme: "andromeeda",
+    },
+  },
   experimental: {
     svg: true,
   },
