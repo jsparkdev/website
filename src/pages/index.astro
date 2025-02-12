@@ -10,17 +10,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <BaseLayout>
-    <div class="max-w-2xl mx-auto">
-      <h1 class="text-3xl font-bold mb-4">Welcome to My Personal Website</h1>
-      <p class="mb-4">
-        Hello! I'm a web developer passionate about creating beautiful and
-        functional websites. This is my personal space where I share my thoughts
-        and experiences through my blog.
+    <div class="text-center">
+      <h1
+        class="font-poppins text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600 animate-gradient"
+      >
+        Welcome to My Digital Space
+      </h1>
+      <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
+        Hello! I'm a passionate web developer crafting beautiful and functional
+        digital experiences. Explore my thoughts, projects, and journey through
+        web development.
       </p>
-      <p>
-        Feel free to explore my blog posts and get to know me better. If you
-        have any questions or just want to chat, don't hesitate to reach out!
-      </p>
+      <div class="mt-10 flex justify-center">
+        <a
+          href="/blog"
+          target="_blank"
+          class="px-8 py-3 rounded-full text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+        >
+          Explore My Blog
+        </a>
+      </div>
     </div>
   </BaseLayout>
 </html>

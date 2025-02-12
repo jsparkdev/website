@@ -5,3 +5,27 @@
   --font-sans: "Geist";
   --font-mono: "JetBrains Mono";
 }
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, #e0e7ff 1px, transparent 1px),
+    linear-gradient(to bottom, #e0e7ff 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+}

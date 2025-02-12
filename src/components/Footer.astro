@@ -8,12 +8,7 @@ const today = new Date();
 
 <footer class="py-6 md:py-8">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-    <div
-      class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
-    >
-      <p class="text-sm text-gray-600">
-        &copy; {today.getFullYear()} Junseong Park. All rights reserved.
-      </p>
+    <div class="flex flex-col items-center space-y-4">
       <div class="flex space-x-4">
         <a
           href="https://github.com/jsparkdev"
@@ -43,6 +38,29 @@ const today = new Date();
           <span class="sr-only">Twitter</span>
         </a>
       </div>
+      <p class="text-sm text-gray-600 text-center">
+        &copy; {today.getFullYear()} Junseong Park. All rights reserved.
+      </p>
+      <p class="text-xs text-gray-500 text-center">
+        Created with{" "}
+        <a
+          href="https://astro.build"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-gray-700"
+        >
+          Astro
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://v0.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-gray-700"
+        >
+          v0
+        </a>
+      </p>
     </div>
   </div>
 </footer>
