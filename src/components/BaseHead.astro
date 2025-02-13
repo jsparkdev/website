@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { SITE_TITLE } from "../consts";
 import image from "../assets/images/blog-placeholder-about.jpg";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -57,3 +58,5 @@ const { title, description } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<ClientRouter />
