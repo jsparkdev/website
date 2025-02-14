@@ -1,6 +1,5 @@
 {
   "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-  "trailingComma": "es5",
   "overrides": [
     {
       "files": "*.astro",
