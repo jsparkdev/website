@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import BlogPostCard from "./BlogPostCard.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {
+    posts.map((post) => (
+      <a href={`/blog/${post.id}/`}>
+        <BlogPostCard post={post} />
+      </a>
+    ))
+  }
+</div>

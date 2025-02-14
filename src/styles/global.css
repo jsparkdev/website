@@ -1,25 +1,7 @@
 @import "tailwindcss";
+@import "./fonts.css";
+@import "./keyframes.css";
 @plugin "@tailwindcss/typography";
-
-@font-face {
-  font-family: "Geist";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src:
-    local("Geist"),
-    url("/fonts/Geist.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 100 800;
-  font-display: optional;
-  src:
-    local("JetBrains Mono"),
-    url("/fonts/JetBrainsMono.woff2") format("woff2");
-}
 
 @theme {
   --font-sans: "Geist";
@@ -31,18 +13,6 @@
     linear-gradient(to right, #e0e7ff 1px, transparent 1px),
     linear-gradient(to bottom, #e0e7ff 1px, transparent 1px);
   background-size: 20px 20px;
-}
-
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .animate-gradient {

@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "~components/FormattedDate.astro";
+import defaultHeroImage from "~images/huston.jpg";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const {
+  post: {
+    data: { title, pubDate, heroImage },
+  },
+} = Astro.props;
+---
+
+<div
+  class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-300 hover:shadow-lg"
+>
+  <Image
+    src={heroImage ?? defaultHeroImage}
+    alt={title}
+    format="avif"
+    class="object-cover"
+  />
+  <div class="flex-grow p-4">
+    <h2 class="mb-2 line-clamp-2 text-lg font-semibold text-gray-900">
+      {title}
+    </h2>
+    <p class="text-sm text-gray-600">
+      <FormattedDate date={pubDate} />
+    </p>
+  </div>
+</div>

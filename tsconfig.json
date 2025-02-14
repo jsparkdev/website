@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
-      "~stack/*": ["src/assets/stack/*"],
+      "~icons/*": ["src/assets/icons/*"],
       "~images/*": ["src/assets/images/*"],
       "~components/*": ["src/components/*"],
       "~layouts/*": ["src/layouts/*"]

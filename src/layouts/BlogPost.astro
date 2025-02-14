@@ -1,10 +1,10 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import BaseHead from "~components/BaseHead.astro";
-import FormattedDate from "~components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
+import Head from "~components/Head.astro";
+import FormattedDate from "~components/FormattedDate.astro";
 import { Image } from "astro:assets";
-import defaultHeroImage from "~images/blog-placeholder-1.jpg";
+import type { CollectionEntry } from "astro:content";
+import defaultHeroImage from "~images/huston.jpg";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -18,9 +18,7 @@ const {
 ---
 
 <html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
-  </head>
+  <Head title={title} description={description} />
   <BaseLayout>
     <article class="mx-auto w-full max-w-2xl">
       <Image

@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src:
+    local("Geist"),
+    url("/fonts/Geist.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: optional;
+  src:
+    local("JetBrains Mono"),
+    url("/fonts/JetBrainsMono.woff2") format("woff2");
+}
