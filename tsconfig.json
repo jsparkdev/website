@@ -6,6 +6,7 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
+      "~/*": ["src/*"],
       "~stack/*": ["src/assets/stack/*"],
       "~images/*": ["src/assets/images/*"],
       "~components/*": ["src/components/*"],

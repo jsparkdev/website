@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import BaseHead from "../components/BaseHead.astro";
-import FormattedDate from "../components/FormattedDate.astro";
+import BaseHead from "~components/BaseHead.astro";
+import FormattedDate from "~components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets";
-import defaultHeroImage from "../assets/images/blog-placeholder-1.jpg";
+import defaultHeroImage from "~images/blog-placeholder-1.jpg";
 
 type Props = CollectionEntry<"blog">["data"];
 
