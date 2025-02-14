@@ -22,15 +22,15 @@ const {
     <BaseHead title={title} description={description} />
   </head>
   <BaseLayout>
-    <article class="max-w-2xl w-full mx-auto">
+    <article class="mx-auto w-full max-w-2xl">
       <Image
         src={heroImage}
         alt={title}
         format="avif"
-        class="h-64 object-cover rounded-lg mb-8"
+        class="mb-8 h-64 rounded-lg object-cover"
       />
-      <h1 class="text-3xl font-bold mb-4 text-gray-900">{title}</h1>
-      <div class="flex flex-wrap items-center text-sm text-gray-600 mb-8">
+      <h1 class="mb-4 text-3xl font-bold text-gray-900">{title}</h1>
+      <div class="mb-8 flex flex-wrap items-center text-sm text-gray-600">
         <p class="mr-4">
           Published: <FormattedDate date={pubDate} />
         </p>

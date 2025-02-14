@@ -8,7 +8,7 @@ import { Image } from "astro:assets";
 import defaultHeroImage from "~images/blog-placeholder-1.jpg";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
@@ -19,12 +19,12 @@ const posts = (await getCollection("blog")).sort(
   </head>
   <BaseLayout>
     <div class="space-y-8">
-      <h1 class="text-3xl font-bold mb-8 text-gray-900">Blog Posts</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h1 class="mb-8 text-3xl font-bold text-gray-900">Blog Posts</h1>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           posts.map((post) => (
             <a href={`/blog/${post.id}/`} class="block">
-              <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
+              <div class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
                 <div>
                   <Image
                     src={post.data.heroImage ?? defaultHeroImage}
@@ -33,11 +33,11 @@ const posts = (await getCollection("blog")).sort(
                     class="object-cover"
                   />
                 </div>
-                <div class="p-4 flex-grow">
-                  <h2 class="text-lg font-semibold mb-2 line-clamp-2 text-gray-900">
+                <div class="flex-grow p-4">
+                  <h2 class="mb-2 line-clamp-2 text-lg font-semibold text-gray-900">
                     {post.data.title}
                   </h2>
-                  <p class="text-gray-600 text-sm">
+                  <p class="text-sm text-gray-600">
                     <FormattedDate date={post.data.pubDate} />
                   </p>
                 </div>

@@ -13,7 +13,7 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
   href={href}
   class:list={[
     className,
-    { "decoration-2 underline underline-offset-8": isActive },
+    { "underline decoration-2 underline-offset-8": isActive },
   ]}
   {...props}
 >
