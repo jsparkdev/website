@@ -1,7 +1,27 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
+import BaseHead from "~components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "~layouts/BaseLayout.astro";
+
+import TypeScriptIcon from "~stack/typescript.svg";
+import ReactIcon from "~stack/react.svg";
+import ViteIcon from "~stack/vite.svg";
+import HonoIcon from "~stack/hono.svg";
+import TailwindIcon from "~stack/tailwindcss.svg";
+import RouterIcon from "~stack/reactrouter.svg";
+import AstroIcon from "~stack/astro.svg";
+import CloudflareIcon from "~stack/cloudflare-workers.svg";
+
+const techStack = [
+  { name: "TypeScript", icon: TypeScriptIcon },
+  { name: "React", icon: ReactIcon },
+  { name: "Vite", icon: ViteIcon },
+  { name: "Hono", icon: HonoIcon },
+  { name: "Tailwind CSS", icon: TailwindIcon },
+  { name: "React Router", icon: RouterIcon },
+  { name: "Astro", icon: AstroIcon },
+  { name: "Cloudflare Workers", icon: CloudflareIcon },
+];
 ---
 
 <!doctype html>
@@ -10,24 +30,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <BaseLayout>
-    <div class="text-center">
+    <div class="text-center space-y-12">
       <h1
-        class="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600 animate-gradient"
+        class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600 animate-gradient"
       >
         Welcome to My Digital Space
       </h1>
-      <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
-        Hello! I'm a passionate web developer crafting beautiful and functional
-        digital experiences. Explore my thoughts, projects, and journey through
-        web development.
+      <p
+        class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed"
+      >
+        Hello! I'm a passionate web developer with a keen interest in frontend
+        development. I love crafting beautiful, responsive, and user-friendly
+        interfaces using modern web technologies.
       </p>
-      <div class="mt-10 flex justify-center">
-        <a
-          href="/blog"
-          class="px-8 py-3 rounded-full text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">
+          Tech Stack I'm Excited About
+        </h2>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
         >
-          Explore My Blog
-        </a>
+          {
+            techStack.map((tech) => (
+              <div class="flex flex-col items-center space-y-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                <tech.icon size={48} />
+                <span class="text-sm font-medium text-gray-700">
+                  {tech.name}
+                </span>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </BaseLayout>
