@@ -3,8 +3,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "precommit": "nano-staged"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.8",
@@ -16,16 +15,8 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "nano-staged": "^0.8.0",
     "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "simple-git-hooks": "^2.11.1"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "bun run precommit"
-  },
-  "nano-staged": {
-    "*": "bun prettier . --write"
+    "prettier-plugin-tailwindcss": "^0.6.11"
   }
 }
