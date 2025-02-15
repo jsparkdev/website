@@ -8,9 +8,7 @@
     "paths": {
       "~/*": ["src/*"],
       "~icons/*": ["src/assets/icons/*"],
-      "~images/*": ["src/assets/images/*"],
-      "~components/*": ["src/components/*"],
-      "~layouts/*": ["src/layouts/*"]
+      "~images/*": ["src/assets/images/*"]
     }
   }
 }
