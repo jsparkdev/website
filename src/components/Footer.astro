@@ -49,10 +49,14 @@ const today = new Date();
         </a>
       </div>
       <p class="text-center text-sm text-gray-600">
-        &copy; {today.getFullYear()} Junseong Park. All rights reserved.
+        &copy; {today.getFullYear()} Junseong Park. <a
+          rel="license"
+          href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          class="underline-offset-4 hover:underline">CC BY-NC-SA 4.0</a
+        >
       </p>
       <p class="text-center text-xs text-gray-500">
-        Created with{" "}
+        Built with{" "}
         <a
           href="https://astro.build"
           target="_blank"
@@ -60,15 +64,6 @@ const today = new Date();
           class="underline hover:text-gray-700"
         >
           Astro
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://v0.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="underline hover:text-gray-700"
-        >
-          v0
         </a>
       </p>
     </div>
