@@ -1,13 +1,13 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "~/consts";
+import { AUTHOR } from "~/consts";
 ---
 
 <header class="py-6 md:py-8">
   <nav
     class="container mx-auto flex max-w-4xl items-center justify-between px-4 sm:px-6 lg:px-8"
   >
-    <a href="/" class="text-xl font-bold text-gray-900">{SITE_TITLE}</a>
+    <a href="/" class="text-xl font-bold text-gray-900">{AUTHOR}</a>
     <ul class="flex space-x-4">
       <li>
         <HeaderLink href="/" class="text-gray-600 hover:text-gray-900"

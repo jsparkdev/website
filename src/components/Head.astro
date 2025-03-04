@@ -1,6 +1,5 @@
 ---
 import "~/styles/global.css";
-import { SITE_TITLE } from "~/consts";
 import image from "~images/huston.jpg";
 import { ClientRouter } from "astro:transitions";
 
@@ -24,10 +23,9 @@ const { title, description } = Astro.props;
   <link
     rel="alternate"
     type="application/rss+xml"
-    title={SITE_TITLE}
+    title={title}
     href={new URL("rss.xml", Astro.site)}
   />
-  <meta name="generator" content={Astro.generator} />
 
   <!-- Font preloads -->
   <link
@@ -43,7 +41,6 @@ const { title, description } = Astro.props;
 
   <!-- Primary Meta Tags -->
   <title>{title}</title>
-  <meta name="title" content={title} />
   <meta name="description" content={description} />
 
   <!-- Open Graph / Facebook -->

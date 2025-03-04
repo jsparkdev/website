@@ -3,12 +3,15 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import Head from "~/components/Head.astro";
 import Title from "./_components/Title.astro";
 import Introduction from "./_components/Introduction.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "~/consts";
+import { AUTHOR } from "~/consts";
 ---
 
 <!doctype html>
 <html lang="en">
-  <Head title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  <Head
+    title={`${AUTHOR} | Software Developer & Problem Solver`}
+    description="Solving user problems with innovative software and web development solutions for the best user experience. We focus on developing high-quality products reflecting the latest tech trends, with a human-centered approach."
+  />
   <BaseLayout>
     <div class="space-y-12 text-center">
       <Title />

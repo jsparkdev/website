@@ -3,12 +3,15 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import Head from "~/components/Head.astro";
 import BlogPostList from "./_components/BlogPostList.astro";
 import BlogPostTitle from "./_components/BlogPostTitle.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "~/consts";
+import { AUTHOR } from "~/consts";
 ---
 
 <!doctype html>
 <html lang="en">
-  <Head title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  <Head
+    title={`${AUTHOR}'s Tech Blog | All Posts`}
+    description="Explore the latest posts on various development topics at Junseong Park's Tech Blog. We provide valuable information on software development, web development, tech trends, and more."
+  />
   <BaseLayout>
     <div class="space-y-8">
       <BlogPostTitle />
