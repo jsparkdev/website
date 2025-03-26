@@ -43,6 +43,7 @@ export default defineConfig({
       social,
       sidebar,
       plugins: [starlightThemeNova()],
+      customCss: ["./src/styles/custom.css"],
     }),
   ],
 });

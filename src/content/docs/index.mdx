@@ -21,15 +21,32 @@ export const social = {
   blueSky: "https://bsky.app/profile/jspark.dev",
 };
 
-<SocialLink
-  href={social.github}
-  icon="github"
-/>
-<SocialLink
-  href={social['x.com']}
-  icon="x.com"
-/>
-<SocialLink
-  href={social.blueSky}
-  icon="blueSky"
-/>
+<div id="intro">
+    - [`Vite`][vite] 커뮤니티에서 제공하는 웹 개발 도구에 관심이 많습니다.
+    - [`TypeScript`][ts]와 [`React`][react]를 사용하여 웹 앱을 개발할 수 있습니다.
+    - 오픈 소스 웹 개발 도구에 관심이 많으며, 현재 [`Astro`][astro] 팀의 메인테이너입니다.
+    - 제품의 성능을 개선하고, 사용자 경험을 향상시키는 것을 목표로 합니다.
+    - 최근에는 [`Rust`][rust]와 [`Kotlin`][kotlin]에도 관심이 있습니다.
+</div>
+
+<div id="social-links">
+    <SocialLink
+        href={social.github}
+        icon="github"
+    />
+    <SocialLink
+        href={social['x.com']}
+        icon="x.com"
+    />
+    <SocialLink
+        href={social.blueSky}
+        icon="blueSky"
+    />
+</div>
+
+[vite]: https://ko.vite.dev/
+[ts]: https://www.typescriptlang.org/
+[react]: https://ko.react.dev/
+[astro]: https://astro.build/
+[rust]: https://www.rust-lang.org/
+[kotlin]: https://kotlinlang.org/
