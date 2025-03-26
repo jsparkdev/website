@@ -3,7 +3,8 @@ import starlight from "@astrojs/starlight";
 import starlightThemeNova from "starlight-theme-nova";
 
 const sidebar = [
-  createSidebarItem("안드로이드", "android"),
+  createSidebarItem("튜토리얼", "tutorial"),
+  createSidebarItem("가이드", "guides"),
 ] satisfies Array<SidebarItem>;
 
 const social = {

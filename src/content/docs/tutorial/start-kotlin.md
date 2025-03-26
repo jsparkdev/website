@@ -1,6 +1,7 @@
 ---
 title: Kotlin 입문
 description: Kotlin 입문을 위한 간단한 예제입니다.
+draft: true
 ---
 
 - 2025년 3월 23일
