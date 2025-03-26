@@ -5,9 +5,10 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"a"> {
     icon: StarlightIcon;
+    label: string;
 }
 
-const { icon, href, ...props } = Astro.props;
+const { icon, href, label, ...props } = Astro.props;
 ---
 
 <LinkButton
@@ -16,4 +17,18 @@ const { icon, href, ...props } = Astro.props;
     variant="minimal"
     icon={icon}
     iconPlacement="start"
-/>
+    title={label}
+>
+    <span>{label}</span>
+</LinkButton>
+
+<style>
+    a:hover {
+        text-decoration: underline;
+        text-underline-offset: 6px;
+    }
+    span {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+</style>

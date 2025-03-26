@@ -1,4 +1,11 @@
+.hero {
+    padding-bottom: 20px;
+}
+
 #intro {
+    ul {
+        padding-inline-start: 20px;
+    }
     a {
         text-decoration: none;
         &:hover {
@@ -13,10 +20,5 @@
     align-items: center;
     @media (min-width: 50rem) {
         display: block;
-    }
-
-    a:hover {
-        opacity: 0.5;
-        transition: opacity 0.3s ease-in-out;
     }
 }
