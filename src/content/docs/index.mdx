@@ -1,0 +1,35 @@
+---
+title: Junseong Park
+description: 웹 프런트엔드 개발자
+head:
+  - tag: title
+    content: Junseong Park
+template: splash
+hero:
+  tagline: 웹 프런트엔드 개발자
+  actions:
+    - text: 게시물 목록
+      link: /c
+      icon: right-arrow
+---
+
+import SocialLink from "~/components/SocialLink.astro";
+
+export const social = {
+  github: "https://github.com/jsparkdev",
+  "x.com": "https://x.com/jsparkdev",
+  blueSky: "https://bsky.app/profile/jspark.dev",
+};
+
+<SocialLink
+  href={social.github}
+  icon="github"
+/>
+<SocialLink
+  href={social['x.com']}
+  icon="x.com"
+/>
+<SocialLink
+  href={social.blueSky}
+  icon="blueSky"
+/>

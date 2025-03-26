@@ -1,7 +1,31 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightThemeNova from "starlight-theme-nova";
+
+const sidebar = [
+  createSidebarItem("안드로이드", "android"),
+] satisfies Array<SidebarItem>;
+
+const social = {
+  github: "https://github.com/jsparkdev",
+  "x.com": "https://x.com/jsparkdev",
+  blueSky: "https://bsky.app/profile/jspark.dev",
+};
+
+type SidebarItem = {
+  label: string;
+  autogenerate: { directory: string };
+};
+
+function createSidebarItem(label: string, directory: string): SidebarItem {
+  return {
+    label,
+    autogenerate: { directory },
+  };
+}
 
 export default defineConfig({
+  site: "https://jspark.dev",
   vite: {
     build: {
       target: "esnext",
@@ -9,22 +33,16 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: "History",
+      title: "Junseong Park",
       locales: {
         root: {
           label: "한국어",
           lang: "ko-KR",
         },
       },
-      social: {
-        github: "https://github.com/jsparkdev",
-      },
-      sidebar: [
-        {
-          label: "안드로이드 개발 공부",
-          autogenerate: { directory: "android" },
-        },
-      ],
+      social,
+      sidebar,
+      plugins: [starlightThemeNova()],
     }),
   ],
 });
