@@ -5,6 +5,7 @@ import starlightThemeNova from "starlight-theme-nova";
 const sidebar = [
   createSidebarItem("튜토리얼", "tutorial"),
   createSidebarItem("가이드", "guides"),
+  createSidebarItem("참조", "reference"),
 ] satisfies Array<SidebarItem>;
 
 const social = {
@@ -41,6 +42,7 @@ export default defineConfig({
           lang: "ko-KR",
         },
       },
+      pagination: false,
       social,
       sidebar,
       plugins: [starlightThemeNova()],

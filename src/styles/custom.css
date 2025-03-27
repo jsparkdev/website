@@ -1,10 +1,27 @@
+body {
+    overflow-y: scroll;
+}
+
+.site-title span {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 800;
+}
+
 .hero {
     padding-bottom: 20px;
+    h1 {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 800;
+    }
 }
 
 #intro {
     ul {
         padding-inline-start: 20px;
+        code {
+            font-family: "JetBrains Mono", monospace;
+            font-weight: 600;
+        }
     }
     a {
         text-decoration: none;
@@ -20,5 +37,9 @@
     align-items: center;
     @media (min-width: 50rem) {
         display: block;
+    }
+    span {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
     }
 }
