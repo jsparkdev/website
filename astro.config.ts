@@ -46,7 +46,10 @@ export default defineConfig({
       social,
       sidebar,
       plugins: [starlightThemeNova()],
-      customCss: ["./src/styles/custom.css"],
+      customCss: [
+        "@fontsource-variable/jetbrains-mono",
+        "./src/styles/custom.css",
+      ],
     }),
   ],
 });

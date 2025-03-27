@@ -3,14 +3,14 @@ body {
 }
 
 .site-title span {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono Variable", monospace;
     font-weight: 800;
 }
 
 .hero {
     padding-bottom: 20px;
     h1 {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "JetBrains Mono Variable", monospace;
         font-weight: 800;
     }
 }
@@ -19,7 +19,7 @@ body {
     ul {
         padding-inline-start: 20px;
         code {
-            font-family: "JetBrains Mono", monospace;
+            font-family: "JetBrains Mono Variable", monospace;
             font-weight: 600;
         }
     }
@@ -39,7 +39,7 @@ body {
         display: block;
     }
     span {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "JetBrains Mono Variable", monospace;
         font-weight: 600;
     }
 }
