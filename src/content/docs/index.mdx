@@ -8,7 +8,7 @@ template: splash
 hero:
   actions:
     - text: 게시물 목록
-      link: /c
+      link: /posts
       icon: right-arrow
       attrs: {
         "data-astro-prefetch": "load"
@@ -24,8 +24,9 @@ export const social = {
 };
 
 <div id="intro">
-    - 웹 프런트엔드 개발, 성능 최적화, 사용자 경험(UX) 및 개발자 경험(DX) 개선에 관심
-    - `Astro` 팀의 메인테이너로 활동하고 있으며, `Vite` 생태계에 깊은 관심
+    - 웹 프런트엔드 개발자
+    - [`Astro`][astro] 팀의 메인테이너
+    - [`Vite`][vite] 및 [`Cloudflare Workers`][cloudflare-workers] 생태계에 관심
 </div>
 
 <div id="sc-list">
@@ -45,3 +46,7 @@ export const social = {
         label="BlueSky"
     />
 </div>
+
+[astro]: https://astro.build/
+[cloudflare-workers]: https://workers.cloudflare.com/
+[vite]: https://vite.dev/

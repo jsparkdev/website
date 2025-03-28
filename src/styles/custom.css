@@ -39,6 +39,7 @@ body {
         text-decoration: none;
         &:hover {
             text-decoration: underline;
+            text-underline-offset: 6px;
         }
     }
 }
