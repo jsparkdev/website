@@ -46,9 +46,18 @@ export default defineConfig({
       social,
       sidebar,
       plugins: [starlightThemeNova()],
-      customCss: [
-        "@fontsource-variable/jetbrains-mono",
-        "./src/styles/custom.css",
+      customCss: ["./src/styles/custom.css"],
+      head: [
+        {
+          tag: "link",
+          attrs: {
+            rel: "preload",
+            href: "/jetbrains-mono.woff2",
+            as: "font",
+            type: "font/woff2",
+            crossorigin: "anonymous",
+          },
+        },
       ],
     }),
   ],
