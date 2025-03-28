@@ -1,0 +1,48 @@
+---
+title: Junseong Park
+description: This is the website of Junseong Park, a web frontend developer. Sharing knowledge and experience in software development.
+head:
+  - tag: title
+    content: Junseong Park
+template: splash
+hero:
+  actions:
+    - text: Post List
+      link: /en/c
+      icon: right-arrow
+      attrs: {
+        "data-astro-prefetch": "load"
+      }
+---
+
+import SocialLink from "~/components/SocialLink.astro";
+
+export const social = {
+  github: "https://github.com/jsparkdev",
+  "x.com": "https://x.com/jsparkdev",
+  blueSky: "https://bsky.app/profile/jspark.dev",
+};
+
+<div id="intro">
+  - A developer passionate about web frontend development, performance optimization, and improving user experience (UX) and developer experience (DX).
+  - Interested in native Android application development, currently learning Android application development using `Kotlin`.
+  - Active as a maintainer of the `Astro` team, with a deep interest in the `Vite` ecosystem.
+</div>
+
+<div id="sc-list">
+  <SocialLink
+    href={social.github}
+    icon="github"
+    label="GitHub"
+  />
+  <SocialLink
+    href={social['x.com']}
+    icon="x.com"
+    label="X.com"
+  />
+  <SocialLink
+    href={social.blueSky}
+    icon="blueSky"
+    label="BlueSky"
+  />
+</div>
